@@ -106,9 +106,9 @@
       orphans = report.orphans;
       extras = normalize(report.extras);
 
-      notificationController.show({ message: 'Refreshed', type: NotificationType.Info });
+      notificationController.show({ message: '已刷新', type: NotificationType.Info });
     } catch (error) {
-      handleError(error, 'Unable to load items');
+      handleError(error, '无法载入项目');
     }
   };
 
@@ -116,10 +116,10 @@
     try {
       const matched = await loadAndMatch([filename]);
       if (matched) {
-        notificationController.show({ message: `Matched 1 item`, type: NotificationType.Info });
+        notificationController.show({ message: `找到了1个匹配项`, type: NotificationType.Info });
       }
     } catch (error) {
-      handleError(error, 'Unable to check item');
+      handleError(error, '无法检查该项');
     }
   };
 
@@ -135,7 +135,7 @@
         count += await loadAndMatch(filenames.slice(i, i + chunkSize));
       }
     } catch (error) {
-      handleError(error, 'Unable to check items');
+      handleError(error, '无法检查这些项');
     } finally {
       checking = false;
     }
@@ -176,25 +176,25 @@
     <LinkButton on:click={() => handleRepair()} disabled={matches.length === 0 || repairing}>
       <div class="flex place-items-center gap-2 text-sm">
         <Icon path={mdiWrench} size="18" />
-        Repair All
+        修复所有
       </div>
     </LinkButton>
     <LinkButton on:click={() => handleCheckAll()} disabled={extras.length === 0 || checking}>
       <div class="flex place-items-center gap-2 text-sm">
         <Icon path={mdiCheckAll} size="18" />
-        Check All
+        检查所有
       </div>
     </LinkButton>
     <LinkButton on:click={() => handleDownload()} disabled={extras.length + orphans.length === 0}>
       <div class="flex place-items-center gap-2 text-sm">
         <Icon path={mdiDownload} size="18" />
-        Export
+        导出
       </div>
     </LinkButton>
     <LinkButton on:click={() => handleRefresh()}>
       <div class="flex place-items-center gap-2 text-sm">
         <Icon path={mdiRefresh} size="18" />
-        Refresh
+        刷新
       </div>
     </LinkButton>
   </div>
@@ -204,7 +204,7 @@
         <div class="w-full">
           <EmptyPlaceholder
             fullWidth
-            text="Untracked and missing files will show up here"
+            text="未跟踪和丢失的文件将显示在这里"
             alt="Empty report"
             src={empty4Url}
           />
@@ -218,8 +218,8 @@
               <tr class="flex w-full place-items-center p-2 md:p-5">
                 <th class="w-full text-sm place-items-center font-medium flex justify-between" colspan="2">
                   <div class="px-3">
-                    <p>MATCHES {matches.length ? `(${matches.length})` : ''}</p>
-                    <p class="text-gray-600 dark:text-gray-300 mt-1">These files are matched by their checksums</p>
+                    <p>匹配 {matches.length ? `(${matches.length})` : ''}</p>
+                    <p class="text-gray-600 dark:text-gray-300 mt-1">这些文件是通过它们的校验和进行匹配的</p>
                   </div>
                 </th>
               </tr>
@@ -252,9 +252,9 @@
               <tr class="flex w-full place-items-center p-1 md:p-5">
                 <th class="w-full text-sm font-medium justify-between place-items-center flex" colspan="2">
                   <div class="px-3">
-                    <p>OFFLINE PATHS {orphans.length ? `(${orphans.length})` : ''}</p>
+                    <p>离线路径 {orphans.length ? `(${orphans.length})` : ''}</p>
                     <p class="text-gray-600 dark:text-gray-300 mt-1">
-                      These files are the results of manually deletion of the default upload library
+                      这些文件是手动删除默认上传库的结果
                     </p>
                   </div>
                 </th>
@@ -290,10 +290,9 @@
               <tr class="flex w-full place-items-center p-2 md:p-5">
                 <th class="w-full text-sm font-medium place-items-center flex justify-between" colspan="2">
                   <div class="px-3">
-                    <p>UNTRACKS FILES {extras.length ? `(${extras.length})` : ''}</p>
+                    <p>未跟踪文件 {extras.length ? `(${extras.length})` : ''}</p>
                     <p class="text-gray-600 dark:text-gray-300 mt-1">
-                      These files are not tracked by the application. They can be the results of failed moves,
-                      interrupted uploads, or left behind due to a bug
+                      这些文件未被应用程序跟踪。它们可能是移动失败、上传中断或由于错误而留下的结果。
                     </p>
                   </div>
                 </th>

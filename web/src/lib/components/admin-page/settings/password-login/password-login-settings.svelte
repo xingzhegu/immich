@@ -67,9 +67,9 @@
       passwordLoginConfig = { ...updated.passwordLogin };
       savedConfig = { ...updated.passwordLogin };
 
-      notificationController.show({ message: 'Settings saved', type: NotificationType.Info });
+      notificationController.show({ message: '设置已保存', type: NotificationType.Info });
     } catch (error) {
-      handleError(error, 'Unable to save settings');
+      handleError(error, '无法保存设置');
     }
   }
 
@@ -80,7 +80,7 @@
     savedConfig = { ...resetConfig.passwordLogin };
 
     notificationController.show({
-      message: 'Reset settings to the recent saved settings',
+      message: '将设置恢复为最近保存的设置',
       type: NotificationType.Info,
     });
   }
@@ -92,7 +92,7 @@
     defaultConfig = { ...configs.passwordLogin };
 
     notificationController.show({
-      message: 'Reset password settings to default',
+      message: '将密码设置恢复为默认设置',
       type: NotificationType.Info,
     });
   }
@@ -109,9 +109,9 @@
         <div class="ml-4 mt-4 flex flex-col gap-4">
           <div class="ml-4">
             <SettingSwitch
-              title="ENABLED"
+              title="启用"
               {disabled}
-              subtitle="Login with email and password"
+              subtitle="使用电子邮件和密码登录"
               bind:checked={passwordLoginConfig.enabled}
             />
 

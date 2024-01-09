@@ -27,7 +27,7 @@
         dispatch('editSuccess');
       }
     } catch (error) {
-      handleError(error, 'Unable to update user');
+      handleError(error, '无法更新用户');
     }
   };
 </script>
@@ -39,23 +39,23 @@
     class="flex flex-col place-content-center place-items-center gap-4 px-4 text-immich-primary dark:text-immich-dark-primary"
   >
     <Icon path={mdiImageAlbum} size="4em" />
-    <h1 class="text-2xl font-medium text-immich-primary dark:text-immich-dark-primary">Edit album</h1>
+    <h1 class="text-2xl font-medium text-immich-primary dark:text-immich-dark-primary">编辑相册</h1>
   </div>
 
   <form on:submit|preventDefault={editUser} autocomplete="off">
     <div class="m-4 flex flex-col gap-2">
-      <label class="immich-form-label" for="name">Name</label>
+      <label class="immich-form-label" for="name">名称</label>
       <input class="immich-form-input" id="name" type="text" bind:value={album.albumName} />
     </div>
 
     <div class="m-4 flex flex-col gap-2">
-      <label class="immich-form-label" for="description">Description</label>
+      <label class="immich-form-label" for="description">描述</label>
       <textarea class="immich-form-input" id="description" bind:value={album.description} />
     </div>
 
     <div class="mt-8 flex w-full gap-4 px-4">
-      <Button color="gray" fullwidth on:click={() => dispatch('cancel')}>Cancel</Button>
-      <Button type="submit" fullwidth>Confirm</Button>
+      <Button color="gray" fullwidth on:click={() => dispatch('cancel')}>取消</Button>
+      <Button type="submit" fullwidth>确认</Button>
     </div>
   </form>
 </div>

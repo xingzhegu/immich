@@ -29,14 +29,14 @@
 
       selecting = false;
     } catch (e) {
-      handleError(e, 'Error selecting all assets');
+      handleError(e, '全选失败');
     }
   };
 </script>
 
 {#if selecting}
-  <CircleIconButton title="Delete" icon={mdiTimerSand} />
+  <CircleIconButton title="删除" icon={mdiTimerSand} />
 {/if}
 {#if !selecting}
-  <CircleIconButton title="Select all" icon={mdiSelectAll} on:click={handleSelectAll} />
+  <CircleIconButton title="全选" icon={mdiSelectAll} on:click={handleSelectAll} />
 {/if}

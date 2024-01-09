@@ -44,14 +44,14 @@
     <LinkButton on:click={createSharedAlbum}>
       <div class="flex flex-wrap place-items-center justify-center gap-x-1 text-sm">
         <Icon path={mdiPlusBoxOutline} size="18" class="shrink-0" />
-        <span class="leading-none max-sm:text-xs">Create shared album</span>
+        <span class="leading-none max-sm:text-xs">创建分享相册</span>
       </div>
     </LinkButton>
 
     <LinkButton on:click={() => goto(AppRoute.SHARED_LINKS)}>
       <div class="flex flex-wrap place-items-center justify-center gap-x-1 text-sm">
         <Icon path={mdiLink} size="18" class="shrink-0" />
-        <span class="leading-none max-sm:text-xs">Shared links</span>
+        <span class="leading-none max-sm:text-xs">已分享链接</span>
       </div>
     </LinkButton>
   </div>
@@ -88,7 +88,7 @@
 
     <div class="mb-6 mt-2">
       <div>
-        <p class="mb-4 font-medium dark:text-immich-dark-fg">Albums</p>
+        <p class="mb-4 font-medium dark:text-immich-dark-fg">相册</p>
       </div>
 
       <div>
@@ -104,8 +104,8 @@
         <!-- Empty List -->
         {#if data.sharedAlbums.length === 0}
           <EmptyPlaceholder
-            text="Create a shared album to share photos and videos with people in your network"
-            alt="Empty album list"
+            text="创建一个分享相册，与您网络中的人分享照片和视频。"
+            alt="相册列表为空"
             src={empty2Url}
           />
         {/if}

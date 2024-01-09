@@ -20,19 +20,19 @@
         dispatch('fail');
       }
     } catch (error) {
-      handleError(error, 'Unable to delete user');
+      handleError(error, '无法删除用户');
       dispatch('fail');
     }
   };
 </script>
 
-<ConfirmDialogue title="Delete User" confirmText="Delete" on:confirm={deleteUser} on:cancel>
+<ConfirmDialogue title="删除用户" cancelText="取消" confirmText="删除" on:confirm={deleteUser} on:cancel>
   <svelte:fragment slot="prompt">
     <div class="flex flex-col gap-4">
       <p>
-        <b>{user.name}</b>'s account and assets will be permanently deleted after 7 days.
+        <b>{user.name}</b>的账号和资产将在7天后被永久删除。
       </p>
-      <p>Are you sure you want to continue?</p>
+      <p>确定继续？</p>
     </div>
   </svelte:fragment>
 </ConfirmDialogue>

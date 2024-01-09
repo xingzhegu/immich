@@ -136,7 +136,7 @@
         }
         notificationController.show({
           type: NotificationType.Info,
-          message: `Visibility changed for ${count} ${count <= 1 ? 'person' : 'people'}`,
+          message: `已更改${count}个人物的可见性`,
         });
       }
     } catch (error) {
@@ -167,11 +167,11 @@
       people = people.filter((person: PersonResponseDto) => person.id !== personToMerge.id);
 
       notificationController.show({
-        message: 'Merge people succesfully',
+        message: '合并人物成功',
         type: NotificationType.Info,
       });
     } catch (error) {
-      handleError(error, 'Unable to save name');
+      handleError(error, '无法保存姓名');
     }
     if (personToBeMergedIn.name !== personName && edittingPerson.id === personToBeMergedIn.id) {
       /*
@@ -189,14 +189,14 @@
           }
         }
         notificationController.show({
-          message: 'Change name succesfully',
+          message: '修改姓名成功',
           type: NotificationType.Info,
         });
 
         // trigger reactivity
         people = people;
       } catch (error) {
-        handleError(error, 'Unable to save name');
+        handleError(error, '无法保存姓名');
       }
     }
   };
@@ -236,11 +236,11 @@
       showChangeNameModal = false;
 
       notificationController.show({
-        message: 'Changed visibility succesfully',
+        message: '成功更改可见性',
         type: NotificationType.Info,
       });
     } catch (error) {
-      handleError(error, 'Unable to hide person');
+      handleError(error, '无法隐藏人物');
     }
   };
 
@@ -306,7 +306,7 @@
       });
 
       notificationController.show({
-        message: 'Date of birth saved succesfully',
+        message: '生日设置成功',
         type: NotificationType.Info,
       });
     } catch (error) {
@@ -339,7 +339,7 @@
         type: NotificationType.Info,
       });
     } catch (error) {
-      handleError(error, 'Unable to save name');
+      handleError(error, '无法保存姓名');
     }
   };
 </script>
@@ -357,13 +357,13 @@
   </FullScreenModal>
 {/if}
 
-<UserPageLayout title="People">
+<UserPageLayout title="人物">
   <svelte:fragment slot="buttons">
     {#if countTotalPeople > 0}
       <IconButton on:click={() => (selectHidden = !selectHidden)}>
         <div class="flex flex-wrap place-items-center justify-center gap-x-1 text-sm">
           <Icon path={mdiEyeOutline} size="18" />
-          <p class="ml-2">Show & hide people</p>
+          <p class="ml-2">显示和隐藏人物</p>
         </div>
       </IconButton>
     {/if}
@@ -390,7 +390,7 @@
     <div class="flex min-h-[calc(66vh_-_11rem)] w-full place-content-center items-center dark:text-white">
       <div class="flex flex-col content-center items-center text-center">
         <Icon path={mdiAccountOff} size="3.5em" />
-        <p class="mt-5 text-3xl font-medium">No people</p>
+        <p class="mt-5 text-3xl font-medium">没有人物</p>
       </div>
     </div>
   {/if}
@@ -408,7 +408,7 @@
 
         <form on:submit|preventDefault={submitNameChange} autocomplete="off">
           <div class="m-4 flex flex-col gap-2">
-            <label class="immich-form-label" for="name">Name</label>
+            <label class="immich-form-label" for="name">姓名</label>
             <!-- svelte-ignore a11y-autofocus -->
             <input class="immich-form-input" id="name" name="name" type="text" bind:value={personName} autofocus />
           </div>
@@ -421,7 +421,7 @@
                 showChangeNameModal = false;
               }}>Cancel</Button
             >
-            <Button type="submit" fullwidth>Ok</Button>
+            <Button type="submit" fullwidth>提交</Button>
           </div>
         </form>
       </div>

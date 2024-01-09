@@ -41,7 +41,7 @@
         dispatch('editSuccess');
       }
     } catch (error) {
-      handleError(error, 'Unable to update user');
+      handleError(error, '无法更新用户');
     }
   };
 
@@ -63,7 +63,7 @@
     } catch (e) {
       console.error('Error reseting user password', e);
       notificationController.show({
-        message: 'Error reseting user password, check console for more details',
+        message: '重置用户密码错误，查看控制台获取更多信息',
         type: NotificationType.Error,
       });
     } finally {
@@ -83,22 +83,22 @@
     class="flex flex-col place-content-center place-items-center gap-4 px-4 text-immich-primary dark:text-immich-dark-primary"
   >
     <Icon path={mdiAccountEditOutline} size="4em" />
-    <h1 class="text-2xl font-medium text-immich-primary dark:text-immich-dark-primary">Edit user</h1>
+    <h1 class="text-2xl font-medium text-immich-primary dark:text-immich-dark-primary">编辑用户</h1>
   </div>
 
   <form on:submit|preventDefault={editUser} autocomplete="off">
     <div class="m-4 flex flex-col gap-2">
-      <label class="immich-form-label" for="email">Email</label>
+      <label class="immich-form-label" for="email">邮箱</label>
       <input class="immich-form-input" id="email" name="email" type="email" bind:value={user.email} />
     </div>
 
     <div class="m-4 flex flex-col gap-2">
-      <label class="immich-form-label" for="name">Name</label>
+      <label class="immich-form-label" for="name">姓名</label>
       <input class="immich-form-input" id="name" name="name" type="text" required bind:value={user.name} />
     </div>
 
     <div class="m-4 flex flex-col gap-2">
-      <label class="immich-form-label" for="storage-label">Storage Label</label>
+      <label class="immich-form-label" for="storage-label">存储标签</label>
       <input
         class="immich-form-input"
         id="storage-label"
@@ -108,15 +108,15 @@
       />
 
       <p>
-        Note: To apply the Storage Label to previously uploaded assets, run the
+        注意：要将存储标签应用于先前上传的资产，请运行
         <a href={AppRoute.ADMIN_JOBS} class="text-immich-primary dark:text-immich-dark-primary">
-          Storage Migration Job</a
-        >
+          存储迁移任务</a
+        >。
       </p>
     </div>
 
     <div class="m-4 flex flex-col gap-2">
-      <label class="immich-form-label" for="external-path">External Path</label>
+      <label class="immich-form-label" for="external-path">外部路径</label>
       <input
         class="immich-form-input"
         id="external-path"
@@ -126,8 +126,7 @@
       />
 
       <p>
-        Note: Absolute path of parent import directory. A user can only import files if they exist at or under this
-        path.
+        注意：导入目录的绝对路径。只有在此路径下或其子路径下存在的文件才能被用户导入。
       </p>
     </div>
 
@@ -141,24 +140,25 @@
     <div class="mt-8 flex w-full gap-4 px-4">
       {#if canResetPassword}
         <Button color="light-red" fullwidth on:click={() => (isShowResetPasswordConfirmation = true)}
-          >Reset password</Button
+          >重置密码</Button
         >
       {/if}
-      <Button type="submit" fullwidth>Confirm</Button>
+      <Button type="submit" fullwidth>确认</Button>
     </div>
   </form>
 </div>
 
 {#if isShowResetPasswordConfirmation}
   <ConfirmDialogue
-    title="Reset Password"
-    confirmText="Reset"
+    title="重置密码"
+	cancelText="取消"
+    confirmText="重置"
     on:confirm={resetPassword}
     on:cancel={() => (isShowResetPasswordConfirmation = false)}
   >
     <svelte:fragment slot="prompt">
       <p>
-        Are you sure you want to reset <b>{user.name}</b>'s password?
+        确定重置<b>{user.name}</b>的密码?
       </p>
     </svelte:fragment>
   </ConfirmDialogue>

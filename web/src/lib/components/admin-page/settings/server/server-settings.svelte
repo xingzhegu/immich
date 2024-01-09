@@ -39,7 +39,7 @@
     savedConfig = { ...resetConfig.server };
 
     notificationController.show({
-      message: 'Reset server settings to the recent saved settings',
+      message: '将服务器设置重置为最近保存的设置',
       type: NotificationType.Info,
     });
   }
@@ -51,7 +51,7 @@
     defaultConfig = { ...configs.server };
 
     notificationController.show({
-      message: 'Reset server settings to default',
+      message: '将服务器设置重置为默认值',
       type: NotificationType.Info,
     });
   }
@@ -71,11 +71,11 @@
       savedConfig = { ...result.data.server };
 
       notificationController.show({
-        message: 'Server settings saved',
+        message: '服务器设置已保存',
         type: NotificationType.Info,
       });
     } catch (e) {
-      handleError(e, 'Unable to save settings');
+      handleError(e, '无法保存设置');
     }
   }
 </script>
@@ -87,16 +87,16 @@
         <div class="mt-2">
           <SettingInputField
             inputType={SettingInputFieldType.TEXT}
-            label="EXTERNAL DOMAIN"
-            desc="Domain for public shared links, including http(s)://"
+            label="外部域名"
+            desc="公共分享链接的域名，包括http(s)://"
             bind:value={serverConfig.externalDomain}
             isEdited={serverConfig.externalDomain !== savedConfig.externalDomain}
           />
 
           <SettingInputField
             inputType={SettingInputFieldType.TEXT}
-            label="WELCOME MESSAGE"
-            desc="A message that is displayed on the login page."
+            label="欢迎消息"
+            desc="登录页面上显示的消息。"
             bind:value={serverConfig.loginPageMessage}
             isEdited={serverConfig.loginPageMessage !== savedConfig.loginPageMessage}
           />

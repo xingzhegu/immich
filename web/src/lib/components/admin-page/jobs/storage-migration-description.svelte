@@ -2,8 +2,8 @@
   import { AppRoute } from '$lib/constants';
 </script>
 
-Apply the current
+将当前的
 <a href={`${AppRoute.ADMIN_SETTINGS}?open=storage-template`} class="text-immich-primary dark:text-immich-dark-primary"
-  >Storage template</a
+  >存储模板</a
 >
-to previously uploaded assets
+应用于先前上传的资源

@@ -46,9 +46,9 @@
       themeConfig = { ...updated.theme };
       savedConfig = { ...updated.theme };
 
-      notificationController.show({ message: 'Theme saved', type: NotificationType.Info });
+      notificationController.show({ message: '主题已保存', type: NotificationType.Info });
     } catch (error) {
-      handleError(error, 'Unable to save settings');
+      handleError(error, '无法保存设置');
     }
   }
 
@@ -59,7 +59,7 @@
     savedConfig = { ...resetConfig.theme };
 
     notificationController.show({
-      message: 'Reset theme to the recent saved theme',
+      message: '将主题重置为最近保存的主题',
       type: NotificationType.Info,
     });
   }
@@ -71,7 +71,7 @@
     defaultConfig = { ...configs.theme };
 
     notificationController.show({
-      message: 'Reset theme to default',
+      message: '将主题重置为默认主题',
       type: NotificationType.Info,
     });
   }
@@ -85,8 +85,8 @@
           <div class="ml-4">
             <SettingTextarea
               {disabled}
-              label="Custom CSS"
-              desc="Cascading Style Sheets allow the design of Immich to be customized."
+              label="自定义CSS"
+              desc="层叠样式表（Cascading Style Sheets，CSS）允许自定义Immich的设计"
               bind:value={themeConfig.customCss}
               required={true}
               isEdited={themeConfig.customCss !== savedConfig.customCss}

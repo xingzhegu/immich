@@ -15,7 +15,7 @@
           targetEl = document.querySelector(target);
         }
         if (targetEl === null) {
-          throw new Error(`No element found matching css selector: "${target}"`);
+          throw new Error(`未找到与 CSS 选择器匹配的元素: "${target}"`);
         }
       } else if (target instanceof HTMLElement) {
         targetEl = target;

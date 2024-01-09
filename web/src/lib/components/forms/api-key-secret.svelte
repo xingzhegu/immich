@@ -31,7 +31,7 @@
       <h1 class="text-2xl font-medium text-immich-primary dark:text-immich-dark-primary">API Key</h1>
 
       <p class="text-sm dark:text-immich-dark-fg">
-        This value will only be shown once. Please be sure to copy it before closing the window.
+        此值仅会显示一次，请确保在关闭窗口之前将其复制。
       </p>
     </div>
 
@@ -42,9 +42,9 @@
 
     <div class="mt-8 flex w-full gap-4 px-4">
       {#if canCopyImagesToClipboard}
-        <Button on:click={() => copyToClipboard(secret)} fullwidth>Copy to Clipboard</Button>
+        <Button on:click={() => copyToClipboard(secret)} fullwidth>复制到剪贴板</Button>
       {/if}
-      <Button on:click={() => handleDone()} fullwidth>Done</Button>
+      <Button on:click={() => handleDone()} fullwidth>完成</Button>
     </div>
   </div>
 </FullScreenModal>

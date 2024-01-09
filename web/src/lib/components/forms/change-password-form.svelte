@@ -14,7 +14,7 @@
 
   $: {
     if (password !== confirmPassowrd && confirmPassowrd.length > 0) {
-      error = 'Password does not match';
+      error = '密码不一致';
       changeChagePassword = false;
     } else {
       error = '';
@@ -50,7 +50,7 @@
 
 <form on:submit|preventDefault={changePassword} method="post" class="mt-5 flex flex-col gap-5">
   <div class="flex flex-col gap-2">
-    <label class="immich-form-label" for="password">New Password</label>
+    <label class="immich-form-label" for="password">新的密码</label>
     <input
       class="immich-form-input"
       id="password"
@@ -63,7 +63,7 @@
   </div>
 
   <div class="flex flex-col gap-2">
-    <label class="immich-form-label" for="confirmPassword">Confirm Password</label>
+    <label class="immich-form-label" for="confirmPassword">确认密码</label>
     <input
       class="immich-form-input"
       id="confirmPassword"
@@ -83,6 +83,6 @@
     <p class="text-sm text-immich-primary">{success}</p>
   {/if}
   <div class="my-5 flex w-full">
-    <Button type="submit" size="lg" fullwidth>Change password</Button>
+    <Button type="submit" size="lg" fullwidth>修改密码</Button>
   </div>
 </form>

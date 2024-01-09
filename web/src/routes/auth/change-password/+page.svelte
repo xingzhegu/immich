@@ -20,8 +20,8 @@
     Hi {$user.name} ({$user.email}),
     <br />
     <br />
-    This is either the first time you are signing into the system or a request has been made to change your password. Please
-    enter the new password below.
+    这可能是您第一次登录系统，也可能是有人请求更改密码。
+	请在下面输入新密码。
   </p>
 
   <ChangePasswordForm user={$user} on:success={onSuccessHandler} />

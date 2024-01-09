@@ -46,9 +46,9 @@
       newVersionCheckConfig = { ...result.data.newVersionCheck };
       savedConfig = { ...result.data.newVersionCheck };
 
-      notificationController.show({ message: 'Settings saved', type: NotificationType.Info });
+      notificationController.show({ message: '设置已保存', type: NotificationType.Info });
     } catch (error) {
-      handleError(error, 'Unable to save settings');
+      handleError(error, '无法保存设置');
     }
   }
 
@@ -59,7 +59,7 @@
     savedConfig = { ...resetConfig.newVersionCheck };
 
     notificationController.show({
-      message: 'Reset settings to the recent saved settings',
+      message: '将设置重置为最近保存的设置',
       type: NotificationType.Info,
     });
   }
@@ -71,7 +71,7 @@
     defaultConfig = { ...configs.newVersionCheck };
 
     notificationController.show({
-      message: 'Reset settings to default',
+      message: '将设置重置为默认设置',
       type: NotificationType.Info,
     });
   }
@@ -84,8 +84,8 @@
         <div class="ml-4 mt-4 flex flex-col gap-4">
           <div class="ml-4">
             <SettingSwitch
-              title="ENABLED"
-              subtitle="Enable period requests to GitHub to check for new releases"
+              title="启用"
+              subtitle="启用定期请求GitHub，以检查是否有新的发布版本"
               bind:checked={newVersionCheckConfig.enabled}
               {disabled}
             />

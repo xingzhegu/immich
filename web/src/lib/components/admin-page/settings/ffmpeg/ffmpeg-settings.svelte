@@ -52,13 +52,13 @@
       savedConfig = { ...result.data.ffmpeg };
 
       notificationController.show({
-        message: 'FFmpeg settings saved',
+        message: 'FFmpeg设置已保存',
         type: NotificationType.Info,
       });
     } catch (e) {
       console.error('Error [ffmpeg-settings] [saveSetting]', e);
       notificationController.show({
-        message: 'Unable to save settings',
+        message: '无法保存设置',
         type: NotificationType.Error,
       });
     }
@@ -79,7 +79,7 @@
     savedConfig = { ...resetConfig.ffmpeg };
 
     notificationController.show({
-      message: 'Reset FFmpeg settings to the recent saved settings',
+      message: '将FFmpeg设置重置为最近保存的设置',
       type: NotificationType.Info,
     });
   }
@@ -91,7 +91,7 @@
     defaultConfig = { ...configs.ffmpeg };
 
     notificationController.show({
-      message: 'Reset FFmpeg settings to default',
+      message: '将FFmpeg设置重置为默认设置',
       type: NotificationType.Info,
     });
   }
@@ -104,33 +104,33 @@
         <div class="ml-4 mt-4 flex flex-col gap-4">
           <p class="text-sm dark:text-immich-dark-fg">
             <Icon path={mdiHelpCircleOutline} class="inline" size="15" />
-            To learn more about the terminology used here, refer to FFmpeg documentation for
+            要了解更多关于此处使用的术语，请参考 FFmpeg 文档中的以下内容：
             <a href="https://trac.ffmpeg.org/wiki/Encode/H.264" class="underline" target="_blank" rel="noreferrer"
-              >H.264 codec</a
+              >H.264编解码器</a
             >,
             <a href="https://trac.ffmpeg.org/wiki/Encode/H.265" class="underline" target="_blank" rel="noreferrer"
-              >HEVC codec</a
+              >HEVC编解码器</a
             >
-            and
+            和
             <a href="https://trac.ffmpeg.org/wiki/Encode/VP9" class="underline" target="_blank" rel="noreferrer"
-              >VP9 codec</a
+              >VP9编解码器</a
             >.
           </p>
 
           <SettingInputField
             inputType={SettingInputFieldType.NUMBER}
             {disabled}
-            label="CONSTANT RATE FACTOR (-crf)"
-            desc="Video quality level. Typical values are 23 for H.264, 28 for HEVC, and 31 for VP9. Lower is better, but takes longer to encode and produces larger files."
+            label="常量码率因子(-crf)"
+            desc="视频质量级别。典型值为 H.264 的 23，HEVC 的 28，以及 VP9 的 31。数值越低质量越好，但编码时间更长，生成的文件更大。"
             bind:value={ffmpegConfig.crf}
             required={true}
             isEdited={ffmpegConfig.crf !== savedConfig.crf}
           />
 
           <SettingSelect
-            label="PRESET (-preset)"
+            label="预设(-preset)"
             {disabled}
-            desc="Compression speed. Slower presets produce smaller files, and increase quality when targeting a certain bitrate. VP9 ignores speeds above `faster`."
+            desc="压缩速度（Compression speed，-preset）。较慢的预设会生成较小的文件，并在以特定比特率为目标时提高质量。VP9 在'faster'以上的速度设置将被忽略。"
             bind:value={ffmpegConfig.preset}
             name="preset"
             options={[
@@ -148,9 +148,9 @@
           />
 
           <SettingSelect
-            label="AUDIO CODEC"
+            label="音频编解码器"
             {disabled}
-            desc="Opus is the highest quality option, but has lower compatibility with old devices or software."
+            desc="Opus是最高质量的选项，但与旧设备或软件的兼容性较低。"
             bind:value={ffmpegConfig.targetAudioCodec}
             options={[
               { value: AudioCodec.Aac, text: 'aac' },
@@ -162,9 +162,9 @@
           />
 
           <SettingSelect
-            label="VIDEO CODEC"
+            label="视频编解码器"
             {disabled}
-            desc="VP9 has high efficiency and web compatibility, but takes longer to transcode. HEVC performs similarly, but has lower web compatibility. H.264 is widely compatible and quick to transcode, but produces much larger files."
+            desc="VP9 具有高效性和网络兼容性，但转码时间较长。HEVC 的性能类似，但网络兼容性较低。H.264 具有广泛的兼容性，并且转码速度较快，但生成的文件较大。"
             bind:value={ffmpegConfig.targetVideoCodec}
             options={[
               { value: VideoCodec.H264, text: 'h264' },
@@ -176,9 +176,9 @@
           />
 
           <SettingSelect
-            label="TARGET RESOLUTION"
+            label="目标分辨率"
             {disabled}
-            desc="Higher resolutions can preserve more detail but take longer to encode, have larger file sizes, and can reduce app responsiveness."
+            desc="较高的分辨率可以保留更多细节，但编码时间较长，文件大小较大，并可能降低应用程序的响应速度。"
             bind:value={ffmpegConfig.targetResolution}
             options={[
               { value: '2160', text: '4k' },
@@ -195,8 +195,8 @@
           <SettingInputField
             inputType={SettingInputFieldType.TEXT}
             {disabled}
-            label="MAX BITRATE"
-            desc="Setting a max bitrate can make file sizes more predictable at a minor cost to quality. At 720p, typical values are 2600k for VP9 or HEVC, or 4500k for H.264. Disabled if set to 0."
+            label="最大比特率"
+            desc="设置最大比特率可以使文件大小更可预测，但会稍微降低质量。在 720p 分辨率下，典型值为 VP9 或 HEVC 的 2600k，或者 H.264 的 4500k。如果设置为 0，则禁用最大比特率限制。"
             bind:value={ffmpegConfig.maxBitrate}
             isEdited={ffmpegConfig.maxBitrate !== savedConfig.maxBitrate}
           />
@@ -204,40 +204,40 @@
           <SettingInputField
             inputType={SettingInputFieldType.NUMBER}
             {disabled}
-            label="THREADS"
-            desc="Higher values lead to faster encoding, but leave less room for the server to process other tasks while active. This value should not be more than the number of CPU cores. Maximizes utilization if set to 0."
+            label="线程数"
+            desc="较高的值会加快编码速度，但在活动期间会减少服务器处理其他任务的空间。此值不应超过 CPU 核心数。如果设置为 0，则最大化利用率。"
             bind:value={ffmpegConfig.threads}
             isEdited={ffmpegConfig.threads !== savedConfig.threads}
           />
 
           <SettingSelect
-            label="TRANSCODE POLICY"
+            label="转码策略"
             {disabled}
-            desc="Policy for when a video should be transcoded."
+            desc="视频转码的策略，即确定何时应进行视频转码的规则。"
             bind:value={ffmpegConfig.transcode}
             name="transcode"
             options={[
-              { value: TranscodePolicy.All, text: 'All videos' },
+              { value: TranscodePolicy.All, text: '全部视频' },
               {
                 value: TranscodePolicy.Optimal,
-                text: 'Videos higher than target resolution or not in the desired format',
+                text: '视频高于目标分辨率或不符合期望格式的视频应该进行转码',
               },
               {
                 value: TranscodePolicy.Required,
-                text: 'Only videos not in the desired format',
+                text: '只有不符合期望格式的视频才需要进行转码',
               },
               {
                 value: TranscodePolicy.Disabled,
-                text: "Don't transcode any videos, may break playback on some clients",
+                text: "不要对任何视频进行转码，这可能会导致某些客户端无法正常播放",
               },
             ]}
             isEdited={ffmpegConfig.transcode !== savedConfig.transcode}
           />
 
           <SettingSelect
-            label="TONE-MAPPING"
+            label="色调映射"
             {disabled}
-            desc="Attempts to preserve the appearance of HDR videos when converted to SDR. Each algorithm makes different tradeoffs for color, detail and brightness. Hable preserves detail, Mobius preserves color, and Reinhard preserves brightness."
+            desc="色调映射（Tone-mapping）是在将 HDR 视频转换为 SDR 时尽量保留其外观的过程。每种算法在颜色、细节和亮度方面进行不同的权衡。Hable 算法保留细节，Mobius 算法保留颜色，而 Reinhard 算法保留亮度。"
             bind:value={ffmpegConfig.tonemap}
             name="tonemap"
             options={[
@@ -262,22 +262,22 @@
           />
 
           <SettingSwitch
-            title="TWO-PASS ENCODING"
+            title="双通道编码"
             {disabled}
-            subtitle="Transcode in two passes to produce better encoded videos. When max bitrate is enabled (required for it to work with H.264 and HEVC), this mode uses a bitrate range based on the max bitrate and ignores CRF. For VP9, CRF can be used if max bitrate is disabled."
+            subtitle="进行两次转码以产生更好的编码视频。当启用最大比特率（与H.264和HEVC兼容所需）时，此模式使用基于最大比特率的比特率范围，并忽略CRF。对于VP9，如果禁用最大比特率，则可以使用CRF。"
             bind:checked={ffmpegConfig.twoPass}
             isEdited={ffmpegConfig.twoPass !== savedConfig.twoPass}
           />
 
           <SettingAccordion
-            title="Hardware Acceleration"
-            subtitle="Experimental; much faster, but will have lower quality at the same bitrate"
+            title="硬件加速"
+            subtitle="实验性的；速度更快，但在相同比特率下会降低质量。"
           >
             <div class="ml-4 mt-4 flex flex-col gap-4">
               <SettingSelect
-                label="ACCELERATION API"
+                label="加速 API"
                 {disabled}
-                desc="The API that will interact with your device to accelerate transcoding. This setting is 'best effort': it will fallback to software transcoding on failure. VP9 may or may not work depending on your hardware."
+                desc="这个 API 将与您的设备进行交互，以加速转码。这个设置是'尽力而为'的：如果失败，它将回退到软件转码。对于 VP9，它可能会根据您的硬件情况而工作或不工作。"
                 bind:value={ffmpegConfig.accel}
                 name="accel"
                 options={[
@@ -303,8 +303,8 @@
               />
 
               <SettingSelect
-                label="CONSTANT QUALITY MODE"
-                desc="ICQ is better than CQP, but some hardware acceleration devices do not support this mode. Setting this option will prefer the specified mode when using quality-based encoding. Ignored by NVENC as it does not support ICQ."
+                label="恒定质量模式"
+                desc="ICQ（智能恒定质量）模式比 CQP（恒定量化参数）模式更好，但某些硬件加速设备不支持此模式。在使用基于质量的编码时，设置此选项将优先选择指定的模式。由于 NVENC 不支持 ICQ，因此此选项将被忽略。"
                 bind:value={ffmpegConfig.cqMode}
                 options={[
                   { value: CQMode.Auto, text: 'Auto' },
@@ -315,21 +315,21 @@
               />
 
               <SettingSwitch
-                title="TEMPORAL AQ"
+                title="时域自适应量化"
                 {disabled}
-                subtitle="Applies only to NVENC. Increases quality of high-detail, low-motion scenes. May not be compatible with older devices."
+                subtitle="仅适用于 NVENC。提高高细节、低运动场景的质量。可能与旧设备不兼容。"
                 bind:checked={ffmpegConfig.temporalAQ}
                 isEdited={ffmpegConfig.temporalAQ !== savedConfig.temporalAQ}
               />
             </div>
           </SettingAccordion>
 
-          <SettingAccordion title="Advanced" subtitle="Options most users should not need to change">
+          <SettingAccordion title="高级设置" subtitle="大多数用户不需要更改的选项">
             <div class="ml-4 mt-4 flex flex-col gap-4">
               <SettingInputField
                 inputType={SettingInputFieldType.NUMBER}
                 label="TONE-MAPPING NPL"
-                desc="Colors will be adjusted to look normal for a display of this brightness. Counter-intuitively, lower values increase the brightness of the video and vice versa since it compensates for the brightness of the display. 0 sets this value automatically."
+                desc="颜色将根据显示器亮度进行调整，以使其看起来正常。与直觉相反，较低的值会增加视频的亮度，反之亦然，因为它会补偿显示器的亮度。设置为0将自动设置该值。"
                 bind:value={ffmpegConfig.npl}
                 isEdited={ffmpegConfig.npl !== savedConfig.npl}
               />
@@ -337,7 +337,7 @@
               <SettingInputField
                 inputType={SettingInputFieldType.NUMBER}
                 label="MAX B-FRAMES"
-                desc="Higher values improve compression efficiency, but slow down encoding. May not be compatible with hardware acceleration on older devices. 0 disables B-frames, while -1 sets this value automatically."
+                desc="较高的值可以提高压缩效率，但会减慢编码速度。在旧设备上可能与硬件加速不兼容。设置为0将禁用B帧，而设置为-1将自动设置该值。"
                 bind:value={ffmpegConfig.bframes}
                 isEdited={ffmpegConfig.bframes !== savedConfig.bframes}
               />
@@ -345,7 +345,7 @@
               <SettingInputField
                 inputType={SettingInputFieldType.NUMBER}
                 label="REFERENCE FRAMES"
-                desc="The number of frames to reference when compressing a given frame. Higher values improve compression efficiency, but slow down encoding. 0 sets this value automatically."
+                desc="在压缩给定帧时参考的帧数。较高的值可以提高压缩效率，但会减慢编码速度。设置为0将自动设置该值。"
                 bind:value={ffmpegConfig.refs}
                 isEdited={ffmpegConfig.refs !== savedConfig.refs}
               />
@@ -353,7 +353,7 @@
               <SettingInputField
                 inputType={SettingInputFieldType.NUMBER}
                 label="MAX KEYFRAME INTERVAL"
-                desc="Sets the maximum frame distance between keyframes. Lower values worsen compression efficiency, but improve seek times and may improve quality in scenes with fast movement. 0 sets this value automatically."
+                desc="设置关键帧之间的最大帧距离。较低的值会降低压缩效率，但可以改善查找时间，并在快速移动的场景中可能提高质量。设置为0将自动设置该值。"
                 bind:value={ffmpegConfig.gopSize}
                 isEdited={ffmpegConfig.gopSize !== savedConfig.gopSize}
               />

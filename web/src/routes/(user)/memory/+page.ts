@@ -6,7 +6,7 @@ export const load = (async () => {
   return {
     user,
     meta: {
-      title: 'Memory',
+      title: '回忆',
     },
   };
 }) satisfies PageLoad;

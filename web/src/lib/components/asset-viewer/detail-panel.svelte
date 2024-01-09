@@ -175,7 +175,7 @@
       <Icon path={mdiClose} size="24" />
     </button>
 
-    <p class="text-lg text-immich-fg dark:text-immich-dark-fg">Info</p>
+    <p class="text-lg text-immich-fg dark:text-immich-dark-fg">信息</p>
   </div>
 
   {#if asset.isOffline}
@@ -184,8 +184,7 @@
         <div class="rounded-t bg-red-500 px-4 py-2 font-bold text-white">Asset offline</div>
         <div class="rounded-b border border-t-0 border-red-400 bg-red-100 px-4 py-3 text-red-700">
           <p>
-            This asset is offline. Immich can not access its file location. Please ensure the asset is available and
-            then rescan the library.
+            该资源处于离线状态。Immich无法访问其文件位置。请确保该资源可用，然后重新扫描库。
           </p>
         </div>
       </div>
@@ -197,7 +196,7 @@
       bind:this={textarea}
       class="max-h-[500px]
       w-full resize-none overflow-hidden border-b border-gray-500 bg-transparent text-base text-black outline-none transition-all focus:border-b-2 focus:border-immich-primary disabled:border-none dark:text-white dark:focus:border-immich-dark-primary"
-      placeholder={!isOwner ? '' : 'Add a description'}
+      placeholder={!isOwner ? '' : '添加描述'}
       on:focusin={handleFocusIn}
       on:focusout={handleFocusOut}
       on:input={autoGrowHeight}
@@ -209,11 +208,11 @@
   {#if !api.isSharedLink && people.length > 0}
     <section class="px-4 py-4 text-sm">
       <div class="flex h-10 w-full items-center justify-between">
-        <h2>PEOPLE</h2>
+        <h2>人物</h2>
         <div class="flex gap-2 items-center">
           {#if people.some((person) => person.isHidden)}
             <CircleIconButton
-              title="Show hidden people"
+              title="显示隐藏人物"
               icon={showingHiddenPeople ? mdiEyeOff : mdiEye}
               padding="1"
               buttonSize="32"
@@ -221,7 +220,7 @@
             />
           {/if}
           <CircleIconButton
-            title="Edit people"
+            title="编辑人物"
             icon={mdiPencil}
             padding="1"
             size="20"
@@ -281,9 +280,9 @@
                       )}
                     >
                       {#if ageInMonths <= 11}
-                        Age {ageInMonths} months
+                        年龄 {ageInMonths}个月
                       {:else}
-                        Age {age}
+                        年龄 {age}岁
                       {/if}
                     </p>
                   {/if}
@@ -308,7 +307,7 @@
         </div>
       </div>
     {:else}
-      <p class="text-sm">DETAILS</p>
+      <p class="text-sm">详情</p>
     {/if}
 
     {#if asset.exifInfo?.dateTimeOriginal && !asset.isReadOnly}
@@ -321,7 +320,7 @@
         role="button"
         on:click={() => (isOwner ? (isShowChangeDate = true) : null)}
         on:keydown={(event) => (isOwner ? event.key === 'Enter' && (isShowChangeDate = true) : null)}
-        title={isOwner ? 'Edit date' : ''}
+        title={isOwner ? '编辑日期' : ''}
         class:hover:dark:text-immich-dark-primary={isOwner}
         class:hover:text-immich-primary={isOwner}
       >
@@ -434,7 +433,7 @@
           <p class="break-all flex place-items-center gap-2">
             {#if isOwner}
               {asset.originalFileName}
-              <button title="Show File Location" on:click={toggleAssetPath}>
+              <button title="显示文件路径" on:click={toggleAssetPath}>
                 <Icon path={mdiInformationOutline} />
               </button>
             {:else}
@@ -497,7 +496,7 @@
         on:click={() => (isOwner ? (isShowChangeLocation = true) : null)}
         on:keydown={(event) => (isOwner ? event.key === 'Enter' && (isShowChangeLocation = true) : null)}
         tabindex="0"
-        title={isOwner ? 'Edit location' : ''}
+        title={isOwner ? '编辑位置' : ''}
         role="button"
         class:hover:dark:text-immich-dark-primary={isOwner}
         class:hover:text-immich-primary={isOwner}
@@ -533,14 +532,14 @@
         on:keydown={(event) => event.key === 'Enter' && (isShowChangeLocation = true)}
         tabindex="0"
         role="button"
-        title="Add location"
+        title="添加位置"
       >
         <div class="flex gap-4">
           <div>
             <div><Icon path={mdiMapMarkerOutline} size="24" /></div>
           </div>
 
-          <p>Add a location</p>
+          <p>添加位置</p>
         </div>
         <div class="focus:outline-none p-1">
           <Icon path={mdiPencil} size="20" />

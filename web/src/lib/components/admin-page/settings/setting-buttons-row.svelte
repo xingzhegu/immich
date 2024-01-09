@@ -19,13 +19,13 @@
         on:click={() => dispatch('reset', { default: true })}
         class="bg-none text-sm font-medium text-immich-primary hover:text-immich-primary/75 dark:text-immich-dark-primary hover:dark:text-immich-dark-primary/75"
       >
-        Reset to default
+        恢复为默认设置
       </button>
     {/if}
   </div>
 
   <div class="right">
-    <Button {disabled} size="sm" color="gray" on:click={() => dispatch('reset', { default: false })}>Reset</Button>
-    <Button {disabled} size="sm" on:click={() => dispatch('save')}>Save</Button>
+    <Button {disabled} size="sm" color="gray" on:click={() => dispatch('reset', { default: false })}>重置</Button>
+    <Button {disabled} size="sm" on:click={() => dispatch('save')}>保存</Button>
   </div>
 </div>

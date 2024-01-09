@@ -5,7 +5,7 @@ export const load = (async () => {
   await authenticate();
   return {
     meta: {
-      title: 'Shared Links',
+      title: '分享链接',
     },
   };
 }) satisfies PageLoad;

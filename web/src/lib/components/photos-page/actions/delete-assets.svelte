@@ -48,7 +48,7 @@
       }
 
       notificationController.show({
-        message: `${force ? 'Permanently deleted' : 'Trashed'} ${ids.length} assets`,
+        message: `${force ? '永久删除' : '回收'} ${ids.length}个资源`,
         type: NotificationType.Info,
       });
 
@@ -68,17 +68,17 @@
 </script>
 
 {#if menuItem}
-  <MenuOption text={force ? 'Permanently Delete' : 'Delete'} on:click={handleTrash} />
+  <MenuOption text={force ? '永久删除' : '删除'} on:click={handleTrash} />
 {:else if loading}
-  <CircleIconButton title="Loading" icon={mdiTimerSand} />
+  <CircleIconButton title="载入中" icon={mdiTimerSand} />
 {:else}
-  <CircleIconButton title="Delete" icon={mdiDeleteOutline} on:click={handleTrash} />
+  <CircleIconButton title="删除" icon={mdiDeleteOutline} on:click={handleTrash} />
 {/if}
 
 {#if isShowConfirmation}
   <ConfirmDialogue
-    title="Permanently Delete Asset{getOwnedAssets().size > 1 ? 's' : ''}"
-    confirmText="Delete"
+    title="永久删除资源{getOwnedAssets().size > 1 ? '' : ''}"
+    confirmText="删除"
     on:confirm={handleDelete}
     on:cancel={() => (isShowConfirmation = false)}
     on:escape={escape}

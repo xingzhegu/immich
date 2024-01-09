@@ -51,7 +51,7 @@
       library.importPaths.push(importPathToAdd);
       importPaths = library.importPaths;
     } catch (error) {
-      handleError(error, 'Unable to remove import path');
+      handleError(error, '无法删除导入路径');
     } finally {
       addImportPath = false;
     }
@@ -71,7 +71,7 @@
       importPaths = library.importPaths;
     } catch (error) {
       editImportPath = null;
-      handleError(error, 'Unable to edit import path');
+      handleError(error, '无法编辑导入路径');
     } finally {
       editImportPath = null;
     }
@@ -91,7 +91,7 @@
       library.importPaths = library.importPaths.filter((path) => path != pathToDelete);
       importPaths = library.importPaths;
     } catch (error) {
-      handleError(error, 'Unable to delete import path');
+      handleError(error, '无法删除导入路径');
     } finally {
       editImportPath = null;
     }
@@ -100,8 +100,8 @@
 
 {#if addImportPath}
   <LibraryImportPathForm
-    title="Add Import Path"
-    submitText="Add"
+    title="添加导入路径"
+    submitText="添加"
     bind:importPath={importPathToAdd}
     on:submit={handleAddImportPath}
     on:cancel={() => {
@@ -112,8 +112,8 @@
 
 {#if editImportPath != null}
   <LibraryImportPathForm
-    title="Edit Import Path"
-    submitText="Save"
+    title="编辑导入路径"
+    submitText="保存"
     canDelete={true}
     bind:importPath={editedImportPath}
     on:submit={handleEditImportPath}
@@ -164,7 +164,7 @@
             size="sm"
             on:click={() => {
               addImportPath = true;
-            }}>Add path</Button
+            }}>添加路径</Button
           ></td
         ></tr
       >
@@ -172,7 +172,7 @@
   </table>
 
   <div class="flex w-full justify-end gap-2">
-    <Button size="sm" color="gray" on:click={() => handleCancel()}>Cancel</Button>
-    <Button size="sm" type="submit">Save</Button>
+    <Button size="sm" color="gray" on:click={() => handleCancel()}>取消</Button>
+    <Button size="sm" type="submit">保存</Button>
   </div>
 </form>

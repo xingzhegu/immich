@@ -22,7 +22,7 @@ export const addAssetsToAlbum = async (albumId: string, assetIds: Array<string>)
       const count = results.filter(({ success }) => success).length;
       notificationController.show({
         type: NotificationType.Info,
-        message: `Added ${count} asset${count === 1 ? '' : 's'}`,
+        message: `已添加${count}个资源`,
       });
 
       return results;
@@ -135,12 +135,12 @@ export const downloadFile = async (asset: AssetResponseDto) => {
 
       notificationController.show({
         type: NotificationType.Info,
-        message: `Downloading asset ${asset.originalFileName}`,
+        message: `正在下载资源${asset.originalFileName}`,
       });
 
       downloadBlob(data, filename);
     } catch (e) {
-      handleError(e, `Error downloading ${filename}`);
+      handleError(e, `下载${filename}出现错误`);
       downloadManager.clear(downloadKey);
     } finally {
       setTimeout(() => downloadManager.clear(downloadKey), 5_000);

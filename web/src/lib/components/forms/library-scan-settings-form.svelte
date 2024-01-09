@@ -54,7 +54,7 @@
       exclusionPatterns = library.exclusionPatterns;
       addExclusionPattern = false;
     } catch (error) {
-      handleError(error, 'Unable to add exclude pattern');
+      handleError(error, '无法添加排除模式');
     }
   };
 
@@ -71,7 +71,7 @@
       library.exclusionPatterns[editExclusionPattern] = editedExclusionPattern;
       exclusionPatterns = library.exclusionPatterns;
     } catch (error) {
-      handleError(error, 'Unable to edit exclude pattern');
+      handleError(error, '无法编辑排除模式');
     } finally {
       editExclusionPattern = null;
     }
@@ -91,7 +91,7 @@
       library.exclusionPatterns = library.exclusionPatterns.filter((path) => path != pathToDelete);
       exclusionPatterns = library.exclusionPatterns;
     } catch (error) {
-      handleError(error, 'Unable to delete exclude pattern');
+      handleError(error, '无法删除排除模式');
     } finally {
       editExclusionPattern = null;
     }
@@ -100,7 +100,7 @@
 
 {#if addExclusionPattern}
   <LibraryExclusionPatternForm
-    submitText="Add"
+    submitText="添加"
     bind:exclusionPattern={exclusionPatternToAdd}
     on:submit={handleAddExclusionPattern}
     on:cancel={() => {
@@ -111,7 +111,7 @@
 
 {#if editExclusionPattern != null}
   <LibraryExclusionPatternForm
-    submitText="Save"
+    submitText="保存"
     canDelete={true}
     bind:exclusionPattern={editedExclusionPattern}
     on:submit={handleEditExclusionPattern}
@@ -157,7 +157,7 @@
       >
         <td class="w-3/4 text-ellipsis px-4 text-sm">
           {#if exclusionPatterns.length === 0}
-            No pattern added
+            尚未添加模式
           {/if}
         </td>
         <td class="w-1/4 text-ellipsis px-4 text-sm"
@@ -165,7 +165,7 @@
             size="sm"
             on:click={() => {
               addExclusionPattern = true;
-            }}>Add Exclusion Pattern</Button
+            }}>添加排除模式</Button
           ></td
         ></tr
       >
@@ -173,7 +173,7 @@
   </table>
 
   <div class="flex w-full justify-end gap-4">
-    <Button size="sm" color="gray" on:click={() => handleCancel()}>Cancel</Button>
-    <Button size="sm" type="submit">Save</Button>
+    <Button size="sm" color="gray" on:click={() => handleCancel()}>取消</Button>
+    <Button size="sm" type="submit">保存</Button>
   </div>
 </form>

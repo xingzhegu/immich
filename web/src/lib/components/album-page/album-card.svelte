@@ -111,7 +111,7 @@
       {#if showItemCount}
         <p>
           {album.assetCount.toLocaleString($locale)}
-          {album.assetCount == 1 ? `item` : `items`}
+          {album.assetCount == 1 ? `个项目` : `个项目`}
         </p>
       {/if}
 
@@ -122,15 +122,15 @@
       {#if isSharingView}
         {#await getAlbumOwnerInfo() then albumOwner}
           {#if $user.email == albumOwner.email}
-            <p>Owned</p>
+            <p>所有者</p>
           {:else}
             <p>
-              Shared by {albumOwner.name}
+              由{albumOwner.name}分享
             </p>
           {/if}
         {/await}
       {:else if album.shared}
-        <p>Shared</p>
+        <p>分享的</p>
       {/if}
     </span>
   </div>

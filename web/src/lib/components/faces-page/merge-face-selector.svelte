@@ -74,12 +74,12 @@
       });
       const count = results.filter(({ success }) => success).length;
       notificationController.show({
-        message: `Merged ${count} ${count === 1 ? 'person' : 'people'}`,
+        message: `已合并${count} ${count === 1 ? '个人物' : '个人物'}`,
         type: NotificationType.Info,
       });
       dispatch('merge');
     } catch (error) {
-      handleError(error, 'Cannot merge people');
+      handleError(error, '无法合并人物');
     } finally {
       isShowConfirmation = false;
     }
@@ -95,9 +95,9 @@
   <ControlAppBar on:close={onClose}>
     <svelte:fragment slot="leading">
       {#if hasSelection}
-        Selected {selectedPeople.length}
+        已选择 {selectedPeople.length}
       {:else}
-        Merge people
+        合并人物
       {/if}
       <div />
     </svelte:fragment>
@@ -110,14 +110,14 @@
         }}
       >
         <Icon path={mdiMerge} size={18} />
-        <span class="ml-2"> Merge</span></Button
+        <span class="ml-2">合并</span></Button
       >
     </svelte:fragment>
   </ControlAppBar>
   <section class="bg-immich-bg px-[70px] pt-[100px] dark:bg-immich-dark-bg">
     <section id="merge-face-selector relative">
       <div class="mb-10 h-[200px] place-content-center place-items-center">
-        <p class="mb-4 text-center uppercase dark:text-white">Choose matching people to merge</p>
+        <p class="mb-4 text-center uppercase dark:text-white">选择要合并的匹配人物</p>
 
         <div class="grid grid-flow-col-dense place-content-center place-items-center gap-4">
           {#each selectedPeople as person (person.id)}
@@ -155,13 +155,13 @@
 
     {#if isShowConfirmation}
       <ConfirmDialogue
-        title="Merge people"
-        confirmText="Merge"
+        title="合并人物"
+        confirmText="合并"
         on:confirm={handleMerge}
         on:cancel={() => (isShowConfirmation = false)}
       >
         <svelte:fragment slot="prompt">
-          <p>Are you sure you want merge these people ?</p></svelte:fragment
+          <p>确定合并这些人物？</p></svelte:fragment
         >
       </ConfirmDialogue>
     {/if}

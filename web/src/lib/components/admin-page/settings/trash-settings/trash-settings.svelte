@@ -43,9 +43,9 @@
       trashConfig = { ...updated.trash };
       savedConfig = { ...updated.trash };
 
-      notificationController.show({ message: 'Settings saved', type: NotificationType.Info });
+      notificationController.show({ message: '设置已保存', type: NotificationType.Info });
     } catch (error) {
-      handleError(error, 'Unable to save settings');
+      handleError(error, '无法保存设置');
     }
   }
 
@@ -56,7 +56,7 @@
     savedConfig = { ...resetConfig.trash };
 
     notificationController.show({
-      message: 'Reset settings to the recent saved settings',
+      message: '将设置重置为最近保存的设置',
       type: NotificationType.Info,
     });
   }
@@ -68,7 +68,7 @@
     defaultConfig = { ...configs.trash };
 
     notificationController.show({
-      message: 'Reset trash settings to default',
+      message: '将回收站设置重置为默认设置',
       type: NotificationType.Info,
     });
   }
@@ -80,9 +80,9 @@
       <form autocomplete="off" on:submit|preventDefault>
         <div class="ml-4 mt-4 flex flex-col gap-4">
           <SettingSwitch
-            title="ENABLED"
+            title="启用"
             {disabled}
-            subtitle="Enable Trash features"
+            subtitle="启用回收站功能"
             bind:checked={trashConfig.enabled}
           />
 
@@ -90,8 +90,8 @@
 
           <SettingInputField
             inputType={SettingInputFieldType.NUMBER}
-            label="Number of days"
-            desc="Number of days to keep the assets in trash before permanently removing them"
+            label="天数"
+            desc="在永久删除之前，保留资源在回收站中的天数"
             bind:value={trashConfig.days}
             required={true}
             disabled={disabled || !trashConfig.enabled}

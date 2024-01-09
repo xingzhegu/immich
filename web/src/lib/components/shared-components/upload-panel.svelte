@@ -72,7 +72,7 @@
           <div class="flex flex-col items-end">
             <div class="flex flex-row">
               <CircleIconButton
-                title="Toggle settings"
+                title="切换设置"
                 icon={mdiCog}
                 size="14"
                 padding="1"
@@ -100,7 +100,7 @@
         {#if showOptions}
           <div class="immich-scrollbar mb-4 max-h-[400px] overflow-y-auto rounded-lg pr-2">
             <div class="flex h-[26px] place-items-center gap-1">
-              <label class="immich-form-label" for="upload-concurrency">Upload concurrency</label>
+              <label class="immich-form-label" for="upload-concurrency">上传并发</label>
             </div>
             <input
               class="immich-form-input w-full"

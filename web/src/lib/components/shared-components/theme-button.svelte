@@ -7,7 +7,7 @@
 </script>
 
 {#if !$colorTheme.system}
-  <IconButton on:click={handleToggleTheme} title="Toggle theme">
+  <IconButton on:click={handleToggleTheme} title="切换主题">
     {#if $colorTheme.value === Theme.LIGHT}
       <Icon path={moonPath} viewBox={sunViewBox} class="h-6 w-6" />
     {:else}

@@ -17,8 +17,8 @@ export const load = (async ({ params }) => {
     return {
       sharedLink,
       meta: {
-        title: sharedLink.album ? sharedLink.album.albumName : 'Public Share',
-        description: sharedLink.description || `${assetCount} shared photos & videos.`,
+        title: sharedLink.album ? sharedLink.album.albumName : '公开分享',
+        description: sharedLink.description || `共有${assetCount}张照片和视频共享。`,
         imageUrl: assetId
           ? api.getAssetThumbnailUrl(assetId, ThumbnailFormat.Webp, sharedLink.key)
           : '/feature-panel.png',
@@ -32,13 +32,13 @@ export const load = (async ({ params }) => {
         passwordRequired: true,
         sharedLinkKey: key,
         meta: {
-          title: 'Password Required',
+          title: '需要密码',
         },
       };
     }
 
     throw error(404, {
-      message: 'Invalid shared link',
+      message: '无效的分享链接',
     });
   }
 }) satisfies PageLoad;

@@ -42,7 +42,7 @@
       <Icon path={mdiCloud} size={'24'} />
     </div>
     <div class="hidden group-hover:sm:block md:block">
-      <p class="text-sm font-medium text-immich-primary dark:text-immich-dark-primary">Storage</p>
+      <p class="text-sm font-medium text-immich-primary dark:text-immich-dark-primary">存储</p>
       {#if $serverInfoStore}
         <div class="my-2 h-[7px] w-full rounded-full bg-gray-200 dark:bg-gray-700">
           <!-- style={`width: ${$downloadAssets[fileName]}%`} -->
@@ -52,8 +52,9 @@
           />
         </div>
         <p class="text-xs">
-          {asByteUnitString($serverInfoStore?.diskUseRaw, $locale)} of
-          {asByteUnitString($serverInfoStore?.diskSizeRaw, $locale)} used
+			已使用
+          {asByteUnitString($serverInfoStore?.diskUseRaw, $locale)}，共
+          {asByteUnitString($serverInfoStore?.diskSizeRaw, $locale)}
         </p>
       {:else}
         <div class="mt-2">
@@ -70,20 +71,20 @@
       <Icon path={mdiDns} size={'24'} />
     </div>
     <div class="hidden text-xs group-hover:sm:block md:block">
-      <p class="text-sm font-medium text-immich-primary dark:text-immich-dark-primary">Server</p>
+      <p class="text-sm font-medium text-immich-primary dark:text-immich-dark-primary">服务器</p>
 
       <div class="mt-2 flex justify-between justify-items-center">
-        <p>Status</p>
+        <p>状态</p>
 
         {#if $connected}
-          <p class="font-medium text-immich-primary dark:text-immich-dark-primary">Online</p>
+          <p class="font-medium text-immich-primary dark:text-immich-dark-primary">在线</p>
         {:else}
-          <p class="font-medium text-red-500">Offline</p>
+          <p class="font-medium text-red-500">离线</p>
         {/if}
       </div>
 
       <div class="mt-2 flex justify-between justify-items-center">
-        <p>Version</p>
+        <p>版本</p>
         {#if $connected && version}
           <a
             href="https://github.com/immich-app/immich/releases"
@@ -93,7 +94,7 @@
             {version}
           </a>
         {:else}
-          <p class="font-medium text-red-500">Unknown</p>
+          <p class="font-medium text-red-500">未知</p>
         {/if}
       </div>
     </div>

@@ -6,7 +6,7 @@ export const load = (async () => {
 
   return {
     meta: {
-      title: 'Archive',
+      title: '归档',
     },
   };
 }) satisfies PageLoad;

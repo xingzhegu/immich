@@ -56,7 +56,7 @@
   >
     <CreateSharedLink on:escape={() => (handleEscapeKey = true)} />
     <SelectAllAssets {assetStore} {assetInteractionStore} />
-    <AssetSelectContextMenu icon={mdiPlus} title="Add">
+    <AssetSelectContextMenu icon={mdiPlus} title="添加">
       <AddToAlbum />
       <AddToAlbum shared />
     </AssetSelectContextMenu>
@@ -64,7 +64,7 @@
       on:escape={() => (handleEscapeKey = true)}
       onAssetDelete={(assetId) => assetStore.removeAsset(assetId)}
     />
-    <AssetSelectContextMenu icon={mdiDotsVertical} title="Menu">
+    <AssetSelectContextMenu icon={mdiDotsVertical} title="菜单">
       <FavoriteAction menuItem removeFavorite={isAllFavorite} />
       <DownloadAction menuItem />
       <ArchiveAction menuItem onArchive={(ids) => assetStore.removeAssets(ids)} />
@@ -90,7 +90,7 @@
       <MemoryLane />
     {/if}
     <EmptyPlaceholder
-      text="CLICK TO UPLOAD YOUR FIRST PHOTO"
+      text="点击上传你的第一张照片"
       actionHandler={() => openFileUploadDialog()}
       slot="empty"
     />

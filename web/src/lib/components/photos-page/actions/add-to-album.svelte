@@ -31,7 +31,7 @@
       const { id, albumName } = response.data;
 
       notificationController.show({
-        message: `Added ${assetIds.length} to ${albumName}`,
+        message: `添加${assetIds.length}资源到${albumName}`,
         type: NotificationType.Info,
       });
 
@@ -49,7 +49,7 @@
   };
 </script>
 
-<MenuOption on:click={() => (showAlbumPicker = true)} text={shared ? 'Add to Shared Album' : 'Add to Album'} />
+<MenuOption on:click={() => (showAlbumPicker = true)} text={shared ? '添加到分享相册' : '添加到相册'} />
 
 {#if showAlbumPicker}
   <AlbumSelectionModal

@@ -20,8 +20,8 @@
   };
 </script>
 
-<ConfirmDialogue title="Restore User" confirmText="Continue" confirmColor="green" on:confirm={restoreUser} on:cancel>
+<ConfirmDialogue title="恢复用户" cancelText="取消" confirmText="恢复" confirmColor="green" on:confirm={restoreUser} on:cancel>
   <svelte:fragment slot="prompt">
-    <p><b>{user.name}</b>'s account will be restored.</p>
+    <p><b>{user.name}</b>的账号将被恢复。</p>
   </svelte:fragment>
 </ConfirmDialogue>

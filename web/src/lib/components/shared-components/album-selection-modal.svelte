@@ -52,7 +52,7 @@
   <svelte:fragment slot="title">
     <span class="flex place-items-center gap-2">
       <p class="font-medium">
-        Add to {shared ? 'Shared ' : ''}Album
+        添加到{shared ? '共享' : ''}相册
       </p>
     </span>
   </svelte:fragment>
@@ -75,7 +75,7 @@
       <!-- svelte-ignore a11y-autofocus -->
       <input
         class="border-b-4 border-immich-bg bg-immich-bg px-6 py-2 text-2xl focus:border-immich-primary dark:border-immich-dark-gray dark:bg-immich-dark-gray dark:focus:border-immich-dark-primary"
-        placeholder="Search"
+        placeholder="搜索"
         autofocus
         bind:value={search}
       />
@@ -88,12 +88,12 @@
             <Icon path={mdiPlus} size="30" />
           </div>
           <p class="">
-            New {shared ? 'Shared ' : ''}Album {#if search.length > 0}<b>{search}</b>{/if}
+            新的{shared ? '分享' : ''}相册 {#if search.length > 0}<b>{search}</b>{/if}
           </p>
         </button>
         {#if filteredAlbums.length > 0}
           {#if !shared && search.length === 0}
-            <p class="px-5 py-3 text-xs">RECENT</p>
+            <p class="px-5 py-3 text-xs">最近的</p>
             {#each recentAlbums as album (album.id)}
               <AlbumListItem variant="simple" {album} on:album={() => handleSelect(album)} />
             {/each}
@@ -101,17 +101,17 @@
 
           {#if !shared}
             <p class="px-5 py-3 text-xs">
-              {#if search.length === 0}ALL
-              {/if}ALBUMS
+              {#if search.length === 0}所有
+              {/if}相册
             </p>
           {/if}
           {#each filteredAlbums as album (album.id)}
             <AlbumListItem {album} searchQuery={search} on:album={() => handleSelect(album)} />
           {/each}
         {:else if albums.length > 0}
-          <p class="px-5 py-1 text-sm">It looks like you do not have any albums with this name yet.</p>
+          <p class="px-5 py-1 text-sm">看起来您还没有使用此名称的相册。</p>
         {:else}
-          <p class="px-5 py-1 text-sm">It looks like you do not have any albums yet.</p>
+          <p class="px-5 py-1 text-sm">看起来您还没有任何相册。</p>
         {/if}
       </div>
     {/if}

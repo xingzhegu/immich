@@ -32,12 +32,12 @@
     <ArchiveAction unarchive onArchive={(ids) => assetStore.removeAssets(ids)} />
     <CreateSharedLink />
     <SelectAllAssets {assetStore} {assetInteractionStore} />
-    <AssetSelectContextMenu icon={mdiPlus} title="Add">
+    <AssetSelectContextMenu icon={mdiPlus} title="添加">
       <AddToAlbum />
       <AddToAlbum shared />
     </AssetSelectContextMenu>
     <DeleteAssets onAssetDelete={(assetId) => assetStore.removeAsset(assetId)} />
-    <AssetSelectContextMenu icon={mdiDotsVertical} title="Add">
+    <AssetSelectContextMenu icon={mdiDotsVertical} title="添加">
       <DownloadAction menuItem />
       <FavoriteAction menuItem removeFavorite={isAllFavorite} />
     </AssetSelectContextMenu>
@@ -47,8 +47,8 @@
 <UserPageLayout hideNavbar={$isMultiSelectState} title={data.meta.title} scrollbar={false}>
   <AssetGrid {assetStore} {assetInteractionStore} removeAction={AssetAction.UNARCHIVE}>
     <EmptyPlaceholder
-      text="Archive photos and videos to hide them from your Photos view"
-      alt="Empty archive"
+      text="将照片和视频存档，以将它们从您的照片中隐藏。"
+      alt="空的归档"
       slot="empty"
     />
   </AssetGrid>

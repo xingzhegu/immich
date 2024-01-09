@@ -57,9 +57,9 @@
       jobConfig = { ...result.data.job };
       savedConfig = { ...result.data.job };
 
-      notificationController.show({ message: 'Job settings saved', type: NotificationType.Info });
+      notificationController.show({ message: '任务设置已保存', type: NotificationType.Info });
     } catch (error) {
-      handleError(error, 'Unable to save settings');
+      handleError(error, '无法保存设置');
     }
   }
 
@@ -70,7 +70,7 @@
     savedConfig = { ...resetConfig.job };
 
     notificationController.show({
-      message: 'Reset Job settings to the recent saved settings',
+      message: '将任务设置重置为最近保存的设置。',
       type: NotificationType.Info,
     });
   }
@@ -82,7 +82,7 @@
     defaultConfig = { ...configs.job };
 
     notificationController.show({
-      message: 'Reset Job settings to default',
+      message: '将任务设置重置为默认值',
       type: NotificationType.Info,
     });
   }
@@ -97,7 +97,7 @@
             <SettingInputField
               inputType={SettingInputFieldType.NUMBER}
               {disabled}
-              label="{api.getJobName(jobName)} Concurrency"
+              label="{api.getJobName(jobName)}并发"
               desc=""
               bind:value={jobConfig[jobName].concurrency}
               required={true}

@@ -5,7 +5,7 @@ export const load = (async () => {
   await authenticate();
   return {
     meta: {
-      title: 'Trash',
+      title: '回收站',
     },
   };
 }) satisfies PageLoad;

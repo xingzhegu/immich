@@ -52,7 +52,7 @@
 
   let sortByOptions: Record<string, Sort> = {
     albumTitle: {
-      title: 'Album title',
+      title: '相册标题',
       sortDesc: $albumViewSettings.sortDesc, // Load Sort Direction
       widthClass: 'text-left w-8/12 sm:w-4/12 md:w-4/12 md:w-4/12 xl:w-[30%] 2xl:w-[40%]',
       sortFn: (reverse, albums) => {
@@ -60,7 +60,7 @@
       },
     },
     numberOfAssets: {
-      title: 'Number of assets',
+      title: '资源个数',
       sortDesc: $albumViewSettings.sortDesc,
       widthClass: 'text-center w-4/12 m:w-2/12 md:w-2/12 xl:w-[15%] 2xl:w-[12%]',
       sortFn: (reverse, albums) => {
@@ -68,7 +68,7 @@
       },
     },
     lastModified: {
-      title: 'Last modified',
+      title: '最后修改',
       sortDesc: $albumViewSettings.sortDesc,
       widthClass: 'text-center hidden sm:block w-3/12 xl:w-[15%] 2xl:w-[12%]',
       sortFn: (reverse, albums) => {
@@ -76,7 +76,7 @@
       },
     },
     created: {
-      title: 'Created date',
+      title: '创建时间',
       sortDesc: $albumViewSettings.sortDesc,
       widthClass: 'text-center hidden sm:block w-3/12 xl:w-[15%] 2xl:w-[12%]',
       sortFn: (reverse, albums) => {
@@ -84,7 +84,7 @@
       },
     },
     mostRecent: {
-      title: 'Most recent photo',
+      title: '最近照片',
       sortDesc: $albumViewSettings.sortDesc,
       widthClass: 'text-center hidden xl:block xl:w-[15%] 2xl:w-[12%]',
       sortFn: (reverse, albums) => {
@@ -104,7 +104,7 @@
       },
     },
     mostOld: {
-      title: 'Oldest photo',
+      title: '最早照片',
       sortDesc: $albumViewSettings.sortDesc,
       widthClass: 'text-center hidden xl:block xl:w-[15%] 2xl:w-[12%]',
       sortFn: (reverse, albums) => {
@@ -250,7 +250,7 @@
     <LinkButton on:click={handleCreateAlbum}>
       <div class="flex place-items-center gap-2 text-sm">
         <Icon path={mdiPlusBoxOutline} size="18" />
-        Create album
+        创建相册
       </div>
     </LinkButton>
 
@@ -277,10 +277,10 @@
       <div class="flex place-items-center gap-2 text-sm">
         {#if $albumViewSettings.view === AlbumViewMode.List}
           <Icon path={mdiViewGridOutline} size="18" />
-          <p class="hidden sm:block">Cover</p>
+          <p class="hidden sm:block">封面</p>
         {:else}
           <Icon path={mdiFormatListBulletedSquare} size="18" />
-          <p class="hidden sm:block">List</p>
+          <p class="hidden sm:block">列表</p>
         {/if}
       </div>
     </LinkButton>
@@ -327,7 +327,7 @@
                 >
                 <td class="text-md text-ellipsis text-center sm:w-2/12 md:w-2/12 xl:w-[15%] 2xl:w-[12%]">
                   {album.assetCount}
-                  {album.assetCount > 1 ? `items` : `item`}
+                  {album.assetCount > 1 ? `个项目` : `个项目`}
                 </td>
                 <td class="text-md hidden text-ellipsis text-center sm:block w-3/12 xl:w-[15%] 2xl:w-[12%]"
                   >{dateLocaleString(album.updatedAt)}
@@ -373,9 +373,9 @@
     <!-- Empty Message -->
   {:else}
     <EmptyPlaceholder
-      text="Create an album to organize your photos and videos"
+      text="创建一个相册来组织您的照片和视频"
       actionHandler={handleCreateAlbum}
-      alt="Empty albums"
+      alt="空的相册"
     />
   {/if}
 </UserPageLayout>
@@ -386,7 +386,7 @@
     <MenuOption on:click={() => setAlbumToDelete()}>
       <span class="flex place-content-center place-items-center gap-2">
         <Icon path={mdiDeleteOutline} size="18" />
-        <p>Delete album</p>
+        <p>删除相册</p>
       </span>
     </MenuOption>
   </ContextMenu>
@@ -394,8 +394,8 @@
 
 {#if albumToDelete}
   <ConfirmDialogue
-    title="Delete Album"
-    confirmText="Delete"
+    title="删除相册"
+    confirmText="删除"
     on:confirm={deleteSelectedAlbum}
     on:cancel={() => (albumToDelete = null)}
   >

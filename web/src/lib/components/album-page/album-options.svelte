@@ -25,7 +25,7 @@
     >
       <div class="px-2 pt-2">
         <div class="flex items-center">
-          <h1 class="px-4 w-full self-center font-medium text-immich-primary dark:text-immich-dark-primary">Options</h1>
+          <h1 class="px-4 w-full self-center font-medium text-immich-primary dark:text-immich-dark-primary">选项</h1>
           <div>
             <CircleIconButton icon={mdiClose} on:click={() => dispatch('close')} />
           </div>
@@ -33,31 +33,31 @@
 
         <div class=" items-center justify-center p-4">
           <div class="py-2">
-            <h2 class="text-gray text-sm mb-3">SHARING</h2>
+            <h2 class="text-gray text-sm mb-3">分享</h2>
             <div class="p-2">
               <SettingSwitch
-                title="Comments & likes"
-                subtitle="Let others respond"
+                title="评论和点赞"
+                subtitle="让其他人回应"
                 checked={album.isActivityEnabled}
                 on:toggle={() => dispatch('toggleEnableActivity')}
               />
             </div>
           </div>
           <div class="py-2">
-            <div class="text-gray text-sm mb-3">PEOPLE</div>
+            <div class="text-gray text-sm mb-3">人物</div>
             <div class="p-2">
               <button class="flex items-center gap-2" on:click={() => dispatch('showSelectSharedUser')}>
                 <div class="rounded-full w-10 h-10 border border-gray-500 flex items-center justify-center">
                   <div><Icon path={mdiPlus} size="25" /></div>
                 </div>
-                <div>Invite People</div>
+                <div>邀请人员</div>
               </button>
               <div class="flex items-center gap-2 py-2 mt-2">
                 <div>
                   <UserAvatar {user} size="md" />
                 </div>
                 <div class="w-full">{user.name}</div>
-                <div>Owner</div>
+                <div>所有者</div>
               </div>
               {#each album.sharedUsers as user (user.id)}
                 <div class="flex items-center gap-2 py-2">

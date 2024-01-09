@@ -13,8 +13,8 @@
     <div class="ml-4 mt-4 flex flex-col gap-4">
       <div class="ml-4">
         <SettingSwitch
-          title="Theme selection"
-          subtitle="Automatically set the theme to light or dark based on your browser's system preference"
+          title="主题选择"
+          subtitle="根据您的浏览器系统偏好，自动将主题设置为浅色或深色"
           bind:checked={$colorTheme.system}
           on:toggle={handleToggle}
         />

@@ -175,7 +175,7 @@
       });
 
       notificationController.show({
-        message: 'Changed visibility succesfully',
+        message: '成功更改可见性',
         type: NotificationType.Info,
       });
 
@@ -197,7 +197,7 @@
 
     await api.personApi.updatePerson({ id: data.person.id, personUpdateDto: { featureFaceAssetId: asset.id } });
 
-    notificationController.show({ message: 'Feature photo updated', type: NotificationType.Info });
+    notificationController.show({ message: '特色照片已修改', type: NotificationType.Info });
     assetInteractionStore.clearMultiselect();
 
     viewMode = ViewMode.VIEW_ASSETS;
@@ -224,7 +224,7 @@
         mergePersonDto: { ids: [personToMerge.id] },
       });
       notificationController.show({
-        message: 'Merge people succesfully',
+        message: '合并人物成功',
         type: NotificationType.Info,
       });
       people = people.filter((person: PersonResponseDto) => person.id !== personToMerge.id);
@@ -235,7 +235,7 @@
       }
       goto(`${AppRoute.PEOPLE}/${personToBeMergedIn.id}`, { replaceState: true });
     } catch (error) {
-      handleError(error, 'Unable to save name');
+      handleError(error, '无法保存姓名');
     }
   };
 
@@ -330,7 +330,7 @@
         return person;
       });
 
-      notificationController.show({ message: 'Date of birth saved successfully', type: NotificationType.Info });
+      notificationController.show({ message: '生日设置成功', type: NotificationType.Info });
     } catch (error) {
       handleError(error, 'Unable to save date of birth');
     }
@@ -382,16 +382,16 @@
     <AssetSelectControlBar assets={$selectedAssets} clearSelect={() => assetInteractionStore.clearMultiselect()}>
       <CreateSharedLink />
       <SelectAllAssets {assetStore} {assetInteractionStore} />
-      <AssetSelectContextMenu icon={mdiPlus} title="Add">
+      <AssetSelectContextMenu icon={mdiPlus} title="添加">
         <AddToAlbum />
         <AddToAlbum shared />
       </AssetSelectContextMenu>
       <DeleteAssets onAssetDelete={(assetId) => $assetStore.removeAsset(assetId)} />
-      <AssetSelectContextMenu icon={mdiDotsVertical} title="Add">
+      <AssetSelectContextMenu icon={mdiDotsVertical} title="更多选项">
         <DownloadAction menuItem filename="{data.person.name || 'immich'}.zip" />
         <FavoriteAction menuItem removeFavorite={isAllFavorite} />
         <ArchiveAction menuItem unarchive={isAllArchive} onArchive={(ids) => $assetStore.removeAssets(ids)} />
-        <MenuOption text="Fix incorrect match" on:click={handleReassignAssets} />
+        <MenuOption text="修正错误的匹配" on:click={handleReassignAssets} />
         <ChangeDate menuItem />
         <ChangeLocation menuItem />
       </AssetSelectContextMenu>
@@ -400,12 +400,12 @@
     {#if viewMode === ViewMode.VIEW_ASSETS || viewMode === ViewMode.SUGGEST_MERGE || viewMode === ViewMode.BIRTH_DATE}
       <ControlAppBar showBackButton backIcon={mdiArrowLeft} on:close={() => goto(previousRoute)}>
         <svelte:fragment slot="trailing">
-          <AssetSelectContextMenu icon={mdiDotsVertical} title="Menu">
-            <MenuOption text="Change feature photo" on:click={() => (viewMode = ViewMode.SELECT_PERSON)} />
-            <MenuOption text="Set date of birth" on:click={() => (viewMode = ViewMode.BIRTH_DATE)} />
-            <MenuOption text="Merge person" on:click={() => (viewMode = ViewMode.MERGE_PEOPLE)} />
+          <AssetSelectContextMenu icon={mdiDotsVertical} title="菜单">
+            <MenuOption text="更改特色照片" on:click={() => (viewMode = ViewMode.SELECT_PERSON)} />
+            <MenuOption text="设置生日" on:click={() => (viewMode = ViewMode.BIRTH_DATE)} />
+            <MenuOption text="合并人物" on:click={() => (viewMode = ViewMode.MERGE_PEOPLE)} />
             <MenuOption
-              text={data.person.isHidden ? 'Unhide person' : 'Hide person'}
+              text={data.person.isHidden ? '显示人物' : '隐藏人物'}
               on:click={() => toggleHidePerson()}
             />
           </AssetSelectContextMenu>
@@ -415,7 +415,7 @@
 
     {#if viewMode === ViewMode.SELECT_PERSON}
       <ControlAppBar on:close={() => (viewMode = ViewMode.VIEW_ASSETS)}>
-        <svelte:fragment slot="leading">Select feature photo</svelte:fragment>
+        <svelte:fragment slot="leading">选择特色照片</svelte:fragment>
       </ControlAppBar>
     {/if}
   {/if}
@@ -453,7 +453,7 @@
               <div class="relative">
                 <button
                   class="flex items-center justify-center"
-                  title="Edit name"
+                  title="编辑姓名"
                   on:click={() => (isEditingName = true)}
                 >
                   <ImageThumbnail
@@ -470,11 +470,11 @@
                     {#if data.person.name}
                       <p class="w-40 sm:w-72 font-medium truncate">{data.person.name}</p>
                       <p class="absolute w-fit text-sm text-gray-500 dark:text-immich-gray bottom-0">
-                        {`${numberOfAssets} asset${numberOfAssets > 1 ? 's' : ''}`}
+                        {`${numberOfAssets} 个资源`}
                       </p>
                     {:else}
-                      <p class="font-medium">Add a name</p>
-                      <p class="text-sm text-gray-500 dark:text-immich-gray">Find them fast by name with search</p>
+                      <p class="font-medium">添加一个姓名</p>
+                      <p class="text-sm text-gray-500 dark:text-immich-gray">通过搜索按姓名快速找到他们</p>
                     {/if}
                   </div>
                 </button>

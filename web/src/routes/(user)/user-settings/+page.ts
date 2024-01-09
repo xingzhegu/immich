@@ -12,7 +12,7 @@ export const load = (async () => {
     keys,
     devices,
     meta: {
-      title: 'Settings',
+      title: '账户设置',
     },
   };
 }) satisfies PageLoad;

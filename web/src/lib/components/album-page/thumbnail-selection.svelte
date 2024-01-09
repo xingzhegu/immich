@@ -40,7 +40,7 @@
         disabled={selectedThumbnail == undefined}
         on:click={() => dispatch('thumbnail', selectedThumbnail)}
       >
-        Done
+        完成
       </Button>
     </svelte:fragment>
   </ControlAppBar>

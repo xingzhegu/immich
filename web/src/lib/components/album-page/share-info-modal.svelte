@@ -56,10 +56,10 @@
     try {
       await api.albumApi.removeUserFromAlbum({ id: album.id, userId });
       dispatch('remove', userId);
-      const message = userId === 'me' ? `Left ${album.albumName}` : `Removed ${selectedRemoveUser.name}`;
+      const message = userId === 'me' ? `离开${album.albumName}成功` : `删除${selectedRemoveUser.name}成功`;
       notificationController.show({ type: NotificationType.Info, message });
     } catch (e) {
-      handleError(e, 'Unable to remove user');
+      handleError(e, '无法删除用户');
     } finally {
       selectedRemoveUser = null;
     }
@@ -70,7 +70,7 @@
   <BaseModal on:close={() => dispatch('close')}>
     <svelte:fragment slot="title">
       <span class="flex place-items-center gap-2">
-        <p class="font-medium text-immich-fg dark:text-immich-dark-fg">Options</p>
+        <p class="font-medium text-immich-fg dark:text-immich-dark-fg">选项</p>
       </span>
     </svelte:fragment>
 
@@ -82,7 +82,7 @@
         </div>
 
         <div id="icon-{album.owner.id}" class="flex place-items-center">
-          <p class="text-sm">Owner</p>
+          <p class="text-sm">所有者</p>
         </div>
       </div>
       {#each album.sharedUsers as user}
@@ -107,7 +107,7 @@
 
                 {#if selectedMenuUser === user}
                   <ContextMenu {...position} on:outclick={() => (selectedMenuUser = null)}>
-                    <MenuOption on:click={handleMenuRemove} text="Remove" />
+                    <MenuOption on:click={handleMenuRemove} text="删除" />
                   </ContextMenu>
                 {/if}
               </div>
@@ -115,7 +115,7 @@
               <button
                 on:click={() => (selectedRemoveUser = user)}
                 class="text-sm font-medium text-immich-primary transition-colors hover:text-immich-primary/75 dark:text-immich-dark-primary"
-                >Leave</button
+                >离开</button
               >
             {/if}
           </div>
@@ -127,9 +127,9 @@
 
 {#if selectedRemoveUser && selectedRemoveUser?.id === currentUser?.id}
   <ConfirmDialogue
-    title="Leave Album?"
-    prompt="Are you sure you want to leave {album.albumName}?"
-    confirmText="Leave"
+    title="离开相册？"
+    prompt="确定离开{album.albumName}?"
+    confirmText="离开"
     on:confirm={handleRemoveUser}
     on:cancel={() => (selectedRemoveUser = null)}
   />
@@ -137,9 +137,9 @@
 
 {#if selectedRemoveUser && selectedRemoveUser?.id !== currentUser?.id}
   <ConfirmDialogue
-    title="Remove User?"
-    prompt="Are you sure you want to remove {selectedRemoveUser.name}"
-    confirmText="Remove"
+    title="删除用户？"
+    prompt="确定删除{selectedRemoveUser.name}"
+    confirmText="删除"
     on:confirm={handleRemoveUser}
     on:cancel={() => (selectedRemoveUser = null)}
   />

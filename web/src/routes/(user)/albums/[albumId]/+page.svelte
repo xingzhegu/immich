@@ -153,10 +153,10 @@
       album = data;
       notificationController.show({
         type: NotificationType.Info,
-        message: `Activity is ${album.isActivityEnabled ? 'enabled' : 'disabled'}`,
+        message: `活动已${album.isActivityEnabled ? '启用' : '禁用'}`,
       });
     } catch (error) {
-      handleError(error, `Can't ${!album.isActivityEnabled ? 'enable' : 'disable'} activity`);
+      handleError(error, `无法${!album.isActivityEnabled ? '启用' : '禁用'}活动`);
     }
   };
 
@@ -175,7 +175,7 @@
         reactions = [...reactions, isLiked];
       }
     } catch (error) {
-      handleError(error, "Can't change favorite for asset");
+      handleError(error, "无法更改资源的收藏状态");
     }
   };
 
@@ -192,7 +192,7 @@
           isLiked = data[0];
         }
       } catch (error) {
-        handleError(error, "Can't get Favorite");
+        handleError(error, "无法获取收藏状态");
       }
     }
   };
@@ -202,7 +202,7 @@
       const { data } = await api.activityApi.getActivityStatistics({ albumId: album.id });
       setNumberOfComments(data.comments);
     } catch (error) {
-      handleError(error, "Can't get number of comments");
+      handleError(error, "无法获取评论数量");
     }
   };
 
@@ -291,7 +291,7 @@
       const count = results.filter(({ success }) => success).length;
       notificationController.show({
         type: NotificationType.Info,
-        message: `Added ${count} asset${count === 1 ? '' : 's'}`,
+        message: `已添加一个${count}资源`,
       });
 
       await refreshAlbum();
@@ -299,7 +299,7 @@
       timelineInteractionStore.clearMultiselect();
       viewMode = ViewMode.VIEW;
     } catch (error) {
-      handleError(error, 'Error adding assets to album');
+      handleError(error, '向相册添加资源时出现错误');
     }
   };
 
@@ -338,7 +338,7 @@
 
       viewMode = ViewMode.VIEW;
     } catch (error) {
-      handleError(error, 'Error adding users to album');
+      handleError(error, '向相册添加用户时出现错误');
     }
   };
 
@@ -352,7 +352,7 @@
       await refreshAlbum();
       viewMode = album.sharedUsers.length > 1 ? ViewMode.SELECT_USERS : ViewMode.VIEW;
     } catch (e) {
-      handleError(e, 'Error deleting share users');
+      handleError(e, '删除分享用户时出现错误');
     }
   };
 
@@ -365,7 +365,7 @@
       await api.albumApi.deleteAlbum({ id: album.id });
       goto(backUrl);
     } catch (error) {
-      handleError(error, 'Unable to delete album');
+      handleError(error, '无法删除相册');
     } finally {
       viewMode = ViewMode.VIEW;
     }
@@ -387,9 +387,9 @@
         },
       });
 
-      notificationController.show({ type: NotificationType.Info, message: 'Updated album cover' });
+      notificationController.show({ type: NotificationType.Info, message: '相册封面已更新' });
     } catch (error) {
-      handleError(error, 'Unable to update album cover');
+      handleError(error, '无法更新相册封面');
     }
   };
 
@@ -406,9 +406,9 @@
         },
       });
       currentAlbumName = album.albumName;
-      notificationController.show({ type: NotificationType.Info, message: 'New album name has been saved' });
+      notificationController.show({ type: NotificationType.Info, message: '新的相册名称已保存' });
     } catch (error) {
-      handleError(error, 'Unable to update album name');
+      handleError(error, '无法更新相册名称');
     }
   };
 
@@ -424,7 +424,7 @@
       album.description = description;
       isEditingDescription = false;
     } catch (error) {
-      handleError(error, 'Error updating album description');
+      handleError(error, '更新相册描述时出现错误');
     }
   };
 </script>
@@ -435,11 +435,11 @@
       <AssetSelectControlBar assets={$selectedAssets} clearSelect={() => assetInteractionStore.clearMultiselect()}>
         <CreateSharedLink />
         <SelectAllAssets {assetStore} {assetInteractionStore} />
-        <AssetSelectContextMenu icon={mdiPlus} title="Add">
+        <AssetSelectContextMenu icon={mdiPlus} title="添加">
           <AddToAlbum />
           <AddToAlbum shared />
         </AssetSelectContextMenu>
-        <AssetSelectContextMenu icon={mdiDotsVertical} title="Menu">
+        <AssetSelectContextMenu icon={mdiDotsVertical} title="菜单">
           {#if isAllUserOwned}
             <FavoriteAction menuItem removeFavorite={isAllFavorite} />
           {/if}
@@ -460,37 +460,37 @@
         <ControlAppBar showBackButton backIcon={mdiArrowLeft} on:close={() => goto(backUrl)}>
           <svelte:fragment slot="trailing">
             <CircleIconButton
-              title="Add Photos"
+              title="添加照片"
               on:click={() => (viewMode = ViewMode.SELECT_ASSETS)}
               icon={mdiFileImagePlusOutline}
             />
 
             {#if isOwned}
               <CircleIconButton
-                title="Share"
+                title="分享"
                 on:click={() => (viewMode = ViewMode.SELECT_USERS)}
                 icon={mdiShareVariantOutline}
               />
               <CircleIconButton
-                title="Delete album"
+                title="删除相册"
                 on:click={() => (viewMode = ViewMode.CONFIRM_DELETE)}
                 icon={mdiDeleteOutline}
               />
             {/if}
 
             {#if album.assetCount > 0}
-              <CircleIconButton title="Download" on:click={handleDownloadAlbum} icon={mdiFolderDownloadOutline} />
+              <CircleIconButton title="下载" on:click={handleDownloadAlbum} icon={mdiFolderDownloadOutline} />
 
               {#if isOwned}
                 <div use:clickOutside on:outclick={() => (viewMode = ViewMode.VIEW)}>
-                  <CircleIconButton title="Album options" on:click={handleOpenAlbumOptions} icon={mdiDotsVertical}>
+                  <CircleIconButton title="相册选项" on:click={handleOpenAlbumOptions} icon={mdiDotsVertical}>
                     {#if viewMode === ViewMode.ALBUM_OPTIONS}
                       <ContextMenu {...contextMenuPosition}>
                         {#if album.assetCount !== 0}
-                          <MenuOption on:click={handleStartSlideshow} text="Slideshow" />
+                          <MenuOption on:click={handleStartSlideshow} text="幻灯片播放" />
                         {/if}
-                        <MenuOption on:click={() => (viewMode = ViewMode.SELECT_THUMBNAIL)} text="Set album cover" />
-                        <MenuOption on:click={() => (viewMode = ViewMode.OPTIONS)} text="Options" />
+                        <MenuOption on:click={() => (viewMode = ViewMode.SELECT_THUMBNAIL)} text="设置相册封面" />
+                        <MenuOption on:click={() => (viewMode = ViewMode.OPTIONS)} text="选项" />
                       </ContextMenu>
                     {/if}
                   </CircleIconButton>
@@ -505,7 +505,7 @@
                 disabled={album.assetCount == 0}
                 on:click={() => (viewMode = ViewMode.SELECT_USERS)}
               >
-                Share
+                分享
               </Button>
             {/if}
           </svelte:fragment>
@@ -517,9 +517,9 @@
           <svelte:fragment slot="leading">
             <p class="text-lg dark:text-immich-dark-fg">
               {#if $timelineSelected.size === 0}
-                Add to album
+                添加到相册
               {:else}
-                {$timelineSelected.size.toLocaleString($locale)} selected
+                {$timelineSelected.size.toLocaleString($locale)}已选择
               {/if}
             </p>
           </svelte:fragment>
@@ -529,10 +529,10 @@
               on:click={handleSelectFromComputer}
               class="rounded-lg px-6 py-2 text-sm font-medium text-immich-primary transition-all hover:bg-immich-primary/10 dark:text-immich-dark-primary dark:hover:bg-immich-dark-primary/25"
             >
-              Select from computer
+              从计算机中选择
             </button>
             <Button size="sm" rounded="lg" disabled={$timelineSelected.size === 0} on:click={handleAddAssets}
-              >Done</Button
+              >完成</Button
             >
           </svelte:fragment>
         </ControlAppBar>
@@ -540,7 +540,7 @@
 
       {#if viewMode === ViewMode.SELECT_THUMBNAIL}
         <ControlAppBar on:close={() => (viewMode = ViewMode.VIEW)}>
-          <svelte:fragment slot="leading">Select Album Cover</svelte:fragment>
+          <svelte:fragment slot="leading">选择相册封面</svelte:fragment>
         </ControlAppBar>
       {/if}
     {/if}
@@ -576,7 +576,7 @@
                 disabled={!isOwned}
                 bind:this={titleInput}
                 title="Edit Title"
-                placeholder="Add a title"
+                placeholder="添加标题"
               />
 
               <!-- ALBUM SUMMARY -->
@@ -584,7 +584,7 @@
                 <span class="my-4 flex gap-2 text-sm font-medium text-gray-500" data-testid="album-details">
                   <p class="">{getDateRange()}</p>
                   <p>·</p>
-                  <p>{album.assetCount} items</p>
+                  <p>{album.assetCount} 项目</p>
                 </span>
               {/if}
 
@@ -621,7 +621,7 @@
                       size="20"
                       icon={mdiPlus}
                       on:click={() => (viewMode = ViewMode.SELECT_USERS)}
-                      title="Add more users"
+                      title="添加更多用户"
                     />
                   {/if}
                 </div>
@@ -634,9 +634,9 @@
                   on:click={() => (isEditingDescription = true)}
                   class:hover:border-gray-400={isOwned}
                   disabled={!isOwned}
-                  title="Edit description"
+                  title="编辑描述"
                 >
-                  {album.description || 'Add description'}
+                  {album.description || '添加描述'}
                 </button>
               {/if}
             </section>
@@ -645,7 +645,7 @@
           {#if album.assetCount === 0}
             <section id="empty-album" class=" mt-[200px] flex place-content-center place-items-center">
               <div class="w-[300px]">
-                <p class="text-xs dark:text-immich-dark-fg">ADD PHOTOS</p>
+                <p class="text-xs dark:text-immich-dark-fg">添加照片</p>
                 <button
                   on:click={() => (viewMode = ViewMode.SELECT_ASSETS)}
                   class="mt-5 flex w-full place-items-center gap-6 rounded-md border bg-immich-bg px-8 py-8 text-immich-fg transition-all hover:bg-gray-100 hover:text-immich-primary dark:border-none dark:bg-immich-dark-gray dark:text-immich-dark-fg dark:hover:text-immich-dark-primary"
@@ -653,7 +653,7 @@
                   <span class="text-text-immich-primary dark:text-immich-dark-primary"
                     ><Icon path={mdiPlus} size="24" />
                   </span>
-                  <span class="text-lg">Select photos</span>
+                  <span class="text-lg">选择照片</span>
                 </button>
               </div>
             </section>
@@ -722,14 +722,14 @@
 
 {#if viewMode === ViewMode.CONFIRM_DELETE}
   <ConfirmDialogue
-    title="Delete album"
-    confirmText="Delete"
+    title="删除相册"
+    confirmText="删除"
     on:confirm={handleRemoveAlbum}
     on:cancel={() => (viewMode = ViewMode.VIEW)}
   >
     <svelte:fragment slot="prompt">
-      <p>Are you sure you want to delete the album <b>{album.albumName}</b>?</p>
-      <p>If this album is shared, other users will not be able to access it anymore.</p>
+      <p>确认删除该相册：<b>{album.albumName}</b>?</p>
+      <p>如果此相册已经分享，其他用户将无法再访问它。</p>
     </svelte:fragment>
   </ConfirmDialogue>
 {/if}

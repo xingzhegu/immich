@@ -43,13 +43,13 @@
     expirationCountdown = expiresAtDate.diff(now, ['days', 'hours', 'minutes', 'seconds']).toObject();
 
     if (expirationCountdown.days && expirationCountdown.days > 0) {
-      return expiresAtDate.toRelativeCalendar({ base: now, locale: 'en-US', unit: 'days' });
+      return expiresAtDate.toRelativeCalendar({ base: now, locale: 'zh-CN', unit: 'days' });
     } else if (expirationCountdown.hours && expirationCountdown.hours > 0) {
-      return expiresAtDate.toRelativeCalendar({ base: now, locale: 'en-US', unit: 'hours' });
+      return expiresAtDate.toRelativeCalendar({ base: now, locale: 'zh-CN', unit: 'hours' });
     } else if (expirationCountdown.minutes && expirationCountdown.minutes > 0) {
-      return expiresAtDate.toRelativeCalendar({ base: now, locale: 'en-US', unit: 'minutes' });
+      return expiresAtDate.toRelativeCalendar({ base: now, locale: 'zh-CN', unit: 'minutes' });
     } else if (expirationCountdown.seconds && expirationCountdown.seconds > 0) {
-      return expiresAtDate.toRelativeCalendar({ base: now, locale: 'en-US', unit: 'seconds' });
+      return expiresAtDate.toRelativeCalendar({ base: now, locale: 'zh-CN', unit: 'seconds' });
     }
   };
 
@@ -94,14 +94,14 @@
       <div class="font-mono text-xs font-semibold text-gray-500 dark:text-gray-400">
         {#if link.expiresAt}
           {#if isExpired(link.expiresAt)}
-            <p class="font-bold text-red-600 dark:text-red-400">Expired</p>
+            <p class="font-bold text-red-600 dark:text-red-400">已过期</p>
           {:else}
             <p>
-              Expires {getCountDownExpirationDate()}
+              有效期 {getCountDownExpirationDate()}
             </p>
           {/if}
         {:else}
-          <p>Expires ∞</p>
+          <p>有效期 永久</p>
         {/if}
       </div>
 
@@ -112,14 +112,14 @@
               {link.album?.albumName.toUpperCase()}
             </p>
           {:else if link.type === SharedLinkType.Individual}
-            <p>INDIVIDUAL SHARE</p>
+            <p>个人分享</p>
           {/if}
 
           {#if !link.expiresAt || !isExpired(link.expiresAt)}
             <!-- svelte-ignore a11y-no-static-element-interactions -->
             <div
               class="hover:cursor-pointer"
-              title="Go to share page"
+              title="跳转到分享页面"
               on:click={() => goto(`/share/${link.key}`)}
               on:keydown={() => goto(`/share/${link.key}`)}
             >
@@ -137,23 +137,23 @@
         <div
           class="flex w-[80px] place-content-center place-items-center rounded-full bg-immich-primary px-2 py-1 text-xs text-white dark:bg-immich-dark-primary dark:text-immich-dark-gray"
         >
-          Upload
+          上传
         </div>
       {/if}
 
       {#if link.allowDownload}
         <div
-          class="flex w-[100px] place-content-center place-items-center rounded-full bg-immich-primary px-2 py-1 text-xs text-white dark:bg-immich-dark-primary dark:text-immich-dark-gray"
+          class="flex w-[60px] place-content-center place-items-center rounded-full bg-immich-primary px-2 py-1 text-xs text-white dark:bg-immich-dark-primary dark:text-immich-dark-gray"
         >
-          Download
+          下载
         </div>
       {/if}
 
       {#if link.showMetadata}
         <div
-          class="flex w-[60px] place-content-center place-items-center rounded-full bg-immich-primary px-2 py-1 text-xs text-white dark:bg-immich-dark-primary dark:text-immich-dark-gray"
+          class="flex w-[100px] place-content-center place-items-center rounded-full bg-immich-primary px-2 py-1 text-xs text-white dark:bg-immich-dark-primary dark:text-immich-dark-gray"
         >
-          EXIF
+          显示元数据
         </div>
       {/if}
 
@@ -161,7 +161,7 @@
         <div
           class="flex w-[100px] place-content-center place-items-center rounded-full bg-immich-primary px-2 py-1 text-xs text-white dark:bg-immich-dark-primary dark:text-immich-dark-gray"
         >
-          Password
+          密码
         </div>
       {/if}
     </div>

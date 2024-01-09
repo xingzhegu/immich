@@ -25,48 +25,48 @@
   }
 </script>
 
-<SettingAccordion title="Appearance" subtitle="Manage your Immich appearance">
+<SettingAccordion title="外观" subtitle="管理Immich外观">
   <AppearanceSettings />
 </SettingAccordion>
 
-<SettingAccordion title="Account" subtitle="Manage your account">
+<SettingAccordion title="账户" subtitle="管理账户">
   <UserProfileSettings user={$user} />
 </SettingAccordion>
 
-<SettingAccordion title="API Keys" subtitle="Manage your API keys">
+<SettingAccordion title="API Keys" subtitle="管理API keys">
   <UserAPIKeyList bind:keys />
 </SettingAccordion>
 
-<SettingAccordion title="Authorized Devices" subtitle="Manage your logged-in devices">
+<SettingAccordion title="授权设备" subtitle="管理已登录设备">
   <DeviceList bind:devices />
 </SettingAccordion>
 
-<SettingAccordion title="Libraries" subtitle="Manage your asset libraries">
+<SettingAccordion title="图库" subtitle="管理资源库">
   <LibraryList />
 </SettingAccordion>
 
-<SettingAccordion title="Memories" subtitle="Manage what you see in your memories.">
+<SettingAccordion title="回忆" subtitle="管理回忆中看到的内容。">
   <MemoriesSettings user={$user} />
 </SettingAccordion>
 
 {#if $featureFlags.loaded && $featureFlags.oauth}
   <SettingAccordion
     title="OAuth"
-    subtitle="Manage your OAuth connection"
+    subtitle="管理OAuth连接"
     isOpen={oauthOpen || $page.url.searchParams.get('open') === 'oauth'}
   >
     <OAuthSettings user={$user} />
   </SettingAccordion>
 {/if}
 
-<SettingAccordion title="Password" subtitle="Change your password">
+<SettingAccordion title="密码" subtitle="修改密码">
   <ChangePasswordSettings />
 </SettingAccordion>
 
-<SettingAccordion title="Sharing" subtitle="Manage sharing with partners">
+<SettingAccordion title="分享" subtitle="管理与伙伴的分享">
   <PartnerSettings user={$user} />
 </SettingAccordion>
 
-<SettingAccordion title="Sidebar" subtitle="Manage sidebar settings">
+<SettingAccordion title="侧边栏" subtitle="管理侧边栏设置">
   <SidebarSettings />
 </SettingAccordion>

@@ -45,21 +45,21 @@
       <div class="ml-4 mt-4 flex flex-col gap-4">
         <SettingInputField
           inputType={SettingInputFieldType.PASSWORD}
-          label="PASSWORD"
+          label="密码"
           bind:value={password}
           required={true}
         />
 
         <SettingInputField
           inputType={SettingInputFieldType.PASSWORD}
-          label="NEW PASSWORD"
+          label="新的密码"
           bind:value={newPassword}
           required={true}
         />
 
         <SettingInputField
           inputType={SettingInputFieldType.PASSWORD}
-          label="CONFIRM PASSWORD"
+          label="确认密码"
           bind:value={confirmPassword}
           required={true}
         />
@@ -69,7 +69,7 @@
             type="submit"
             size="sm"
             disabled={!(password && newPassword && newPassword === confirmPassword)}
-            on:click={() => handleChangePassword()}>Save</Button
+            on:click={() => handleChangePassword()}>保存</Button
           >
         </div>
       </div>

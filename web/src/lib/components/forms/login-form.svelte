@@ -47,7 +47,7 @@
         return;
       }
     } catch (error) {
-      await handleError(error, 'Unable to connect!');
+      await handleError(error, '无法访问系统!');
     }
 
     oauthLoading = false;
@@ -80,7 +80,7 @@
       dispatch('success');
       return;
     } catch (error) {
-      errorMessage = (await getServerErrorMessage(error)) || 'Incorrect email or password';
+      errorMessage = (await getServerErrorMessage(error)) || '不正确的邮箱或密码';
       loading = false;
       return;
     }
@@ -102,7 +102,7 @@
     {/if}
 
     <div class="flex flex-col gap-2">
-      <label class="immich-form-label" for="email">Email</label>
+      <label class="immich-form-label" for="email">邮箱</label>
       <input
         class="immich-form-input"
         id="email"
@@ -115,7 +115,7 @@
     </div>
 
     <div class="flex flex-col gap-2">
-      <label class="immich-form-label" for="password">Password</label>
+      <label class="immich-form-label" for="password">密码</label>
       <input
         class="immich-form-input"
         id="password"
@@ -134,7 +134,7 @@
             <LoadingSpinner />
           </span>
         {:else}
-          Login
+          登录
         {/if}
       </Button>
     </div>
@@ -176,5 +176,5 @@
 {/if}
 
 {#if !$featureFlags.passwordLogin && !$featureFlags.oauth}
-  <p class="p-4 text-center dark:text-immich-dark-fg">Login has been disabled.</p>
+  <p class="p-4 text-center dark:text-immich-dark-fg">无法登录。</p>
 {/if}

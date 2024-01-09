@@ -7,8 +7,8 @@
 
   export let importPath: string;
   export let title = 'Import path';
-  export let cancelText = 'Cancel';
-  export let submitText = 'Save';
+  export let cancelText = '取消';
+  export let submitText = '保存';
   export let canDelete = false;
 
   const dispatch = createEventDispatcher<{
@@ -35,20 +35,18 @@
 
     <form on:submit|preventDefault={() => handleSubmit()} autocomplete="off">
       <p class="p-5 text-sm">
-        Specify a folder to import. This folder, including subfolders, will be scanned for images and videos. Note that
-        you are only allowed to import paths inside of your account's external path, configured in the administrative
-        settings.
+        请指定要导入的文件夹。该文件夹及其子文件夹将被扫描以查找图片和视频。请注意，您只能导入位于您的帐户的外部路径内的路径，这些路径可以在管理设置中进行配置。
       </p>
 
       <div class="m-4 flex flex-col gap-2">
-        <label class="immich-form-label" for="path">Path</label>
+        <label class="immich-form-label" for="path">路径</label>
         <input class="immich-form-input" id="path" name="path" type="text" bind:value={importPath} />
       </div>
 
       <div class="mt-8 flex w-full gap-4 px-4">
         <Button color="gray" fullwidth on:click={() => handleCancel()}>{cancelText}</Button>
         {#if canDelete}
-          <Button color="red" fullwidth on:click={() => dispatch('delete')}>Delete</Button>
+          <Button color="red" fullwidth on:click={() => dispatch('delete')}>删除</Button>
         {/if}
 
         <Button type="submit" fullwidth>{submitText}</Button>

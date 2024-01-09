@@ -121,14 +121,14 @@
       <svelte:fragment slot="trailing">
         {#if sharedLink.allowUpload}
           <CircleIconButton
-            title="Add Photos"
+            title="添加照片"
             on:click={() => openFileUploadDialog(album.id)}
             icon={mdiFileImagePlusOutline}
           />
         {/if}
 
         {#if album.assetCount > 0 && sharedLink.allowDownload}
-          <CircleIconButton title="Download" on:click={() => downloadAlbum()} icon={mdiFolderDownloadOutline} />
+          <CircleIconButton title="下载" on:click={() => downloadAlbum()} icon={mdiFolderDownloadOutline} />
         {/if}
 
         <ThemeButton />
@@ -154,7 +154,7 @@
         <span class="my-4 flex gap-2 text-sm font-medium text-gray-500" data-testid="album-details">
           <p class="">{getDateRange()}</p>
           <p>·</p>
-          <p>{album.assetCount} items</p>
+          <p>{album.assetCount}个项目</p>
         </span>
       {/if}
 

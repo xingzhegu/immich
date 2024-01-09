@@ -11,7 +11,7 @@ export const load = (async () => {
     sharedAlbums,
     partners,
     meta: {
-      title: 'Sharing',
+      title: '分享',
     },
   };
 }) satisfies PageLoad;

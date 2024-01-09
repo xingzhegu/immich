@@ -3,7 +3,7 @@
   import { createEventDispatcher } from 'svelte';
   import ConfirmDialogue from './confirm-dialogue.svelte';
   import Map from './map/map.svelte';
-  export const title = 'Change Location';
+  export const title = '修改位置';
   export let asset: AssetResponseDto | undefined = undefined;
 
   interface Point {
@@ -40,13 +40,13 @@
 <ConfirmDialogue
   confirmColor="primary"
   cancelColor="secondary"
-  title="Change Location"
+  title="修改位置"
   width={800}
   on:confirm={handleConfirm}
   on:cancel={handleCancel}
 >
   <div slot="prompt" class="flex flex-col w-full h-full gap-2">
-    <label for="datetime">Pick a location</label>
+    <label for="datetime">选择一个位置</label>
     <div class="h-[500px] min-h-[300px] w-full">
       <Map
         mapMarkers={lat && lng && asset ? [{ id: asset.id, lat, lon: lng }] : []}

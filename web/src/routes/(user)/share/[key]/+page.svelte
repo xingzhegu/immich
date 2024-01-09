@@ -22,10 +22,10 @@
       passwordRequired = false;
       sharedLink = result.data;
       isOwned = $user ? $user.id === sharedLink.userId : false;
-      title = (sharedLink.album ? sharedLink.album.albumName : 'Public Share') + ' - Immich';
+      title = (sharedLink.album ? sharedLink.album.albumName : '公开分享') + ' - Immich';
       description = sharedLink.description || `${sharedLink.assets.length} shared photos & videos.`;
     } catch (error) {
-      handleError(error, 'Failed to get shared link');
+      handleError(error, '获取分享链接失败');
     }
   };
 </script>
@@ -53,14 +53,14 @@
     class="relative h-screen overflow-hidden bg-immich-bg px-6 pt-[var(--navbar-height)] dark:bg-immich-dark-bg sm:px-12 md:px-24 lg:px-40"
   >
     <div class="flex flex-col items-center justify-center mt-20">
-      <div class="text-2xl font-bold text-immich-primary dark:text-immich-dark-primary">Password Required</div>
+      <div class="text-2xl font-bold text-immich-primary dark:text-immich-dark-primary">需要密码</div>
       <div class="mt-4 text-lg text-immich-primary dark:text-immich-dark-primary">
-        Please enter the password to view this page.
+        请输入密码以查看此页面。
       </div>
       <div class="mt-4">
         <form novalidate autocomplete="off" on:submit|preventDefault={handlePasswordSubmit}>
           <input type="password" class="immich-form-input mr-2" placeholder="Password" bind:value={password} />
-          <Button type="submit">Submit</Button>
+          <Button type="submit">提交</Button>
         </form>
       </div>
     </div>

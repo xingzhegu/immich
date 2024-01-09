@@ -28,10 +28,10 @@
       class="flex flex-col place-content-center place-items-center gap-4 px-4 text-immich-primary dark:text-immich-dark-primary"
     >
       <Icon path={mdiCake} size="4em" />
-      <h1 class="text-2xl font-medium text-immich-primary dark:text-immich-dark-primary">Set date of birth</h1>
+      <h1 class="text-2xl font-medium text-immich-primary dark:text-immich-dark-primary">设置生日</h1>
 
       <p class="text-sm dark:text-immich-dark-fg">
-        Date of birth is used to calculate the age of this person at the time of a photo.
+        出生日期用于计算此人在照片拍摄时的年龄。
       </p>
     </div>
 
@@ -47,8 +47,8 @@
         />
       </div>
       <div class="mt-8 flex w-full gap-4 px-4">
-        <Button color="gray" fullwidth on:click={() => handleCancel()}>Cancel</Button>
-        <Button type="submit" fullwidth>Set</Button>
+        <Button color="gray" fullwidth on:click={() => handleCancel()}>取消</Button>
+        <Button type="submit" fullwidth>设置</Button>
       </div>
     </form>
   </div>

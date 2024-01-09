@@ -152,7 +152,7 @@
           isLiked = null;
         }
       } catch (error) {
-        handleError(error, "Can't get Favorite");
+        handleError(error, "无法获取收藏");
       }
     }
   };
@@ -163,7 +163,7 @@
         const { data } = await api.activityApi.getActivityStatistics({ assetId: asset.id, albumId: album.id });
         numberOfComments = data.comments;
       } catch (error) {
-        handleError(error, "Can't get number of comments");
+        handleError(error, "无法获取评论数量");
       }
     }
   };
@@ -240,7 +240,7 @@
       const { data } = await api.albumApi.getAllAlbums({ assetId: asset.id });
       appearsInAlbums = data;
     } catch (e) {
-      console.error('Error getting album that asset belong to', e);
+      console.error('获取资产所属的相册时出错', e);
     }
   };
 
@@ -373,11 +373,11 @@
       dispatch('action', { type: AssetAction.TRASH, asset });
 
       notificationController.show({
-        message: 'Moved to trash',
+        message: '已移至回收站',
         type: NotificationType.Info,
       });
     } catch (e) {
-      handleError(e, 'Unable to trash asset');
+      handleError(e, '无法回收资源');
     }
   };
 
@@ -388,11 +388,11 @@
       dispatch('action', { type: AssetAction.DELETE, asset });
 
       notificationController.show({
-        message: 'Permanently deleted asset',
+        message: '永久删除资源',
         type: NotificationType.Info,
       });
     } catch (e) {
-      handleError(e, 'Unable to delete asset');
+      handleError(e, '无法删除资源');
     } finally {
       isShowDeleteConfirmation = false;
     }
@@ -412,10 +412,10 @@
 
       notificationController.show({
         type: NotificationType.Info,
-        message: asset.isFavorite ? `Added to favorites` : `Removed from favorites`,
+        message: asset.isFavorite ? `已添加到收藏夹` : `已从收藏夹删除`,
       });
     } catch (error) {
-      await handleError(error, `Unable to ${asset.isFavorite ? `add asset to` : `remove asset from`} favorites`);
+      await handleError(error, `无法${asset.isFavorite ? `添加资源到` : `删除资源从`} 收藏夹`);
     }
   };
 
@@ -466,10 +466,10 @@
 
       notificationController.show({
         type: NotificationType.Info,
-        message: asset.isArchived ? `Added to archive` : `Removed from archive`,
+        message: asset.isArchived ? `添加到归档` : `从归档中删除`,
       });
     } catch (error) {
-      await handleError(error, `Unable to ${asset.isArchived ? `add asset to` : `remove asset from`} archive`);
+      await handleError(error, `无法${asset.isArchived ? `添加资源到` : `删除资源从`} 收藏夹`);
     }
   };
 
@@ -765,8 +765,8 @@
 
   {#if isShowDeleteConfirmation}
     <ConfirmDialogue
-      title="Delete {getAssetType(asset.type)}"
-      confirmText="Delete"
+      title="删除{getAssetType(asset.type)}"
+      confirmText="删除"
       on:confirm={deleteAsset}
       on:cancel={() => (isShowDeleteConfirmation = false)}
     >

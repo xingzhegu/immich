@@ -5,7 +5,7 @@ export const load = (async () => {
   await authenticate();
   return {
     meta: {
-      title: 'Map',
+      title: '地图',
     },
   };
 }) satisfies PageLoad;

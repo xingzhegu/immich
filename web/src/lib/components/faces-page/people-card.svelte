@@ -82,10 +82,10 @@
 {#if showContextMenu}
   <Portal target="body">
     <ContextMenu {...contextMenuPosition} on:outclick={() => onMenuExit()}>
-      <MenuOption on:click={() => onMenuClick('hide-person')} text="Hide Person" />
-      <MenuOption on:click={() => onMenuClick('change-name')} text="Change name" />
-      <MenuOption on:click={() => onMenuClick('set-birth-date')} text="Set date of birth" />
-      <MenuOption on:click={() => onMenuClick('merge-people')} text="Merge People" />
+      <MenuOption on:click={() => onMenuClick('hide-person')} text="隐藏人物" />
+      <MenuOption on:click={() => onMenuClick('change-name')} text="修改姓名" />
+      <MenuOption on:click={() => onMenuClick('set-birth-date')} text="设置生日" />
+      <MenuOption on:click={() => onMenuClick('merge-people')} text="合并人物" />
     </ContextMenu>
   </Portal>
 {/if}

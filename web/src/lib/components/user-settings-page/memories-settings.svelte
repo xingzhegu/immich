@@ -22,9 +22,9 @@
 
       Object.assign(user, data);
 
-      notificationController.show({ message: 'Saved settings', type: NotificationType.Info });
+      notificationController.show({ message: '设置已保存', type: NotificationType.Info });
     } catch (error) {
-      handleError(error, 'Unable to update settings');
+      handleError(error, '无法修改设置');
     }
   };
 </script>
@@ -35,13 +35,13 @@
       <div class="ml-4 mt-4 flex flex-col gap-4">
         <div class="ml-4">
           <SettingSwitch
-            title="Time-based memories"
-            subtitle="Photos from previous years"
+            title="基于时间的回忆"
+            subtitle="以往年份的照片"
             bind:checked={user.memoriesEnabled}
           />
         </div>
         <div class="flex justify-end">
-          <Button type="submit" size="sm" on:click={() => handleSave()}>Save</Button>
+          <Button type="submit" size="sm" on:click={() => handleSave()}>保存</Button>
         </div>
       </div>
     </form>

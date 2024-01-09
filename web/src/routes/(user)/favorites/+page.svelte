@@ -35,12 +35,12 @@
     <FavoriteAction removeFavorite onFavorite={(ids) => assetStore.removeAssets(ids)} />
     <CreateSharedLink />
     <SelectAllAssets {assetStore} {assetInteractionStore} />
-    <AssetSelectContextMenu icon={mdiPlus} title="Add">
+    <AssetSelectContextMenu icon={mdiPlus} title="添加">
       <AddToAlbum />
       <AddToAlbum shared />
     </AssetSelectContextMenu>
     <DeleteAssets onAssetDelete={(assetId) => assetStore.removeAsset(assetId)} />
-    <AssetSelectContextMenu icon={mdiDotsVertical} title="Menu">
+    <AssetSelectContextMenu icon={mdiDotsVertical} title="菜单">
       <DownloadAction menuItem />
       <ArchiveAction menuItem unarchive={isAllArchive} />
       <ChangeDate menuItem />
@@ -52,8 +52,8 @@
 <UserPageLayout hideNavbar={$isMultiSelectState} title={data.meta.title} scrollbar={false}>
   <AssetGrid {assetStore} {assetInteractionStore} removeAction={AssetAction.UNFAVORITE}>
     <EmptyPlaceholder
-      text="Add favorites to quickly find your best pictures and videos"
-      alt="Empty favorites"
+      text="添加收藏以快速找到您最喜欢的照片和视频。"
+      alt="空的收藏夹"
       slot="empty"
     />
   </AssetGrid>

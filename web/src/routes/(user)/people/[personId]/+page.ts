@@ -12,7 +12,7 @@ export const load = (async ({ params }) => {
     person,
     statistics,
     meta: {
-      title: person.name || 'Person',
+      title: person.name || '人物',
     },
   };
 }) satisfies PageLoad;

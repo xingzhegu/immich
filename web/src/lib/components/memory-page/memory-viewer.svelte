@@ -168,7 +168,7 @@
 
             {#if previousMemory}
               <div class="absolute bottom-4 right-4 text-left text-white">
-                <p class="text-xs font-semibold text-gray-200">PREVIOUS</p>
+                <p class="text-xs font-semibold text-gray-200">上一页</p>
                 <p class="text-xl">{previousMemory.title}</p>
               </div>
             {/if}
@@ -231,7 +231,7 @@
 
             {#if nextMemory}
               <div class="absolute bottom-4 left-4 text-left text-white">
-                <p class="text-xs font-semibold text-gray-200">UP NEXT</p>
+                <p class="text-xs font-semibold text-gray-200">下一页</p>
                 <p class="text-xl">{nextMemory.title}</p>
               </div>
             {/if}

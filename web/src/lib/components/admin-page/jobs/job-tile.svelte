@@ -43,9 +43,9 @@
 >
   <div class="flex w-full flex-col">
     {#if queueStatus.isPaused}
-      <JobTileStatus color="warning">Paused</JobTileStatus>
+      <JobTileStatus color="warning">暂停</JobTileStatus>
     {:else if queueStatus.isActive}
-      <JobTileStatus color="success">Active</JobTileStatus>
+      <JobTileStatus color="success">进行中</JobTileStatus>
     {/if}
     <div class="flex flex-col gap-2 p-5 sm:p-7 md:p-9">
       <div class="flex items-center gap-4 text-xl font-semibold text-immich-primary dark:text-immich-dark-primary">
@@ -92,7 +92,7 @@
         <div
           class="{commonClasses} rounded-t-lg bg-immich-primary text-white dark:bg-immich-dark-primary dark:text-immich-dark-gray sm:rounded-l-lg sm:rounded-r-none"
         >
-          <p>Active</p>
+          <p>进行中</p>
           <p class="text-2xl">
             {jobCounts.active.toLocaleString($locale)}
           </p>
@@ -104,7 +104,7 @@
           <p class="text-2xl">
             {waitingCount.toLocaleString($locale)}
           </p>
-          <p>Waiting</p>
+          <p>等待中</p>
         </div>
       </div>
     </div>
@@ -116,12 +116,12 @@
         color="light-gray"
         on:click={() => dispatch('command', { command: JobCommand.Start, force: false })}
       >
-        <Icon path={mdiAlertCircle} size="36" /> DISABLED
+        <Icon path={mdiAlertCircle} size="36" /> 禁用
       </JobTileButton>
     {:else if !isIdle}
       {#if waitingCount > 0}
         <JobTileButton color="gray" on:click={() => dispatch('command', { command: JobCommand.Empty, force: false })}>
-          <Icon path={mdiClose} size="24" /> CLEAR
+          <Icon path={mdiClose} size="24" /> 清除
         </JobTileButton>
       {/if}
       {#if queueStatus.isPaused}
@@ -131,14 +131,14 @@
           on:click={() => dispatch('command', { command: JobCommand.Resume, force: false })}
         >
           <!-- size property is not reactive, so have to use width and height -->
-          <Icon path={mdiFastForward} {size} /> RESUME
+          <Icon path={mdiFastForward} {size} /> 恢复
         </JobTileButton>
       {:else}
         <JobTileButton
           color="light-gray"
           on:click={() => dispatch('command', { command: JobCommand.Pause, force: false })}
         >
-          <Icon path={mdiPause} size="24" /> PAUSE
+          <Icon path={mdiPause} size="24" /> 暂停
         </JobTileButton>
       {/if}
     {:else if allowForceCommand}
@@ -158,7 +158,7 @@
         color="light-gray"
         on:click={() => dispatch('command', { command: JobCommand.Start, force: false })}
       >
-        <Icon path={mdiPlay} size="48" /> START
+        <Icon path={mdiPlay} size="48" /> 开始
       </JobTileButton>
     {/if}
   </div>

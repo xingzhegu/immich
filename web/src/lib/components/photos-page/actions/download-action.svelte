@@ -24,7 +24,7 @@
 </script>
 
 {#if menuItem}
-  <MenuOption text="Download" on:click={handleDownloadFiles} />
+  <MenuOption text="下载" on:click={handleDownloadFiles} />
 {:else}
-  <CircleIconButton title="Download" icon={mdiCloudDownloadOutline} on:click={handleDownloadFiles} />
+  <CircleIconButton title="下载" icon={mdiCloudDownloadOutline} on:click={handleDownloadFiles} />
 {/if}

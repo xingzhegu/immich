@@ -34,7 +34,7 @@
       const count = results.filter(({ success }) => success).length;
       notificationController.show({
         type: NotificationType.Info,
-        message: `Removed ${count} asset${count === 1 ? '' : 's'}`,
+        message: `已删除${count}个资源`,
       });
 
       clearSelect();
@@ -42,7 +42,7 @@
       console.error('Error [album-viewer] [removeAssetFromAlbum]', e);
       notificationController.show({
         type: NotificationType.Error,
-        message: 'Error removing assets from album, check console for more details',
+        message: '从相册中移除资产时出错，请检查控制台获取更多详细信息',
       });
     } finally {
       isShowConfirmation = false;
@@ -51,27 +51,27 @@
 </script>
 
 {#if menuItem}
-  <MenuOption text="Remove from album" on:click={() => (isShowConfirmation = true)} />
+  <MenuOption text="从相册中移除" on:click={() => (isShowConfirmation = true)} />
 {:else}
-  <CircleIconButton title="Remove from album" icon={mdiDeleteOutline} on:click={() => (isShowConfirmation = true)} />
+  <CircleIconButton title="从相册中移除" icon={mdiDeleteOutline} on:click={() => (isShowConfirmation = true)} />
 {/if}
 
 {#if isShowConfirmation}
   <ConfirmDialogue
-    title="Remove from {album.albumName}"
-    confirmText="Remove"
+    title="从{album.albumName}相册中移除"
+    confirmText="删除"
     on:confirm={removeFromAlbum}
     on:cancel={() => (isShowConfirmation = false)}
   >
     <svelte:fragment slot="prompt">
       <p>
-        Are you sure you want to remove
+        确认删除
         {#if getAssets().size > 1}
-          these <b>{getAssets().size}</b> assets
+          <b>{getAssets().size}</b>个资源
         {:else}
-          this asset
+          这个资源
         {/if}
-        from the album?
+        从相册中？
       </p>
     </svelte:fragment>
   </ConfirmDialogue>

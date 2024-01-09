@@ -150,7 +150,7 @@
       <div class="flex justify-end gap-2">
         <button
           class="flex place-content-center place-items-center rounded-full p-3 transition-colors hover:bg-gray-200 dark:text-immich-dark-fg dark:hover:bg-gray-900"
-          title="Search existing person"
+          title="搜索现有人物"
           on:click={() => {
             searchFaces = true;
           }}
@@ -163,7 +163,7 @@
           <button
             class="flex place-content-center place-items-center rounded-full p-3 transition-colors hover:bg-gray-200 dark:text-immich-dark-fg dark:hover:bg-gray-900"
             on:click={handleCreatePerson}
-            title="Create new person"
+            title="创建新的人物"
           >
             <div>
               <Icon path={mdiPlus} size="24" />

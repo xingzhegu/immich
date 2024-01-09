@@ -26,11 +26,11 @@
       setUser(data);
 
       notificationController.show({
-        message: 'Saved profile',
+        message: '个人信息已保存',
         type: NotificationType.Info,
       });
     } catch (error) {
-      handleError(error, 'Unable to save profile');
+      handleError(error, '无法保存个人信息');
     }
   };
 </script>
@@ -41,18 +41,18 @@
       <div class="ml-4 mt-4 flex flex-col gap-4">
         <SettingInputField
           inputType={SettingInputFieldType.TEXT}
-          label="USER ID"
+          label="用户ID"
           bind:value={user.id}
           disabled={true}
         />
 
-        <SettingInputField inputType={SettingInputFieldType.EMAIL} label="EMAIL" bind:value={user.email} />
+        <SettingInputField inputType={SettingInputFieldType.EMAIL} label="邮箱" bind:value={user.email} />
 
-        <SettingInputField inputType={SettingInputFieldType.TEXT} label="NAME" bind:value={user.name} required={true} />
+        <SettingInputField inputType={SettingInputFieldType.TEXT} label="姓名" bind:value={user.name} required={true} />
 
         <SettingInputField
           inputType={SettingInputFieldType.TEXT}
-          label="STORAGE LABEL"
+          label="存储标签"
           disabled={true}
           value={user.storageLabel || ''}
           required={false}
@@ -60,14 +60,14 @@
 
         <SettingInputField
           inputType={SettingInputFieldType.TEXT}
-          label="EXTERNAL PATH"
+          label="外部路径"
           disabled={true}
           value={user.externalPath || ''}
           required={false}
         />
 
         <div class="flex justify-end">
-          <Button type="submit" size="sm" on:click={() => handleSaveProfile()}>Save</Button>
+          <Button type="submit" size="sm" on:click={() => handleSaveProfile()}>保存</Button>
         </div>
       </div>
     </form>

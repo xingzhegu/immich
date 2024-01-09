@@ -30,7 +30,7 @@
       {#if numberOfComments}
         <div class="text-xl">{numberOfComments}</div>
       {:else if !isShowActivity}
-        <div class="text-lg">Say something</div>
+        <div class="text-lg">评论</div>
       {/if}
     </div>
   </button>

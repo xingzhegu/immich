@@ -36,11 +36,11 @@
 
     try {
       await api.sharedLinkApi.removeSharedLink({ id: deleteLinkId });
-      notificationController.show({ message: 'Deleted shared link', type: NotificationType.Info });
+      notificationController.show({ message: '删除分享链接成功', type: NotificationType.Info });
       deleteLinkId = null;
       await refresh();
     } catch (error) {
-      await handleError(error, 'Unable to delete shared link');
+      await handleError(error, '无法删除分享链接');
     }
   };
 
@@ -55,18 +55,18 @@
 </script>
 
 <ControlAppBar backIcon={mdiArrowLeft} on:close={() => goto(AppRoute.SHARING)}>
-  <svelte:fragment slot="leading">Shared links</svelte:fragment>
+  <svelte:fragment slot="leading">已分享的链接</svelte:fragment>
 </ControlAppBar>
 
 <section class="mt-[120px] flex flex-col pb-[120px]">
   <div class="m-auto mb-4 w-[50%] dark:text-immich-gray">
-    <p>Manage shared links</p>
+    <p>管理分享的链接</p>
   </div>
   {#if sharedLinks.length === 0}
     <div
       class="m-auto flex w-[50%] place-content-center place-items-center rounded-lg bg-gray-100 dark:bg-immich-dark-gray dark:text-immich-gray p-12"
     >
-      <p>You don't have any shared links</p>
+      <p>您没有任何分享链接</p>
     </div>
   {:else}
     <div class="m-auto flex w-[50%] flex-col">
@@ -88,9 +88,9 @@
 
 {#if deleteLinkId}
   <ConfirmDialogue
-    title="Delete Shared Link"
-    prompt="Are you sure you want to delete this shared link?"
-    confirmText="Delete"
+    title="删除分享链接"
+    prompt="确定要删除此共享链接吗？"
+    confirmText="删除"
     on:confirm={() => handleDeleteLink()}
     on:cancel={() => (deleteLinkId = null)}
   />

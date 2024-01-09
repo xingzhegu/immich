@@ -24,19 +24,19 @@
   <div
     class="flex w-96 max-w-lg flex-col gap-8 rounded-3xl border bg-white p-8 shadow-sm dark:border-immich-dark-gray dark:bg-immich-dark-gray"
   >
-    <h1 class="self-center text-2xl font-medium text-immich-primary dark:text-immich-dark-primary">Map Settings</h1>
+    <h1 class="self-center text-2xl font-medium text-immich-primary dark:text-immich-dark-primary">地图设置</h1>
 
     <form
       on:submit|preventDefault={() => dispatch('save', settings)}
       class="flex flex-col gap-4 text-immich-primary dark:text-immich-dark-primary"
     >
-      <SettingSwitch title="Allow dark mode" bind:checked={settings.allowDarkMode} />
-      <SettingSwitch title="Only favorites" bind:checked={settings.onlyFavorites} />
-      <SettingSwitch title="Include archived" bind:checked={settings.includeArchived} />
+      <SettingSwitch title="允许暗黑模式" bind:checked={settings.allowDarkMode} />
+      <SettingSwitch title="仅收藏夹" bind:checked={settings.onlyFavorites} />
+      <SettingSwitch title="包括已存档的内容" bind:checked={settings.includeArchived} />
       {#if customDateRange}
         <div in:fly={{ y: 10, duration: 200 }} class="flex flex-col gap-4">
           <div class="flex items-center justify-between gap-8">
-            <label class="immich-form-label shrink-0 text-sm" for="date-after">Date after</label>
+            <label class="immich-form-label shrink-0 text-sm" for="date-after">之后</label>
             <input
               class="immich-form-input w-40"
               type="date"
@@ -46,7 +46,7 @@
             />
           </div>
           <div class="flex items-center justify-between gap-8">
-            <label class="immich-form-label shrink-0 text-sm" for="date-before">Date before</label>
+            <label class="immich-form-label shrink-0 text-sm" for="date-before">之前</label>
             <input class="immich-form-input w-40" type="date" id="date-before" bind:value={settings.dateBefore} />
           </div>
           <div class="flex justify-center text-xs">
@@ -57,40 +57,40 @@
                 settings.dateBefore = '';
               }}
             >
-              Remove custom date range
+              移除自定义日期范围
             </LinkButton>
           </div>
         </div>
       {:else}
         <div in:fly={{ y: -10, duration: 200 }} class="flex flex-col gap-1">
           <SettingSelect
-            label="Date range"
+            label="日期范围"
             name="date-range"
             bind:value={settings.relativeDate}
             options={[
               {
                 value: '',
-                text: 'All',
+                text: '所有',
               },
               {
                 value: Duration.fromObject({ hours: 24 }).toISO() || '',
-                text: 'Past 24 hours',
+                text: '过去24小时',
               },
               {
                 value: Duration.fromObject({ days: 7 }).toISO() || '',
-                text: 'Past 7 days',
+                text: '过去7天',
               },
               {
                 value: Duration.fromObject({ days: 30 }).toISO() || '',
-                text: 'Past 30 days',
+                text: '过去30天',
               },
               {
                 value: Duration.fromObject({ years: 1 }).toISO() || '',
-                text: 'Past year',
+                text: '过去1年',
               },
               {
                 value: Duration.fromObject({ years: 3 }).toISO() || '',
-                text: 'Past 3 years',
+                text: '过去3年',
               },
             ]}
           />
@@ -101,15 +101,15 @@
                 settings.relativeDate = '';
               }}
             >
-              Use custom date range instead
+              使用自定义日期范围
             </LinkButton>
           </div>
         </div>
       {/if}
 
       <div class="mt-4 flex w-full gap-4">
-        <Button color="gray" size="sm" fullwidth on:click={handleClose}>Cancel</Button>
-        <Button type="submit" size="sm" fullwidth>Save</Button>
+        <Button color="gray" size="sm" fullwidth on:click={handleClose}>取消</Button>
+        <Button type="submit" size="sm" fullwidth>保存</Button>
       </div>
     </form>
   </div>

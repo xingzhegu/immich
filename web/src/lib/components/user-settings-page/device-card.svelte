@@ -56,7 +56,7 @@
         {/if}
       </span>
       <div class="text-sm">
-        <span class="">Last seen</span>
+        <span class="">上次在线时间</span>
         <span>{DateTime.fromISO(device.updatedAt).toRelativeCalendar(options)}</span>
       </div>
     </div>
@@ -65,7 +65,7 @@
         <button
           on:click={() => dispatcher('delete')}
           class="rounded-full bg-immich-primary p-3 text-gray-100 transition-all duration-150 hover:bg-immich-primary/75 dark:bg-immich-dark-primary dark:text-gray-700"
-          title="Log out"
+          title="登出"
         >
           <Icon path={mdiTrashCanOutline} size="16" />
         </button>

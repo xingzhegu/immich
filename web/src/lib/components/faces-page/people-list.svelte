@@ -72,7 +72,7 @@
     autofocus
     class="w-full gap-2 bg-gray-100 dark:bg-gray-700 dark:text-white"
     type="text"
-    placeholder="Search names"
+    placeholder="搜索姓名"
     bind:value={name}
     on:input={() => searchPeople(false)}
   />

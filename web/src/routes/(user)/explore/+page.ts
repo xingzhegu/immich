@@ -10,7 +10,7 @@ export const load = (async () => {
     items,
     response,
     meta: {
-      title: 'Explore',
+      title: '探索',
     },
   };
 }) satisfies PageLoad;

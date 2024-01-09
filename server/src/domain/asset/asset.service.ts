@@ -201,7 +201,7 @@ export class AssetService {
         const years = currentYear - asset.localDateTime.getFullYear();
 
         return {
-          title: `${years} year${years > 1 ? 's' : ''} since...`,
+          title: `${years}年过去了...`,
           asset: mapAsset(asset),
         };
       })

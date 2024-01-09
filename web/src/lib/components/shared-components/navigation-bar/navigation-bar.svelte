@@ -54,7 +54,7 @@
       <section class="flex place-items-center justify-end gap-4 max-sm:w-full">
         {#if $featureFlags.search}
           <a href={AppRoute.SEARCH} id="search-button" class="pl-4 sm:hidden">
-            <IconButton title="Search">
+            <IconButton title="搜索">
               <div class="flex gap-2">
                 <Icon path={mdiMagnify} size="1.5em" />
               </div>
@@ -69,7 +69,7 @@
             <LinkButton on:click={() => dispatch('uploadClicked')}>
               <div class="flex gap-2">
                 <Icon path={mdiTrayArrowUp} size="1.5em" />
-                <span class="hidden md:block">Upload</span>
+                <span class="hidden md:block">上传</span>
               </div>
             </LinkButton>
           </div>
@@ -91,7 +91,7 @@
                     ? 'item text-immich-primary underline dark:text-immich-dark-primary'
                     : ''}
                 >
-                  Administration
+                  系统管理
                 </span>
               </div>
               <div class="block sm:hidden" aria-hidden="true">

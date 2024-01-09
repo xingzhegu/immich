@@ -31,7 +31,7 @@
     const { data: resetConfig } = await api.systemConfigApi.getConfig();
     machineLearningConfig = { ...resetConfig.machineLearning };
     savedConfig = { ...resetConfig.machineLearning };
-    notificationController.show({ message: 'Reset to the last saved settings', type: NotificationType.Info });
+    notificationController.show({ message: '将设置恢复为最近保存的设置', type: NotificationType.Info });
   }
 
   const handleReset = (detail: ResetOptions) => {
@@ -52,15 +52,15 @@
       machineLearningConfig = { ...result.data.machineLearning };
       savedConfig = { ...result.data.machineLearning };
 
-      notificationController.show({ message: 'Settings saved', type: NotificationType.Info });
+      notificationController.show({ message: '设置已保存', type: NotificationType.Info });
     } catch (error) {
-      handleError(error, 'Unable to save settings');
+      handleError(error, '无法保存设置');
     }
   }
 
   async function resetToDefault() {
     machineLearningConfig = { ...defaultConfig };
-    notificationController.show({ message: 'Reset settings to defaults', type: NotificationType.Info });
+    notificationController.show({ message: '将设置恢复为默认设置', type: NotificationType.Info });
   }
 </script>
 
@@ -70,8 +70,8 @@
       <form autocomplete="off" on:submit|preventDefault class="mx-4 mt-4">
         <div class="flex flex-col gap-4">
           <SettingSwitch
-            title="ENABLED"
-            subtitle="If disabled, all ML features will be disabled regardless of the below settings."
+            title="启用"
+            subtitle="如果禁用，则无论下面的设置如何，所有的机器学习功能都将被禁用。"
             {disabled}
             bind:checked={machineLearningConfig.enabled}
           />
@@ -81,7 +81,7 @@
           <SettingInputField
             inputType={SettingInputFieldType.TEXT}
             label="URL"
-            desc="URL of the machine learning server"
+            desc="机器学习服务的URL"
             bind:value={machineLearningConfig.url}
             required={true}
             disabled={disabled || !machineLearningConfig.enabled}
@@ -89,11 +89,11 @@
           />
         </div>
 
-        <SettingAccordion title="Smart Search" subtitle="Search for images semantically using CLIP embeddings">
+        <SettingAccordion title="智慧搜索" subtitle="使用内嵌的CLIP来语义搜索图像">
           <div class="ml-4 mt-4 flex flex-col gap-4">
             <SettingSwitch
-              title="ENABLED"
-              subtitle="If disabled, images will not be encoded for smart search."
+              title="启用"
+              subtitle="如果禁用，则图像将不会进行编码以进行智能搜索。"
               bind:checked={machineLearningConfig.clip.enabled}
               disabled={disabled || !machineLearningConfig.enabled}
             />
@@ -102,25 +102,24 @@
 
             <SettingInputField
               inputType={SettingInputFieldType.TEXT}
-              label="CLIP MODEL"
+              label="CLIP模型"
               bind:value={machineLearningConfig.clip.modelName}
               required={true}
               disabled={disabled || !machineLearningConfig.enabled || !machineLearningConfig.clip.enabled}
               isEdited={machineLearningConfig.clip.modelName !== savedConfig.clip.modelName}
             >
               <p slot="desc" class="immich-form-label pb-2 text-sm">
-                The name of a CLIP model listed <a href="https://huggingface.co/immich-app"><u>here</u></a>. Note that
-                you must re-run the 'Encode CLIP' job for all images upon changing a model.
+				<a href="https://huggingface.co/immich-app"><u>这里</u></a>列出一些CLIP模型的名称。请注意，在更改模型后，您必须重新运行"Encode CLIP"任务来对所有图像进行编码。
               </p>
             </SettingInputField>
           </div>
         </SettingAccordion>
 
-        <SettingAccordion title="Facial Recognition" subtitle="Detect, recognize and group faces in images">
+        <SettingAccordion title="人脸识别" subtitle="在图像中检测、识别和分组人脸">
           <div class="ml-4 mt-4 flex flex-col gap-4">
             <SettingSwitch
-              title="ENABLED"
-              subtitle="If disabled, images will not be encoded for facial recognition and will not populate the People section in the Explore page."
+              title="启用"
+              subtitle="如果禁用，则图像将不会进行人脸识别编码，并且不会在探索页面的人物部分显示。"
               bind:checked={machineLearningConfig.facialRecognition.enabled}
               disabled={disabled || !machineLearningConfig.enabled}
             />
@@ -128,8 +127,8 @@
             <hr />
 
             <SettingSelect
-              label="FACIAL RECOGNITION MODEL"
-              desc="Models are listed in descending order of size. Larger models are slower and use more memory, but produce better results. Note that you must re-run the Recognize Faces job for all images upon changing a model."
+              label="人脸识别模型"
+              desc="模型按照大小降序列出。较大的模型速度较慢，占用更多内存，但能产生更好的结果。请注意，在更改模型后，您必须重新运行'Recognize Faces'任务来对所有图像进行人脸识别。"
               name="facial-recognition-model"
               bind:value={machineLearningConfig.facialRecognition.modelName}
               options={[
@@ -144,8 +143,8 @@
 
             <SettingInputField
               inputType={SettingInputFieldType.NUMBER}
-              label="MIN DETECTION SCORE"
-              desc="Minimum confidence score for a face to be detected from 0-1. Lower values will detect more faces but may result in false positives."
+              label="最低检测分数"
+              desc="人脸检测的最低置信度分数，取值范围为 0 到 1。较低的值将检测到更多的人脸，但可能会导致误报。"
               bind:value={machineLearningConfig.facialRecognition.minScore}
               step="0.1"
               min="0"
@@ -156,8 +155,8 @@
 
             <SettingInputField
               inputType={SettingInputFieldType.NUMBER}
-              label="MAX RECOGNITION DISTANCE"
-              desc="Maximum distance between two faces to be considered the same person, ranging from 0-2. Lowering this can prevent labeling two people as the same person, while raising it can prevent labeling the same person as two different people. Note that it is easier to merge two people than to split one person in two, so err on the side of a lower threshold when possible."
+              label="最大识别距离"
+              desc="两个人脸被认为是同一个人的最大距离，取值范围为 0 到 2。降低此值可以防止将两个人标记为同一个人，而增加它可以防止将同一个人标记为两个不同的人。请注意，合并两个人比将一个人分成两个人更容易，因此尽可能选择较低的阈值。"
               bind:value={machineLearningConfig.facialRecognition.maxDistance}
               step="0.1"
               min="0"
@@ -169,8 +168,8 @@
 
             <SettingInputField
               inputType={SettingInputFieldType.NUMBER}
-              label="MIN FACES DETECTED"
-              desc="The minimum number of faces of a person that must be detected for them to appear in the People tab. Setting this to a value greater than 1 can prevent strangers or blurry faces that are not the main subject of the image from being displayed."
+              label="最小检测到的人脸数"
+              desc="必须检测到的人脸数的最小值，以使其在'人物'标签中显示。将此值设置为大于 1 的值可以防止显示那些不是图像主题的陌生人或模糊的人脸。"
               bind:value={machineLearningConfig.facialRecognition.minFaces}
               step="1"
               min="1"

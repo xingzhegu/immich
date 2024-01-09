@@ -49,7 +49,7 @@
     savedConfig = { ...resetConfig.oauth };
 
     notificationController.show({
-      message: 'Reset OAuth settings to the last saved settings',
+      message: '将OAuth设置恢复为最后保存的设置',
       type: NotificationType.Info,
     });
   }
@@ -92,9 +92,9 @@
       oauthConfig = { ...updated.oauth };
       savedConfig = { ...updated.oauth };
 
-      notificationController.show({ message: 'OAuth settings saved', type: NotificationType.Info });
+      notificationController.show({ message: 'OAuth设置已保存', type: NotificationType.Info });
     } catch (error) {
-      handleError(error, 'Unable to save OAuth settings');
+      handleError(error, '无法保存OAuth设置');
     }
   }
 
@@ -104,7 +104,7 @@
     oauthConfig = { ...defaultConfig.oauth };
 
     notificationController.show({
-      message: 'Reset OAuth settings to default',
+      message: '将OAuth设置恢复为默认设置',
       type: NotificationType.Info,
     });
   }
@@ -119,15 +119,15 @@
     <div in:fade={{ duration: 500 }}>
       <form autocomplete="off" on:submit|preventDefault class="mx-4 flex flex-col gap-4 py-4">
         <p class="text-sm dark:text-immich-dark-fg">
-          For more details about this feature, refer to the <a
+			有关此功能的更多详细信息，请参考<a
             href="https://immich.app/docs/administration/oauth#mobile-redirect-uri"
             class="underline"
             target="_blank"
-            rel="noreferrer">docs</a
+            rel="noreferrer">文档</a
           >.
         </p>
 
-        <SettingSwitch {disabled} title="ENABLE" bind:checked={oauthConfig.enabled} />
+        <SettingSwitch {disabled} title="启用" bind:checked={oauthConfig.enabled} />
         <hr />
         <SettingInputField
           inputType={SettingInputFieldType.TEXT}
@@ -168,7 +168,7 @@
         <SettingInputField
           inputType={SettingInputFieldType.TEXT}
           label="STORAGE LABEL CLAIM"
-          desc="Automatically set the user's storage label to the value of this claim."
+          desc="自动将用户的存储标签设置为此声明的值。"
           bind:value={oauthConfig.storageLabelClaim}
           required={true}
           disabled={disabled || !oauthConfig.storageLabelClaim}
@@ -185,22 +185,22 @@
         />
 
         <SettingSwitch
-          title="AUTO REGISTER"
-          subtitle="Automatically register new users after signing in with OAuth"
+          title="自动注册"
+          subtitle="在使用 OAuth 登录后自动注册新用户"
           bind:checked={oauthConfig.autoRegister}
           disabled={disabled || !oauthConfig.enabled}
         />
 
         <SettingSwitch
-          title="AUTO LAUNCH"
-          subtitle="Start the OAuth login flow automatically upon navigating to the login page"
+          title="自动启动"
+          subtitle="在导航到登录页面时自动启动 OAuth 登录流程"
           disabled={disabled || !oauthConfig.enabled}
           bind:checked={oauthConfig.autoLaunch}
         />
 
         <SettingSwitch
-          title="MOBILE REDIRECT URI OVERRIDE"
-          subtitle="Enable when `app.immich:/` is an invalid redirect URI."
+          title="移动设备重定向URI覆盖"
+          subtitle="当app.immich:/是无效的重定向 URI 时启用。"
           disabled={disabled || !oauthConfig.enabled}
           on:click={() => handleToggleOverride()}
           bind:checked={oauthConfig.mobileOverrideEnabled}

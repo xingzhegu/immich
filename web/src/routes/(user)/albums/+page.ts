@@ -9,7 +9,7 @@ export const load = (async () => {
   return {
     albums,
     meta: {
-      title: 'Albums',
+      title: '相册',
     },
   };
 }) satisfies PageLoad;

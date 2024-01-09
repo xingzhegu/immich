@@ -54,11 +54,11 @@
       const added = data.filter((item) => item.success).length;
 
       notificationController.show({
-        message: `Added ${added} assets`,
+        message: `成功添加${added}个资源`,
         type: NotificationType.Info,
       });
     } catch (e) {
-      await handleError(e, 'Unable to add assets to shared link');
+      await handleError(e, '无法将资源添加到共享链接');
     }
   };
 
@@ -70,7 +70,7 @@
 <section class="bg-immich-bg dark:bg-immich-dark-bg">
   {#if isMultiSelectionMode}
     <AssetSelectControlBar assets={selectedAssets} clearSelect={() => (selectedAssets = new Set())}>
-      <CircleIconButton title="Select all" icon={mdiSelectAll} on:click={handleSelectAll} />
+      <CircleIconButton title="全选" icon={mdiSelectAll} on:click={handleSelectAll} />
       {#if sharedLink?.allowDownload}
         <DownloadAction filename="immich-shared.zip" />
       {/if}
@@ -89,11 +89,11 @@
 
       <svelte:fragment slot="trailing">
         {#if sharedLink?.allowUpload}
-          <CircleIconButton title="Add Photos" on:click={() => handleUploadAssets()} icon={mdiFileImagePlusOutline} />
+          <CircleIconButton title="添加照片" on:click={() => handleUploadAssets()} icon={mdiFileImagePlusOutline} />
         {/if}
 
         {#if sharedLink?.allowDownload}
-          <CircleIconButton title="Download" on:click={downloadAssets} icon={mdiFolderDownloadOutline} />
+          <CircleIconButton title="下载" on:click={downloadAssets} icon={mdiFolderDownloadOutline} />
         {/if}
       </svelte:fragment>
     </ControlAppBar>

@@ -27,19 +27,19 @@
   >
     <div class="flex items-center">
       <CircleIconButton icon={mdiClose} on:click={() => dispatch('close')} />
-      <p class="ml-4 hidden sm:block">Show & hide people</p>
+      <p class="ml-4 hidden sm:block">显示和隐藏人物</p>
     </div>
     <div class="flex items-center justify-end">
       <div class="flex items-center md:mr-8">
-        <CircleIconButton title="Reset people visibility" icon={mdiRestart} on:click={() => dispatch('reset')} />
+        <CircleIconButton title="重置人物可见性" icon={mdiRestart} on:click={() => dispatch('reset')} />
         <CircleIconButton
-          title="Toggle visibility"
+          title="切换可见"
           icon={toggleVisibility ? mdiEye : mdiEyeOff}
           on:click={() => dispatch('change')}
         />
       </div>
       {#if !showLoadingSpinner}
-        <IconButton on:click={() => dispatch('done')}>Done</IconButton>
+        <IconButton on:click={() => dispatch('done')}>完成</IconButton>
       {:else}
         <LoadingSpinner />
       {/if}

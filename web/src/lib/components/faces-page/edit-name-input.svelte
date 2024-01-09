@@ -38,10 +38,10 @@
       autofocus
       class="w-full gap-2 bg-gray-100 dark:bg-gray-700 dark:text-white"
       type="text"
-      placeholder="New name or nickname"
+      placeholder="新的姓名或昵称"
       bind:value={name}
       on:input={() => dispatch('input')}
     />
-    <Button size="sm" type="submit">Done</Button>
+    <Button size="sm" type="submit">完成</Button>
   </form>
 </div>

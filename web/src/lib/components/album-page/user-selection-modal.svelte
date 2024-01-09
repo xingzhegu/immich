@@ -56,7 +56,7 @@
   <svelte:fragment slot="title">
     <span class="flex place-items-center gap-2">
       <ImmichLogo width={24} />
-      <p class="font-medium">Invite to album</p>
+      <p class="font-medium">邀请加入相册</p>
     </span>
   </svelte:fragment>
 
@@ -80,7 +80,7 @@
     {/if}
 
     {#if users.length > 0}
-      <p class="px-5 text-xs font-medium">SUGGESTIONS</p>
+      <p class="px-5 text-xs font-medium">建议</p>
 
       <div class="my-4">
         {#each users as user}
@@ -110,13 +110,13 @@
       </div>
     {:else}
       <p class="p-5 text-sm">
-        Looks like you have shared this album with all users or you don't have any user to share with.
+        看起来您已将此相册与所有用户共享，或者您没有任何用户可以共享。
       </p>
     {/if}
 
     {#if selectedUsers.length > 0}
       <div class="flex place-content-end p-5">
-        <Button size="sm" rounded="lg" on:click={() => dispatch('select', selectedUsers)}>Add</Button>
+        <Button size="sm" rounded="lg" on:click={() => dispatch('select', selectedUsers)}>添加</Button>
       </div>
     {/if}
   </div>
@@ -128,7 +128,7 @@
       on:click={() => dispatch('share')}
     >
       <Icon path={mdiLink} size={24} />
-      <p class="text-sm">Create link</p>
+      <p class="text-sm">创建链接</p>
     </button>
 
     {#if sharedLinks.length}
@@ -137,7 +137,7 @@
         on:click={() => goto(AppRoute.SHARED_LINKS)}
       >
         <Icon path={mdiShareCircle} size={24} />
-        <p class="text-sm">View links</p>
+        <p class="text-sm">显示链接</p>
       </button>
     {/if}
   </div>

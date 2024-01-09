@@ -132,7 +132,7 @@
       savedConfig.hashVerificationEnabled = result.data.storageTemplate.hashVerificationEnabled;
 
       notificationController.show({
-        message: 'Storage template saved',
+        message: '存储模板设置已保存',
         type: NotificationType.Info,
       });
 
@@ -140,7 +140,7 @@
     } catch (e) {
       console.error('Error [storage-template-settings] [saveSetting]', e);
       notificationController.show({
-        message: 'Unable to save settings',
+        message: '无法保存设置',
         type: NotificationType.Error,
       });
     }
@@ -166,18 +166,18 @@
   {#await getConfigs() then}
     <div id="directory-path-builder" class="flex flex-col gap-4 m-4">
       <SettingSwitch
-        title="ENABLED"
+        title="启用"
         {disabled}
-        subtitle="Enable storage template engine"
+        subtitle="启用存储模板引擎"
         bind:checked={storageConfig.enabled}
         isEdited={!(storageConfig.enabled === savedConfig.enabled)}
       />
 
       {#if !minified}
         <SettingSwitch
-          title="HASH VERIFICATION ENABLED"
+          title="启用哈希验证"
           {disabled}
-          subtitle="Enables hash verification, don't disable this unless you're certain of the implications"
+          subtitle="启用哈希验证，请确保您对其影响有明确的了解，除非您确定要禁用它"
           bind:checked={storageConfig.hashVerificationEnabled}
           isEdited={!(storageConfig.hashVerificationEnabled === savedConfig.hashVerificationEnabled)}
         />
@@ -186,7 +186,7 @@
       {#if storageConfig.enabled}
         <hr />
 
-        <h3 class="text-base font-medium text-immich-primary dark:text-immich-dark-primary">Variables</h3>
+        <h3 class="text-base font-medium text-immich-primary dark:text-immich-dark-primary">变量</h3>
 
         <section class="support-date">
           {#await getSupportDateTimeFormat()}
@@ -203,22 +203,21 @@
         </section>
 
         <div class="flex flex-col mt-4">
-          <h3 class="text-base font-medium text-immich-primary dark:text-immich-dark-primary">Template</h3>
+          <h3 class="text-base font-medium text-immich-primary dark:text-immich-dark-primary">模板</h3>
 
           <div class="my-2 text-sm">
-            <h4>PREVIEW</h4>
+            <h4>预览</h4>
           </div>
 
           <p class="text-sm">
-            Approximately path length limit : <span
+            大致路径长度限制 : <span
               class="font-semibold text-immich-primary dark:text-immich-dark-primary"
               >{parsedTemplate().length + $user.id.length + 'UPLOAD_LOCATION'.length}</span
             >/260
           </p>
 
           <p class="text-sm">
-            <code class="text-immich-primary dark:text-immich-dark-primary">{$user.storageLabel || $user.id}</code> is the
-            user's Storage Label
+            <code class="text-immich-primary dark:text-immich-dark-primary">{$user.storageLabel || $user.id}</code> 是用户的存储标签
           </p>
 
           <p class="p-4 py-2 mt-2 text-xs bg-gray-200 rounded-lg dark:bg-gray-700 dark:text-immich-dark-fg">
@@ -229,7 +228,7 @@
 
           <form autocomplete="off" class="flex flex-col" on:submit|preventDefault>
             <div class="flex flex-col my-2">
-              <label class="text-sm" for="preset-select">PRESET</label>
+              <label class="text-sm" for="preset-select">预设</label>
               <select
                 class="immich-form-input p-2 mt-2 text-sm rounded-lg bg-slate-200 hover:cursor-pointer dark:bg-gray-600"
                 disabled={disabled || !storageConfig.enabled}
@@ -254,7 +253,7 @@
               />
 
               <div class="flex-0">
-                <SettingInputField label="EXTENSION" inputType={SettingInputFieldType.TEXT} value={'.jpg'} disabled />
+                <SettingInputField label="扩展名" inputType={SettingInputFieldType.TEXT} value={'.jpg'} disabled />
               </div>
             </div>
 
@@ -263,20 +262,17 @@
                 <h3 class="text-base font-medium text-immich-primary dark:text-immich-dark-primary">Notes</h3>
                 <section class="flex flex-col gap-2">
                   <p>
-                    Template changes will only apply to new assets. To retroactively apply the template to previously
-                    uploaded assets, run the
+                    模板更改仅适用于新的资源。要将模板迁移到先前上传的资产上，请运行
                     <a href="/admin/jobs-status" class="text-immich-primary dark:text-immich-dark-primary"
-                      >Storage Migration Job</a
+                      >存储迁移任务</a
                     >.
                   </p>
                   <p>
-                    The template variable <span class="font-mono">{`{{album}}`}</span> will always be empty for new
-                    assets, so manually running the
-
+                    对于新的资源，模板变量 <span class="font-mono">{`{{album}}`}</span>将始终为空，因此需要手动运行
                     <a href="/admin/jobs-status" class="text-immich-primary dark:text-immich-dark-primary"
-                      >Storage Migration Job</a
+                      >存储迁移任务</a
                     >
-                    is required in order to successfully use the variable.
+                    才能成功使用该变量。
                   </p>
                 </section>
               </div>
@@ -290,13 +286,13 @@
           <div class="w-full flex place-content-start">
             <Button class="flex gap-2 place-content-center" on:click={() => dispatch('previous')}>
               <Icon path={mdiArrowLeft} size="18" />
-              <p>Theme</p>
+              <p>主题</p>
             </Button>
           </div>
           <div class="flex w-full place-content-end">
             <Button on:click={saveSetting}>
               <span class="flex place-content-center place-items-center gap-2">
-                Done
+                完成
                 <Icon path={mdiCheck} size="18" />
               </span>
             </Button>

@@ -22,11 +22,11 @@
         user = data;
 
         notificationController.show({
-          message: 'Linked OAuth account',
+          message: '连接的OAuth账户',
           type: NotificationType.Info,
         });
       } catch (error) {
-        handleError(error, 'Unable to link OAuth account');
+        handleError(error, '无法连接OAuth账户');
       } finally {
         goto('?open=oauth');
       }
@@ -40,11 +40,11 @@
       const { data } = await oauth.unlink();
       user = data;
       notificationController.show({
-        message: 'Unlinked OAuth account',
+        message: '取消连接OAuth账户',
         type: NotificationType.Info,
       });
     } catch (error) {
-      handleError(error, 'Unable to unlink account');
+      handleError(error, '无法取消连接OAuth账户');
     }
   };
 </script>
@@ -58,9 +58,9 @@
         </div>
       {:else if $featureFlags.oauth}
         {#if user.oauthId}
-          <Button size="sm" on:click={() => handleUnlink()}>Unlink Oauth</Button>
+          <Button size="sm" on:click={() => handleUnlink()}>取消连接Oauth</Button>
         {:else}
-          <Button size="sm" on:click={() => oauth.authorize(window.location)}>Link to OAuth</Button>
+          <Button size="sm" on:click={() => oauth.authorize(window.location)}>连接OAuth</Button>
         {/if}
       {/if}
     </div>

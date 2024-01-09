@@ -176,7 +176,7 @@ export class MetadataRepository implements IMetadataRepository {
     this.logger.verbose(`Raw: ${JSON.stringify(response, null, 2)}`);
 
     const { countryCode, name: city, admin1, admin2 } = response;
-    const country = getName(countryCode, 'en') ?? null;
+    const country = getName(countryCode, 'zh') ?? null;
     const stateParts = [admin2?.name, admin1?.name].filter((name) => !!name);
     const state = stateParts.length > 0 ? stateParts.join(', ') : null;
 

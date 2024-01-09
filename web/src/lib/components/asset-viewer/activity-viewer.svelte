@@ -26,7 +26,7 @@
     const diff = dateTime.diffNow().shiftTo(...units);
     const unit = units.find((unit) => diff.get(unit) !== 0) || 'second';
 
-    const relativeFormatter = new Intl.RelativeTimeFormat('en', {
+    const relativeFormatter = new Intl.RelativeTimeFormat('zh', {
       numeric: 'auto',
     });
     return relativeFormatter.format(Math.trunc(diff.as(unit)), unit);
@@ -117,11 +117,11 @@
         dispatch('deleteComment');
       }
       notificationController.show({
-        message: `${reaction.type} deleted`,
+        message: `${reaction.type == 'like'?'点赞':'评论'}已删除`,
         type: NotificationType.Info,
       });
     } catch (error) {
-      handleError(error, `Can't remove ${reaction.type}`);
+      handleError(error, `无法删除${reaction.type}`);
     }
   };
 
@@ -141,7 +141,7 @@
       // Re-render the activity feed
       reactions = reactions;
     } catch (error) {
-      handleError(error, "Can't add your comment");
+      handleError(error, "无法删除评论");
     } finally {
       clearTimeout(timeout);
     }
@@ -167,7 +167,7 @@
           <Icon path={mdiClose} size="24" />
         </button>
 
-        <p class="text-lg text-immich-fg dark:text-immich-dark-fg">Activity</p>
+        <p class="text-lg text-immich-fg dark:text-immich-dark-fg">活动</p>
       </div>
     </div>
     {#if innerHeight}
@@ -193,7 +193,7 @@
                 </div>
               {/if}
               {#if reaction.user.id === user.id || albumOwnerId === user.id}
-                <div class="flex items-start w-fit pt-[5px]" title="Delete comment">
+                <div class="flex items-start w-fit pt-[5px]" title="删除评论">
                   <button on:click={() => (!showDeleteReaction[index] ? showOptionsMenu(index) : '')}>
                     <Icon path={mdiDotsVertical} />
                   </button>
@@ -207,7 +207,7 @@
                     on:outclick={() => (showDeleteReaction[index] = false)}
                     on:click={() => handleDeleteReaction(reaction, index)}
                   >
-                    Remove
+                    删除
                   </button>
                 {/if}
               </div>
@@ -227,7 +227,7 @@
                 <div class="text-red-600"><Icon path={mdiHeart} size={20} /></div>
 
                 <div class="w-full" title={`${reaction.user.name} (${reaction.user.email})`}>
-                  {`${reaction.user.name} liked ${assetType ? `this ${getAssetType(assetType).toLowerCase()}` : 'it'}`}
+                  {`${reaction.user.name} 喜欢 ${assetType ? `这个${getAssetType(assetType).toLowerCase()}` : '它'}`}
                 </div>
                 {#if assetId === undefined && reaction.assetId}
                   <div class="aspect-square w-[75px] h-[75px]">
@@ -239,7 +239,7 @@
                   </div>
                 {/if}
                 {#if reaction.user.id === user.id || albumOwnerId === user.id}
-                  <div class="flex items-start w-fit" title="Delete like">
+                  <div class="flex items-start w-fit" title="删除点赞">
                     <button on:click={() => (!showDeleteReaction[index] ? showOptionsMenu(index) : '')}>
                       <Icon path={mdiDotsVertical} />
                     </button>
@@ -253,7 +253,7 @@
                       on:outclick={() => (showDeleteReaction[index] = false)}
                       on:click={() => handleDeleteReaction(reaction, index)}
                     >
-                      Remove
+                      删除
                     </button>
                   {/if}
                 </div>
@@ -285,7 +285,7 @@
               {disabled}
               bind:this={textArea}
               bind:value={message}
-              placeholder={disabled ? 'Comments are disabled' : 'Say something'}
+              placeholder={disabled ? '无法评论' : '评论'}
               on:input={autoGrow}
               on:keypress={handleEnter}
               class="h-[18px] {disabled

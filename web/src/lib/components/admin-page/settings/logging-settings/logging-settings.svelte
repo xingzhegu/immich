@@ -46,9 +46,9 @@
       loggingConfig = { ...updated.logging };
       savedConfig = { ...updated.logging };
 
-      notificationController.show({ message: 'Settings saved', type: NotificationType.Info });
+      notificationController.show({ message: '设置已保存', type: NotificationType.Info });
     } catch (error) {
-      handleError(error, 'Unable to save settings');
+      handleError(error, '无法保存设置');
     }
   }
 
@@ -83,13 +83,13 @@
       <form autocomplete="off" on:submit|preventDefault>
         <div class="ml-4 mt-4 flex flex-col gap-4">
           <div class="ml-4">
-            <SettingSwitch title="ENABLED" {disabled} subtitle="Logging" bind:checked={loggingConfig.enabled} />
+            <SettingSwitch title="启用" {disabled} subtitle="日志" bind:checked={loggingConfig.enabled} />
           </div>
 
           <div class="ml-4">
             <SettingSelect
-              label="LEVEL"
-              desc="When enabled, what log level to use."
+              label="日志级别"
+              desc="启用时，使用哪个日志级别"
               bind:value={loggingConfig.level}
               options={[
                 { value: LogLevel.Fatal, text: 'Fatal' },

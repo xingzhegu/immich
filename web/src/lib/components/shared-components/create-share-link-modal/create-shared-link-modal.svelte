@@ -85,7 +85,7 @@
       });
       sharedLink = makeSharedLinkUrl($serverConfig.externalDomain, data.key);
     } catch (e) {
-      handleError(e, 'Failed to create shared link');
+      handleError(e, '创建分享链接失败');
     }
   };
 
@@ -94,7 +94,7 @@
       return;
     }
 
-    await copyToClipboard(password ? `Link: ${sharedLink}\nPassword: ${password}` : sharedLink);
+    await copyToClipboard(password ? `链接: ${sharedLink}\n密码: ${password}` : sharedLink);
   };
 
   const getExpirationTimeInMillisecond = () => {
@@ -142,12 +142,12 @@
 
       notificationController.show({
         type: NotificationType.Info,
-        message: 'Edited',
+        message: '已编辑',
       });
 
       dispatch('close');
     } catch (e) {
-      handleError(e, 'Failed to edit shared link');
+      handleError(e, '编辑分享链接失败');
     }
   };
 </script>
@@ -157,9 +157,9 @@
     <span class="flex place-items-center gap-2">
       <Icon path={mdiLink} size={24} />
       {#if editingLink}
-        <p class="font-medium text-immich-fg dark:text-immich-dark-fg">Edit link</p>
+        <p class="font-medium text-immich-fg dark:text-immich-dark-fg">编辑链接</p>
       {:else}
-        <p class="font-medium text-immich-fg dark:text-immich-dark-fg">Create link to share</p>
+        <p class="font-medium text-immich-fg dark:text-immich-dark-fg">创建分享链接</p>
       {/if}
     </span>
   </svelte:fragment>
@@ -167,10 +167,10 @@
   <section class="mx-6 mb-6">
     {#if shareType === SharedLinkType.Album}
       {#if !editingLink}
-        <div>Let anyone with the link see photos and people in this album.</div>
+        <div>允许任何拥有链接的人查看此相册中的照片和人物。</div>
       {:else}
         <div class="text-sm">
-          Public album | <span class="text-immich-primary dark:text-immich-dark-primary"
+          公共相册 | <span class="text-immich-primary dark:text-immich-dark-primary"
             >{editingLink.album?.albumName}</span
           >
         </div>
@@ -179,10 +179,10 @@
 
     {#if shareType === SharedLinkType.Individual}
       {#if !editingLink}
-        <div>Let anyone with the link see the selected photo(s)</div>
+        <div>允许任何拥有链接的人查看所选的照片。</div>
       {:else}
         <div class="text-sm">
-          Individual shared | <span class="text-immich-primary dark:text-immich-dark-primary"
+          个人分享 | <span class="text-immich-primary dark:text-immich-dark-primary"
             >{editingLink.description || ''}</span
           >
         </div>
@@ -190,46 +190,46 @@
     {/if}
 
     <div class="mb-2 mt-4">
-      <p class="text-xs">LINK OPTIONS</p>
+      <p class="text-xs">链接选项</p>
     </div>
     <div class="rounded-lg bg-gray-100 p-4 dark:bg-black/40 overflow-y-auto">
       <div class="flex flex-col">
         <div class="mb-2">
-          <SettingInputField inputType={SettingInputFieldType.TEXT} label="Description" bind:value={description} />
+          <SettingInputField inputType={SettingInputFieldType.TEXT} label="描述" bind:value={description} />
         </div>
 
         <div class="mb-2">
           <SettingInputField
             inputType={SettingInputFieldType.TEXT}
-            label="Password"
+            label="密码"
             bind:value={password}
             disabled={!enablePassword}
           />
         </div>
 
         <div class="my-3">
-          <SettingSwitch bind:checked={enablePassword} title={'Require password'} />
+          <SettingSwitch bind:checked={enablePassword} title={'需要密码'} />
         </div>
 
         <div class="my-3">
-          <SettingSwitch bind:checked={showMetadata} title={'Show metadata'} />
+          <SettingSwitch bind:checked={showMetadata} title={'显示元数据'} />
         </div>
 
         <div class="my-3">
-          <SettingSwitch bind:checked={allowDownload} title={'Allow public user to download'} />
+          <SettingSwitch bind:checked={allowDownload} title={'允许公共用户下载'} />
         </div>
 
         <div class="my-3">
-          <SettingSwitch bind:checked={allowUpload} title={'Allow public user to upload'} />
+          <SettingSwitch bind:checked={allowUpload} title={'允许公共用户上传'} />
         </div>
 
         <div class="text-sm">
           {#if editingLink}
             <p class="immich-form-label my-2">
-              <SettingSwitch bind:checked={shouldChangeExpirationTime} title={'Change expiration time'} />
+              <SettingSwitch bind:checked={shouldChangeExpirationTime} title={'修改过期时间'} />
             </p>
           {:else}
-            <p class="immich-form-label my-2">Expire after</p>
+            <p class="immich-form-label my-2">过期时间</p>
           {/if}
 
           <DropdownButton
@@ -248,11 +248,11 @@
     {#if !sharedLink}
       {#if editingLink}
         <div class="flex justify-end">
-          <Button size="sm" rounded="lg" on:click={handleEditLink}>Confirm</Button>
+          <Button size="sm" rounded="lg" on:click={handleEditLink}>确认</Button>
         </div>
       {:else}
         <div class="flex justify-end">
-          <Button size="sm" rounded="lg" on:click={handleCreateSharedLink}>Create link</Button>
+          <Button size="sm" rounded="lg" on:click={handleCreateSharedLink}>创建链接</Button>
         </div>
       {/if}
     {:else}
@@ -260,7 +260,7 @@
         <input class="immich-form-input w-full" bind:value={sharedLink} disabled />
 
         {#if canCopyImagesToClipboard}
-          <Button on:click={() => handleCopy()}>Copy</Button>
+          <Button on:click={() => handleCopy()}>复制</Button>
         {/if}
       </div>
     {/if}

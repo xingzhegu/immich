@@ -87,14 +87,14 @@
       await copyImageToClipboard(assetData);
       notificationController.show({
         type: NotificationType.Info,
-        message: 'Copied image to clipboard.',
+        message: '已将图像复制到剪贴板。',
         timeout: 3000,
       });
     } catch (err) {
       console.error('Error [photo-viewer]:', err);
       notificationController.show({
         type: NotificationType.Error,
-        message: 'Copying image to clipboard failed.',
+        message: '复制图像到剪贴板失败',
       });
     }
   };

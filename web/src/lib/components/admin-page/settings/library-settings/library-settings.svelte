@@ -17,10 +17,10 @@
   export let disabled = false;
 
   const cronExpressionOptions = [
-    { title: 'Every night at midnight', expression: '0 0 * * *' },
-    { title: 'Every night at 2am', expression: '0 2 * * *' },
-    { title: 'Every day at 1pm', expression: '0 13 * * *' },
-    { title: 'Every 6 hours', expression: '0 */6 * * *' },
+    { title: '每天午夜时分', expression: '0 0 * * *' },
+    { title: '每天凌晨2点', expression: '0 2 * * *' },
+    { title: '每天下午一点', expression: '0 13 * * *' },
+    { title: '每隔6小时', expression: '0 */6 * * *' },
   ];
 
   let savedConfig: SystemConfigLibraryDto;
@@ -92,18 +92,18 @@
 <div>
   {#await getConfigs() then}
     <div in:fade={{ duration: 500 }}>
-      <SettingAccordion title="Scanning" subtitle="Settings for library scanning" isOpen>
+      <SettingAccordion title="扫描" subtitle="图库扫描设置" isOpen>
         <form autocomplete="off" on:submit|preventDefault>
           <div class="ml-4 mt-4 flex flex-col gap-4">
             <SettingSwitch
-              title="ENABLED"
+              title="启用"
               {disabled}
-              subtitle="Enable automatic library scanning"
+              subtitle="启用自动图库扫描"
               bind:checked={libraryConfig.scan.enabled}
             />
 
             <div class="flex flex-col my-2 dark:text-immich-dark-fg">
-              <label class="text-sm" for="expression-select">Cron Expression Presets</label>
+              <label class="text-sm" for="expression-select">预设的Cron表达式</label>
               <select
                 class="p-2 mt-2 text-sm rounded-lg bg-slate-200 hover:cursor-pointer dark:bg-gray-600"
                 disabled={disabled || !libraryConfig.scan.enabled}
@@ -121,13 +121,13 @@
               inputType={SettingInputFieldType.TEXT}
               required={true}
               disabled={disabled || !libraryConfig.scan.enabled}
-              label="Cron Expression"
+              label="Cron表达式"
               bind:value={libraryConfig.scan.cronExpression}
               isEdited={libraryConfig.scan.cronExpression !== savedConfig.scan.cronExpression}
             >
               <svelte:fragment slot="desc">
                 <p class="text-sm dark:text-immich-dark-fg">
-                  Set the scanning interval using the cron format. For more information please refer to e.g. <a
+                  使用 cron 格式设置扫描间隔。有关更多信息，请参考例如 <a
                     href="https://crontab.guru"
                     class="underline"
                     target="_blank"

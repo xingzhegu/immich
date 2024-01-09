@@ -27,12 +27,12 @@
 
 <div class="flex flex-col gap-5">
   <div>
-    <p class="text-sm dark:text-immich-dark-fg">TOTAL USAGE</p>
+    <p class="text-sm dark:text-immich-dark-fg">总使用量</p>
 
     <div class="mt-5 hidden justify-between lg:flex">
-      <StatsCard icon={mdiCameraIris} title="PHOTOS" value={stats.photos} />
-      <StatsCard icon={mdiPlayCircle} title="VIDEOS" value={stats.videos} />
-      <StatsCard icon={mdiMemory} title="STORAGE" value={statsUsage} unit={statsUsageUnit} />
+      <StatsCard icon={mdiCameraIris} title="照片" value={stats.photos} />
+      <StatsCard icon={mdiPlayCircle} title="视频" value={stats.videos} />
+      <StatsCard icon={mdiMemory} title="存储" value={statsUsage} unit={statsUsageUnit} />
     </div>
     <div class="mt-5 flex lg:hidden">
       <div class="flex flex-col justify-between rounded-3xl bg-immich-gray p-5 dark:bg-immich-dark-gray">
@@ -78,16 +78,16 @@
   </div>
 
   <div>
-    <p class="text-sm dark:text-immich-dark-fg">USER USAGE DETAIL</p>
+    <p class="text-sm dark:text-immich-dark-fg">用户使用详细信息</p>
     <table class="mt-5 w-full text-left">
       <thead
         class="mb-4 flex h-12 w-full rounded-md border bg-gray-50 text-immich-primary dark:border-immich-dark-gray dark:bg-immich-dark-gray dark:text-immich-dark-primary"
       >
         <tr class="flex w-full place-items-center">
-          <th class="w-1/4 text-center text-sm font-medium">User</th>
-          <th class="w-1/4 text-center text-sm font-medium">Photos</th>
-          <th class="w-1/4 text-center text-sm font-medium">Videos</th>
-          <th class="w-1/4 text-center text-sm font-medium">Size</th>
+          <th class="w-1/4 text-center text-sm font-medium">用户</th>
+          <th class="w-1/4 text-center text-sm font-medium">照片</th>
+          <th class="w-1/4 text-center text-sm font-medium">视频</th>
+          <th class="w-1/4 text-center text-sm font-medium">大小</th>
         </tr>
       </thead>
       <tbody

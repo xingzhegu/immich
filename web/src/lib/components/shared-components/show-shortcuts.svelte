@@ -6,17 +6,17 @@
 
   const shortcuts = {
     general: [
-      { key: ['←', '→'], action: 'Previous or next photo' },
-      { key: ['Esc'], action: 'Back, close, or deselect' },
-      { key: ['/'], action: 'Search your photos' },
+      { key: ['←', '→'], action: '上一张或下一张照片' },
+      { key: ['Esc'], action: '返回、关闭或取消选择' },
+      { key: ['/'], action: '搜索照片' },
     ],
     actions: [
-      { key: ['f'], action: 'Favorite or unfavorite photo' },
-      { key: ['i'], action: 'Show or hide info' },
-      { key: ['⇧', 'a'], action: 'Archive or unarchive photo' },
-      { key: ['⇧', 'd'], action: 'Download' },
-      { key: ['Space'], action: 'Play or pause video' },
-      { key: ['Del'], action: 'Delete Asset' },
+      { key: ['f'], action: '收藏或取消收藏照片' },
+      { key: ['i'], action: '显示或隐藏信息' },
+      { key: ['⇧', 'a'], action: '将照片归档或取消归档' },
+      { key: ['⇧', 'd'], action: '下载' },
+      { key: ['Space'], action: '播放或暂停视频' },
+      { key: ['Del'], action: '删除资源' },
     ],
   };
   const dispatch = createEventDispatcher<{

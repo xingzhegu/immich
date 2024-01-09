@@ -176,14 +176,14 @@
           <Icon path={mdiArrowLeftThin} size="24" />
         </div>
       </button>
-      <p class="flex text-lg text-immich-fg dark:text-immich-dark-fg">Edit faces</p>
+      <p class="flex text-lg text-immich-fg dark:text-immich-dark-fg">编辑人脸</p>
     </div>
     {#if !isShowLoadingDone}
       <button
         class="justify-self-end rounded-lg p-2 hover:bg-immich-dark-primary hover:dark:bg-immich-dark-primary/50"
         on:click={() => handleEditFaces()}
       >
-        Done
+        完成
       </button>
     {:else}
       <LoadingSpinner />

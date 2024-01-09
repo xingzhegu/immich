@@ -10,17 +10,17 @@
 </script>
 
 <div class="mt-2 text-sm">
-  <h4>DATE & TIME</h4>
+  <h4>日期 & 时间</h4>
 </div>
 
 <div class="mt-2 rounded-lg bg-gray-200 p-4 text-xs dark:bg-gray-700 dark:text-immich-dark-fg">
   <div class="mb-2 text-gray-600 dark:text-immich-dark-fg">
-    <p>Asset's creation timestamp is used for the datetime information</p>
-    <p>Sample time 2022-02-03T04:56:05.250</p>
+    <p>资源的创建时间戳被用作日期时间信息。</p>
+    <p>时间例子 2022-02-03T04:56:05.250</p>
   </div>
   <div class="flex gap-[40px]">
     <div>
-      <p class="font-medium text-immich-primary dark:text-immich-dark-primary">YEAR</p>
+      <p class="font-medium text-immich-primary dark:text-immich-dark-primary">年</p>
       <ul>
         {#each options.yearOptions as yearFormat}
           <li>{'{{'}{yearFormat}{'}}'} - {getLuxonExample(yearFormat)}</li>
@@ -29,7 +29,7 @@
     </div>
 
     <div>
-      <p class="font-medium text-immich-primary dark:text-immich-dark-primary">MONTH</p>
+      <p class="font-medium text-immich-primary dark:text-immich-dark-primary">月</p>
       <ul>
         {#each options.monthOptions as monthFormat}
           <li>{'{{'}{monthFormat}{'}}'} - {getLuxonExample(monthFormat)}</li>
@@ -38,7 +38,7 @@
     </div>
 
     <div>
-      <p class="font-medium text-immich-primary dark:text-immich-dark-primary">WEEK</p>
+      <p class="font-medium text-immich-primary dark:text-immich-dark-primary">周</p>
       <ul>
         {#each options.weekOptions as weekFormat}
           <li>{'{{'}{weekFormat}{'}}'} - {getLuxonExample(weekFormat)}</li>
@@ -47,7 +47,7 @@
     </div>
 
     <div>
-      <p class="font-medium text-immich-primary dark:text-immich-dark-primary">DAY</p>
+      <p class="font-medium text-immich-primary dark:text-immich-dark-primary">日</p>
       <ul>
         {#each options.dayOptions as dayFormat}
           <li>{'{{'}{dayFormat}{'}}'} - {getLuxonExample(dayFormat)}</li>
@@ -56,7 +56,7 @@
     </div>
 
     <div>
-      <p class="font-medium text-immich-primary dark:text-immich-dark-primary">HOUR</p>
+      <p class="font-medium text-immich-primary dark:text-immich-dark-primary">时</p>
       <ul>
         {#each options.hourOptions as dayFormat}
           <li>{'{{'}{dayFormat}{'}}'} - {getLuxonExample(dayFormat)}</li>
@@ -65,7 +65,7 @@
     </div>
 
     <div>
-      <p class="font-medium text-immich-primary dark:text-immich-dark-primary">MINUTE</p>
+      <p class="font-medium text-immich-primary dark:text-immich-dark-primary">分</p>
       <ul>
         {#each options.minuteOptions as dayFormat}
           <li>{'{{'}{dayFormat}{'}}'} - {getLuxonExample(dayFormat)}</li>
@@ -74,7 +74,7 @@
     </div>
 
     <div>
-      <p class="font-medium text-immich-primary dark:text-immich-dark-primary">SECOND</p>
+      <p class="font-medium text-immich-primary dark:text-immich-dark-primary">秒</p>
       <ul>
         {#each options.secondOptions as dayFormat}
           <li>{'{{'}{dayFormat}{'}}'} - {getLuxonExample(dayFormat)}</li>

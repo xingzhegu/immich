@@ -23,12 +23,12 @@
     <div
       class="flex flex-col place-content-center place-items-center gap-4 px-4 text-immich-primary dark:text-immich-dark-primary"
     >
-      <h1 class="text-2xl font-medium text-immich-primary dark:text-immich-dark-primary">Edit description</h1>
+      <h1 class="text-2xl font-medium text-immich-primary dark:text-immich-dark-primary">编辑描述</h1>
     </div>
 
     <form on:submit|preventDefault={handleSubmit} autocomplete="off">
       <div class="m-4 flex flex-col gap-2">
-        <label class="immich-form-label" for="name">Description</label>
+        <label class="immich-form-label" for="name">描述</label>
         <!-- svelte-ignore a11y-autofocus -->
         <textarea
           class="immich-form-input focus:outline-none"
@@ -41,8 +41,8 @@
       </div>
 
       <div class="mt-8 flex w-full gap-4 px-4">
-        <Button color="gray" fullwidth on:click={handleCancel}>Cancel</Button>
-        <Button type="submit" fullwidth>Ok</Button>
+        <Button color="gray" fullwidth on:click={handleCancel}>取消</Button>
+        <Button type="submit" fullwidth>提交</Button>
       </div>
     </form>
   </div>

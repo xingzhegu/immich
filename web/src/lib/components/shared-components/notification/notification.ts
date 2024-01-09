@@ -1,9 +1,9 @@
 import { writable } from 'svelte/store';
 
 export enum NotificationType {
-  Info = 'Info',
-  Error = 'Error',
-  Warning = 'Warning',
+  Info = '信息',
+  Error = '错误',
+  Warning = '警告',
 }
 
 export class ImmichNotification {

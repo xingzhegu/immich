@@ -46,10 +46,10 @@
     >
     <span class="flex gap-1 text-sm">
       {#if variant === 'simple'}
-        <span>{album.shared ? 'Shared' : ''}</span>
+        <span>{album.shared ? '分享的' : ''}</span>
       {:else}
         <span>{album.assetCount} items</span>
-        <span>{album.shared ? ' · Shared' : ''} </span>
+        <span>{album.shared ? ' · 分享的' : ''} </span>
       {/if}
     </span>
   </div>

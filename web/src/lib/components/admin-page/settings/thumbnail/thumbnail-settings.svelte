@@ -40,7 +40,7 @@
     savedConfig = { ...resetConfig.thumbnail };
 
     notificationController.show({
-      message: 'Reset thumbnail settings to the recent saved settings',
+      message: '将缩略图设置重置为最近保存的设置',
       type: NotificationType.Info,
     });
   }
@@ -52,7 +52,7 @@
     defaultConfig = { ...configs.thumbnail };
 
     notificationController.show({
-      message: 'Reset thumbnail settings to default',
+      message: '将缩略图设置重置为默认设置',
       type: NotificationType.Info,
     });
   }
@@ -72,13 +72,13 @@
       savedConfig = { ...result.data.thumbnail };
 
       notificationController.show({
-        message: 'Thumbnail settings saved',
+        message: '缩略图设置已保存',
         type: NotificationType.Info,
       });
     } catch (e) {
       console.error('Error [thumbnail-settings] [saveSetting]', e);
       notificationController.show({
-        message: 'Unable to save settings',
+        message: '无法保存设置',
         type: NotificationType.Error,
       });
     }
@@ -91,8 +91,8 @@
       <form autocomplete="off" on:submit|preventDefault>
         <div class="ml-4 mt-4 flex flex-col gap-4">
           <SettingSelect
-            label="SMALL THUMBNAIL RESOLUTION"
-            desc="Used when viewing groups of photos (main timeline, album view, etc.). Higher resolutions can preserve more detail but take longer to encode, have larger file sizes, and can reduce app responsiveness."
+            label="小缩略图分辨率"
+            desc="在查看照片组（主时间线、相册视图等）时使用。较高的分辨率可以保留更多细节，但编码时间较长，文件大小较大，并可能降低应用程序的响应速度。"
             number
             bind:value={thumbnailConfig.webpSize}
             options={[
@@ -108,8 +108,8 @@
           />
 
           <SettingSelect
-            label="LARGE THUMBNAIL RESOLUTION"
-            desc="Used when viewing a single photo and for machine learning. Higher resolutions can preserve more detail but take longer to encode, have larger file sizes, and can reduce app responsiveness."
+            label="大缩略图分辨率"
+            desc="在查看单张照片和机器学习时使用。较高的分辨率可以保留更多细节，但编码时间较长，文件大小较大，并可能降低应用程序的响应速度。"
             number
             bind:value={thumbnailConfig.jpegSize}
             options={[
@@ -125,15 +125,15 @@
 
           <SettingInputField
             inputType={SettingInputFieldType.NUMBER}
-            label="QUALITY"
-            desc="Thumbnail quality from 1-100. Higher is better for quality but produces larger files."
+            label="质量"
+            desc="缩略图质量，范围为1-100。质量越高，文件越大。"
             bind:value={thumbnailConfig.quality}
             isEdited={thumbnailConfig.quality !== savedConfig.quality}
           />
 
           <SettingSwitch
-            title="PREFER WIDE GAMUT"
-            subtitle="Use Display P3 for thumbnails. This better preserves the vibrance of images with wide colorspaces, but images may appear differently on old devices with an old browser version. sRGB images are kept as sRGB to avoid color shifts."
+            title="首选宽色域"
+            subtitle="对于缩略图，请使用 Display P3。这样可以更好地保留具有宽色域的图像的鲜艳度，但在旧设备和旧浏览器版本上，图像可能显示不同。将 sRGB 图像保持为 sRGB，以避免颜色偏移。"
             checked={thumbnailConfig.colorspace === Colorspace.P3}
             on:toggle={(e) => (thumbnailConfig.colorspace = e.detail ? Colorspace.P3 : Colorspace.Srgb)}
             isEdited={thumbnailConfig.colorspace !== savedConfig.colorspace}

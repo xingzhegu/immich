@@ -35,23 +35,23 @@
 
       notificationController.show({
         type: NotificationType.Info,
-        message: `Removed ${count} assets`,
+        message: `已删除${count}个资源`,
       });
 
       clearSelect();
     } catch (error) {
-      handleError(error, 'Unable to remove assets from shared link');
+      handleError(error, '无法从分享链接中删除资源');
     }
   };
 </script>
 
-<CircleIconButton title="Remove from shared link" on:click={() => (removing = true)} icon={mdiDeleteOutline} />
+<CircleIconButton title="从分享链接中移除" on:click={() => (removing = true)} icon={mdiDeleteOutline} />
 
 {#if removing}
   <ConfirmDialogue
-    title="Remove Assets?"
-    prompt="Are you sure you want to remove {getAssets().size} asset(s) from this shared link?"
-    confirmText="Remove"
+    title="删除资源"
+    prompt="您确定要从此分享链接中移除{getAssets().size}个资源吗？"
+    confirmText="删除"
     on:confirm={() => handleRemove()}
     on:cancel={() => (removing = false)}
   />

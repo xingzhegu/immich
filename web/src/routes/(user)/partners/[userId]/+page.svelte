@@ -30,7 +30,7 @@
   {#if $isMultiSelectState}
     <AssetSelectControlBar assets={$selectedAssets} clearSelect={assetInteractionStore.clearMultiselect}>
       <CreateSharedLink />
-      <AssetSelectContextMenu icon={mdiPlus} title="Add">
+      <AssetSelectContextMenu icon={mdiPlus} title="添加">
         <AddToAlbum />
         <AddToAlbum shared />
       </AssetSelectContextMenu>

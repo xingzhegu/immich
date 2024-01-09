@@ -20,10 +20,10 @@
         dataUrl = URL.createObjectURL(data);
         return dataUrl;
       } else {
-        throw new Error('Invalid data format');
+        throw new Error('无效的数据格式');
       }
     } catch (error) {
-      errorMessage = 'Failed to load asset';
+      errorMessage = '导入资源失败';
       return '';
     }
   };

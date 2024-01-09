@@ -94,14 +94,14 @@
         <CircleIconButton
           isOpacity={true}
           icon={mdiMotionPauseOutline}
-          title="Stop Motion Photo"
+          title="停止播放动态照片"
           on:click={() => dispatch('stopMotionPhoto')}
         />
       {:else}
         <CircleIconButton
           isOpacity={true}
           icon={mdiPlaySpeed}
-          title="Play Motion Photo"
+          title="播放动态照片"
           on:click={() => dispatch('playMotionPhoto')}
         />
       {/if}
@@ -111,7 +111,7 @@
         isOpacity={true}
         hideMobile={true}
         icon={$photoZoomState && $photoZoomState.currentZoom > 1 ? mdiMagnifyMinusOutline : mdiMagnifyPlusOutline}
-        title="Zoom Image"
+        title="放大图片"
         on:click={() => {
           const zoomImage = new CustomEvent('zoomImage');
           window.dispatchEvent(zoomImage);
@@ -122,7 +122,7 @@
       <CircleIconButton
         isOpacity={true}
         icon={mdiContentCopy}
-        title="Copy Image"
+        title="复制图片"
         on:click={() => {
           const copyEvent = new CustomEvent('copyImage');
           window.dispatchEvent(copyEvent);
@@ -135,7 +135,7 @@
         isOpacity={true}
         icon={mdiCloudDownloadOutline}
         on:click={() => dispatch('download')}
-        title="Download"
+        title="下载"
       />
     {/if}
     {#if showDetailButton}
@@ -143,7 +143,7 @@
         isOpacity={true}
         icon={mdiInformationOutline}
         on:click={() => dispatch('showDetail')}
-        title="Info"
+        title="信息"
       />
     {/if}
     {#if isOwner}
@@ -151,33 +151,33 @@
         isOpacity={true}
         icon={asset.isFavorite ? mdiHeart : mdiHeartOutline}
         on:click={() => dispatch('favorite')}
-        title={asset.isFavorite ? 'Unfavorite' : 'Favorite'}
+        title={asset.isFavorite ? '取消收藏' : '收藏'}
       />
     {/if}
 
     {#if isOwner}
       {#if !asset.isReadOnly || !asset.isExternal}
-        <CircleIconButton isOpacity={true} icon={mdiDeleteOutline} on:click={() => dispatch('delete')} title="Delete" />
+        <CircleIconButton isOpacity={true} icon={mdiDeleteOutline} on:click={() => dispatch('delete')} title="删除" />
       {/if}
       <div use:clickOutside on:outclick={() => (isShowAssetOptions = false)}>
-        <CircleIconButton isOpacity={true} icon={mdiDotsVertical} on:click={showOptionsMenu} title="More" />
+        <CircleIconButton isOpacity={true} icon={mdiDotsVertical} on:click={showOptionsMenu} title="更多" />
         {#if isShowAssetOptions}
           <ContextMenu {...contextMenuPosition} direction="left">
             {#if showSlideshow}
-              <MenuOption on:click={() => onMenuClick('playSlideShow')} text="Slideshow" />
+              <MenuOption on:click={() => onMenuClick('playSlideShow')} text="幻灯片播放" />
             {/if}
-            <MenuOption on:click={() => onMenuClick('addToAlbum')} text="Add to Album" />
-            <MenuOption on:click={() => onMenuClick('addToSharedAlbum')} text="Add to Shared Album" />
+            <MenuOption on:click={() => onMenuClick('addToAlbum')} text="添加到相册" />
+            <MenuOption on:click={() => onMenuClick('addToSharedAlbum')} text="添加到分享相册" />
 
             {#if isOwner}
               <MenuOption
                 on:click={() => dispatch('toggleArchive')}
-                text={asset.isArchived ? 'Unarchive' : 'Archive'}
+                text={asset.isArchived ? '取消归档' : '归档'}
               />
-              <MenuOption on:click={() => onMenuClick('asProfileImage')} text="As profile picture" />
+              <MenuOption on:click={() => onMenuClick('asProfileImage')} text="设置为个人资料图片" />
 
               {#if hasStackChildren}
-                <MenuOption on:click={() => onMenuClick('unstack')} text="Un-Stack" />
+                <MenuOption on:click={() => onMenuClick('unstack')} text="取消堆叠" />
               {/if}
 
               <MenuOption

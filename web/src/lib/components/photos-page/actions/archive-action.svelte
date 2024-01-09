@@ -15,7 +15,7 @@
   export let menuItem = false;
   export let unarchive = false;
 
-  $: text = unarchive ? 'Unarchive' : 'Archive';
+  $: text = unarchive ? '取消归档' : '归档';
   $: icon = unarchive ? mdiArchiveArrowUpOutline : mdiArchiveArrowDownOutline;
 
   let loading = false;
@@ -41,13 +41,13 @@
       onArchive?.(ids, isArchived);
 
       notificationController.show({
-        message: `${isArchived ? 'Archived' : 'Unarchived'} ${ids.length}`,
+        message: `${isArchived ? '已归档' : '已取消归档'}${ids.length}个资源`,
         type: NotificationType.Info,
       });
 
       clearSelect();
     } catch (error) {
-      handleError(error, `Unable to ${isArchived ? 'archive' : 'unarchive'}`);
+      handleError(error, `无法${isArchived ? '归档' : '取消归档'}`);
     } finally {
       loading = false;
     }

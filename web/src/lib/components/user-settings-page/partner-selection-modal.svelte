@@ -39,7 +39,7 @@
   <svelte:fragment slot="title">
     <span class="flex place-items-center gap-2">
       <ImmichLogo width={24} />
-      <p class="font-medium">Add partner</p>
+      <p class="font-medium">添加伙伴</p>
     </span>
   </svelte:fragment>
 
@@ -71,13 +71,13 @@
       {/each}
     {:else}
       <p class="p-5 text-sm">
-        Looks like you shared your photos with all users or you don't have any user to share with.
+        看起来您已与所有用户分享了您的照片，或者您没有要分享的用户。
       </p>
     {/if}
 
     {#if selectedUsers.length > 0}
       <div class="flex place-content-end p-5">
-        <Button size="sm" rounded="lg" on:click={() => dispatch('add-users', selectedUsers)}>Add</Button>
+        <Button size="sm" rounded="lg" on:click={() => dispatch('add-users', selectedUsers)}>添加</Button>
       </div>
     {/if}
   </div>

@@ -15,7 +15,7 @@
   export let menuItem = false;
   export let removeFavorite: boolean;
 
-  $: text = removeFavorite ? 'Remove from Favorites' : 'Favorite';
+  $: text = removeFavorite ? '取消收藏' : '收藏';
   $: icon = removeFavorite ? mdiHeartMinusOutline : mdiHeartOutline;
 
   let loading = false;
@@ -42,13 +42,13 @@
       onFavorite?.(ids, isFavorite);
 
       notificationController.show({
-        message: isFavorite ? `Added ${ids.length} to favorites` : `Removed ${ids.length} from favorites`,
+        message: isFavorite ? `已添加${ids.length}个资源到收藏夹` : `已从收藏夹删除${ids.length}个资源`,
         type: NotificationType.Info,
       });
 
       clearSelect();
     } catch (error) {
-      handleError(error, `Unable to ${isFavorite ? 'add to' : 'remove from'} favorites`);
+      handleError(error, `无法${isFavorite ? '添加到' : '删除从'}收藏夹`);
     } finally {
       loading = false;
     }

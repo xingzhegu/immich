@@ -74,11 +74,11 @@
       });
 
       notificationController.show({
-        message: `Re-assigned ${assetIds.length} asset${assetIds.length > 1 ? 's' : ''} to a new person`,
+        message: `重新分配了${assetIds.length}个资源给一个新的人物`,
         type: NotificationType.Info,
       });
     } catch (error) {
-      handleError(error, 'Unable to reassign assets to a new person');
+      handleError(error, '无法分配资源给一个新的人物');
     } finally {
       clearTimeout(timeout);
     }
@@ -97,14 +97,14 @@
           assetFaceUpdateDto: { data: selectedPeople },
         });
         notificationController.show({
-          message: `Re-assigned ${assetIds.length} asset${assetIds.length > 1 ? 's' : ''} to ${
-            selectedPerson.name || 'an existing person'
+          message: `重新分配了${assetIds.length}个资源给${
+            selectedPerson.name || '一个已存在的人物'
           }`,
           type: NotificationType.Info,
         });
       }
     } catch (error) {
-      handleError(error, `Unable to reassign assets to ${selectedPerson?.name || 'an existing person'}`);
+      handleError(error, `无法重新分配资源给${selectedPerson?.name || '一个已存在的人物'}`);
     } finally {
       clearTimeout(timeout);
     }
@@ -140,7 +140,7 @@
           {:else}
             <LoadingSpinner />
           {/if}
-          <span class="ml-2"> Create new Person</span></Button
+          <span class="ml-2">创建新的人物</span></Button
         >
         <Button
           size={'sm'}
@@ -157,7 +157,7 @@
           {:else}
             <LoadingSpinner />
           {/if}
-          <span class="ml-2"> Reassign</span></Button
+          <span class="ml-2"> 重新分配</span></Button
         >
       </div>
     </svelte:fragment>
@@ -167,7 +167,7 @@
     <section id="merge-face-selector relative">
       {#if selectedPerson !== null}
         <div class="mb-10 h-[200px] place-content-center place-items-center">
-          <p class="mb-4 text-center uppercase dark:text-white">Choose matching faces to re assign</p>
+          <p class="mb-4 text-center uppercase dark:text-white">选择要重新分配的匹配人脸</p>
 
           <div class="grid grid-flow-col-dense place-content-center place-items-center gap-4">
             <FaceThumbnail

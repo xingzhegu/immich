@@ -55,45 +55,45 @@
     [JobName.ThumbnailGeneration]: {
       icon: mdiFileJpgBox,
       title: api.getJobName(JobName.ThumbnailGeneration),
-      subtitle: 'Generate large, small and blurred thumbnails for each asset, as well as thumbnails for each person',
+      subtitle: '为每个资源生成大、小和模糊的缩略图，以及每个人的缩略图',
     },
     [JobName.MetadataExtraction]: {
       icon: mdiTable,
       title: api.getJobName(JobName.MetadataExtraction),
-      subtitle: 'Extract metadata information from each asset, such as GPS and resolution',
+      subtitle: '从每个资源中提取元数据信息，例如GPS和分辨率',
     },
     [JobName.Library]: {
       icon: mdiLibraryShelves,
       title: api.getJobName(JobName.Library),
-      subtitle: 'Perform library tasks',
-      allText: 'ALL',
-      missingText: 'REFRESH',
+      subtitle: '执行库任务',
+      allText: '全部',
+      missingText: '刷新',
     },
     [JobName.Sidecar]: {
       title: api.getJobName(JobName.Sidecar),
       icon: mdiFileXmlBox,
-      subtitle: 'Discover or synchronize sidecar metadata from the filesystem',
-      allText: 'SYNC',
-      missingText: 'DISCOVER',
+      subtitle: '从文件系统中发现或同步Sidecar元数据',
+      allText: '同步',
+      missingText: '发现',
       disabled: !$featureFlags.sidecar,
     },
     [JobName.SmartSearch]: {
       icon: mdiImageSearch,
       title: api.getJobName(JobName.SmartSearch),
-      subtitle: 'Run machine learning on assets to support smart search',
+      subtitle: '对资源运行机器学习以支持智能搜索',
       disabled: !$featureFlags.clipEncode,
     },
     [JobName.RecognizeFaces]: {
       icon: mdiFaceRecognition,
       title: api.getJobName(JobName.RecognizeFaces),
-      subtitle: 'Run machine learning on assets to recognize faces',
+      subtitle: '对资源运行机器学习以支持人脸识别',
       handleCommand: handleFaceCommand,
       disabled: !$featureFlags.facialRecognition,
     },
     [JobName.VideoConversion]: {
       icon: mdiVideo,
       title: api.getJobName(JobName.VideoConversion),
-      subtitle: 'Transcode videos for wider compatibility with browsers and devices',
+      subtitle: '对视频进行转码，以便在各种浏览器和设备上具有更广泛的兼容性',
     },
     [JobName.StorageTemplateMigration]: {
       icon: mdiFolderMove,
@@ -104,7 +104,7 @@
     [JobName.Migration]: {
       icon: mdiFolderMove,
       title: api.getJobName(JobName.Migration),
-      subtitle: 'Migrate thumbnails for assets and faces to the latest folder structure',
+      subtitle: '将资源和人脸的缩略图迁移到最新的文件夹结构中',
       allowForceCommand: false,
     },
   };
@@ -133,7 +133,7 @@
 
 {#if faceConfirm}
   <ConfirmDialogue
-    prompt="Are you sure you want to reprocess all faces? This will also clear named people."
+    prompt="您确定要重新处理所有人脸吗？这将同时清除已命名的人脸信息。"
     on:confirm={onFaceConfirm}
     on:cancel={() => (faceConfirm = false)}
   />
@@ -147,8 +147,8 @@
       {title}
       {disabled}
       {subtitle}
-      allText={allText || 'ALL'}
-      missingText={missingText || 'MISSING'}
+      allText={allText || '全部'}
+      missingText={missingText || '剩余'}
       {allowForceCommand}
       {jobCounts}
       {queueStatus}

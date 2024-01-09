@@ -34,7 +34,7 @@
       const { data } = await api.keyApi.createApiKey({ aPIKeyCreateDto: detail });
       secret = data.secret;
     } catch (error) {
-      handleError(error, 'Unable to create a new API Key');
+      handleError(error, '无法创建新的API Key');
     } finally {
       await refreshKeys();
       newKey = null;
@@ -49,11 +49,11 @@
     try {
       await api.keyApi.updateApiKey({ id: editKey.id, aPIKeyUpdateDto: { name: detail.name } });
       notificationController.show({
-        message: `Saved API Key`,
+        message: `API Key已保存`,
         type: NotificationType.Info,
       });
     } catch (error) {
-      handleError(error, 'Unable to save API Key');
+      handleError(error, '无法保存API Key');
     } finally {
       await refreshKeys();
       editKey = null;
@@ -68,11 +68,11 @@
     try {
       await api.keyApi.deleteApiKey({ id: deleteKey.id });
       notificationController.show({
-        message: `Removed API Key: ${deleteKey.name}`,
+        message: `删除API Key: ${deleteKey.name}`,
         type: NotificationType.Info,
       });
     } catch (error) {
-      handleError(error, 'Unable to remove API Key');
+      handleError(error, '无法删除API Key');
     } finally {
       await refreshKeys();
       deleteKey = null;
@@ -82,8 +82,8 @@
 
 {#if newKey}
   <APIKeyForm
-    title="New API Key"
-    submitText="Create"
+    title="新的API Key"
+    submitText="创建"
     apiKey={newKey}
     on:submit={({ detail }) => handleCreate(detail)}
     on:cancel={() => (newKey = null)}
@@ -96,7 +96,7 @@
 
 {#if editKey}
   <APIKeyForm
-    submitText="Save"
+    submitText="保存"
     apiKey={editKey}
     on:submit={({ detail }) => handleUpdate(detail)}
     on:cancel={() => (editKey = null)}
@@ -105,7 +105,7 @@
 
 {#if deleteKey}
   <ConfirmDialogue
-    prompt="Are you sure you want to delete this API Key?"
+    prompt="确定删除这个API Key?"
     on:confirm={() => handleDelete()}
     on:cancel={() => (deleteKey = null)}
   />
@@ -114,7 +114,7 @@
 <section class="my-4">
   <div class="flex flex-col gap-2" in:fade={{ duration: 500 }}>
     <div class="mb-2 flex justify-end">
-      <Button size="sm" on:click={() => (newKey = { name: 'API Key' })}>New API Key</Button>
+      <Button size="sm" on:click={() => (newKey = { name: 'API Key' })}>新的API Key</Button>
     </div>
 
     {#if keys.length > 0}
@@ -123,9 +123,9 @@
           class="mb-4 flex h-12 w-full rounded-md border bg-gray-50 text-immich-primary dark:border-immich-dark-gray dark:bg-immich-dark-gray dark:text-immich-dark-primary"
         >
           <tr class="flex w-full place-items-center">
-            <th class="w-1/3 text-center text-sm font-medium">Name</th>
-            <th class="w-1/3 text-center text-sm font-medium">Created</th>
-            <th class="w-1/3 text-center text-sm font-medium">Action</th>
+            <th class="w-1/3 text-center text-sm font-medium">名称</th>
+            <th class="w-1/3 text-center text-sm font-medium">创建时间</th>
+            <th class="w-1/3 text-center text-sm font-medium">操作</th>
           </tr>
         </thead>
         <tbody class="block w-full overflow-y-auto rounded-md border dark:border-immich-dark-gray">

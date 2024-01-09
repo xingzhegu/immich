@@ -9,7 +9,7 @@ export const load = (async () => {
   return {
     people,
     meta: {
-      title: 'People',
+      title: '人物',
     },
   };
 }) satisfies PageLoad;

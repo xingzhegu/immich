@@ -16,7 +16,7 @@ export const load = (async (data) => {
     term,
     results,
     meta: {
-      title: 'Search',
+      title: '搜索',
     },
   };
 }) satisfies PageLoad;

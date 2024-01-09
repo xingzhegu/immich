@@ -26,7 +26,7 @@
         transition:fly={{ x: 10, duration: 200, easing: quintOut }}
         class="rounded-full bg-orange-100 px-2 text-[10px] text-orange-900"
       >
-        Unsaved change
+        未保存的更改
       </div>
     {/if}
   </div>

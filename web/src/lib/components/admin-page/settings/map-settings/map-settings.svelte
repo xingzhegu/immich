@@ -54,9 +54,9 @@
       config = cloneDeep(updated);
       savedConfig = cloneDeep(updated);
 
-      notificationController.show({ message: 'Settings saved', type: NotificationType.Info });
+      notificationController.show({ message: '设置已保存', type: NotificationType.Info });
     } catch (error) {
-      handleError(error, 'Unable to save settings');
+      handleError(error, '无法保存设置');
     }
   }
 
@@ -67,7 +67,7 @@
     savedConfig = cloneDeep(resetConfig);
 
     notificationController.show({
-      message: 'Reset settings to the recent saved settings',
+      message: '将设置恢复为最近保存的设置',
       type: NotificationType.Info,
     });
   }
@@ -79,7 +79,7 @@
     defaultConfig = cloneDeep(configs);
 
     notificationController.show({
-      message: 'Reset map settings to default',
+      message: '将地图设置恢复为默认设置',
       type: NotificationType.Info,
     });
   }
@@ -90,12 +90,12 @@
     <div in:fade={{ duration: 500 }}>
       <form autocomplete="off" on:submit|preventDefault>
         <div class="flex flex-col gap-4">
-          <SettingAccordion title="Map Settings" subtitle="Manage map settings">
+          <SettingAccordion title="地图设置" subtitle="管理地图设置">
             <div class="ml-4 mt-4 flex flex-col gap-4">
               <SettingSwitch
-                title="ENABLED"
+                title="启用"
                 {disabled}
-                subtitle="Enable map features"
+                subtitle="启用地图功能"
                 bind:checked={config.map.enabled}
               />
 
@@ -103,16 +103,16 @@
 
               <SettingInputField
                 inputType={SettingInputFieldType.TEXT}
-                label="Light Style"
-                desc="URL to a style.json map theme"
+                label="日间样式"
+                desc="地图主题的style.json文件的URL"
                 bind:value={config.map.lightStyle}
                 disabled={disabled || !config.map.enabled}
                 isEdited={config.map.lightStyle !== savedConfig.map.lightStyle}
               />
               <SettingInputField
                 inputType={SettingInputFieldType.TEXT}
-                label="Dark Style"
-                desc="URL to a style.json map theme"
+                label="黑夜样式"
+                desc="地图主题的style.json文件的URL"
                 bind:value={config.map.darkStyle}
                 disabled={disabled || !config.map.enabled}
                 isEdited={config.map.darkStyle !== savedConfig.map.darkStyle}
@@ -120,22 +120,22 @@
             </div></SettingAccordion
           >
 
-          <SettingAccordion title="Reverse Geocoding Settings">
+          <SettingAccordion title="逆地理编码设置">
             <svelte:fragment slot="subtitle">
               <p class="text-sm dark:text-immich-dark-fg">
-                Manage <a
+                管理<a
                   href="https://immich.app/docs/features/reverse-geocoding"
                   class="underline"
                   target="_blank"
-                  rel="noreferrer">Reverse Geocoding</a
-                > settings
+                  rel="noreferrer">逆地理编码</a
+                >设置
               </p>
             </svelte:fragment>
             <div class="ml-4 mt-4 flex flex-col gap-4">
               <SettingSwitch
-                title="ENABLED"
+                title="启用"
                 {disabled}
-                subtitle="Enable reverse geocoding"
+                subtitle="启用逆地理编码"
                 bind:checked={config.reverseGeocoding.enabled}
               />
             </div></SettingAccordion

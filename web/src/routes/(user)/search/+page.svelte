@@ -113,14 +113,14 @@
     <div class="fixed z-[100] top-0 left-0 w-full">
       <AssetSelectControlBar assets={selectedAssets} clearSelect={() => (selectedAssets = new Set())}>
         <CreateSharedLink />
-        <CircleIconButton title="Select all" icon={mdiSelectAll} on:click={handleSelectAll} />
-        <AssetSelectContextMenu icon={mdiPlus} title="Add">
+        <CircleIconButton title="全选" icon={mdiSelectAll} on:click={handleSelectAll} />
+        <AssetSelectContextMenu icon={mdiPlus} title="添加">
           <AddToAlbum />
           <AddToAlbum shared />
         </AssetSelectContextMenu>
         <DeleteAssets {onAssetDelete} />
 
-        <AssetSelectContextMenu icon={mdiDotsVertical} title="Add">
+        <AssetSelectContextMenu icon={mdiDotsVertical} title="添加">
           <DownloadAction menuItem />
           <FavoriteAction menuItem removeFavorite={isAllFavorite} />
           <ArchiveAction menuItem unarchive={isAllArchived} />

@@ -235,7 +235,7 @@ export class AssetStore {
 
       this.emit(true);
     } catch (error) {
-      handleError(error, 'Failed to load assets');
+      handleError(error, '导入资源失败');
     }
   }
 

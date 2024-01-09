@@ -6,9 +6,9 @@
 
   export let title = 'Confirm';
   export let prompt = 'Are you sure you want to do this?';
-  export let confirmText = 'Confirm';
+  export let confirmText = '确认';
   export let confirmColor: Color = 'red';
-  export let cancelText = 'Cancel';
+  export let cancelText = '取消';
   export let cancelColor: Color = 'primary';
   export let hideCancelButton = false;
   export let disabled = false;

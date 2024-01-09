@@ -9,8 +9,8 @@
 
   export let apiKey: Partial<APIKeyResponseDto>;
   export let title = 'API Key';
-  export let cancelText = 'Cancel';
-  export let submitText = 'Save';
+  export let cancelText = '取消';
+  export let submitText = '保存';
   export let apiKeyName = 'API Key';
 
   const dispatch = createEventDispatcher<{
@@ -45,7 +45,7 @@
 
     <form on:submit|preventDefault={handleSubmit} autocomplete="off">
       <div class="m-4 flex flex-col gap-2">
-        <label class="immich-form-label" for="name">Name</label>
+        <label class="immich-form-label" for="name">名称</label>
         <input class="immich-form-input" id="name" name="name" type="text" bind:value={apiKeyName} />
       </div>
 

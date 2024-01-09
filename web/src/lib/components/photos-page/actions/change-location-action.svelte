@@ -25,14 +25,14 @@
         },
       });
     } catch (error) {
-      handleError(error, 'Unable to update location');
+      handleError(error, '无法修改位置');
     }
     clearSelect();
   }
 </script>
 
 {#if menuItem}
-  <MenuOption text="Change location" on:click={() => (isShowChangeLocation = true)} />
+  <MenuOption text="修改位置" on:click={() => (isShowChangeLocation = true)} />
 {/if}
 {#if isShowChangeLocation}
   <ChangeLocation
